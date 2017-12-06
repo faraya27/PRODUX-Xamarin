@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>55251f11-1e0b-4e7d-bc03-167e558e6115</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>PRODUX</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ClienteModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PedidoModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ProductoModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\UsuarioModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ClienteViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\InicioSesionViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\PedidoViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ProductoViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\UsuarioViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\InicioSesion.xaml.cs">
+      <DependentUpon>InicioSesion.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\InicioSesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
