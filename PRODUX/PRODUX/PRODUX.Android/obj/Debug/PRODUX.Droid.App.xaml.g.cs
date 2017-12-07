@@ -11,7 +11,7 @@
 namespace PRODUX {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("c:\\users\\f_ara\\source\\repos\\PRODUX\\PRODUX\\PRODUX\\App.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\f_ara\\source\\repos\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\App.xaml")]
     public partial class App : global::Xamarin.Forms.Application {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

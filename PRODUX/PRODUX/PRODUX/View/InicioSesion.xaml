@@ -4,9 +4,16 @@
              x:Class="PRODUX.View.InicioSesion">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Inicio Sesión"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+            <Label Text="PRODUX"/>
+            <Image />
+            <Label Text="Inicio Sesión"/>
+            <Image />
+            <Entry Placeholder="Usuario"/>
+            <Image />
+            <Entry Placeholder="Contraseña"/>
+            <Switch />
+            <Label Text="Recordar Credenciales"/>
+            <Button Text="Iniciar Sesión"/>
+        </StackLayout>        
     </ContentPage.Content>
 </ContentPage>

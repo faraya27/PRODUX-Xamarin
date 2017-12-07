@@ -11,7 +11,8 @@
 namespace PRODUX.View {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("c:\\users\\f_ara\\source\\repos\\PRODUX\\PRODUX\\PRODUX\\View\\InicioSesion.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\f_ara\\source\\repos\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\InicioSesion" +
+        ".xaml")]
     public partial class InicioSesion : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
