@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="Menu"
+             x:Class="PRODUX.View.Menu.Menu" 
+             Title="Menu Principal">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirProductoCommand, Source={x:Reference Menu}}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="Productos"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirPedidoCommand, Source={x:Reference Menu}}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="Pedidos"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirConsultaPedidosCommand, Source={x:Reference Menu}}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="Consulta de Pedidos"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirClienteCommand, Source={x:Reference Menu}}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="Clientes"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirUsuarioCommand, Source={x:Reference Menu}}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="Usuarios"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=BindingContext.CerrarSesionCommand, Source={x:Reference Menu}}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="Cerrar Sesión"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

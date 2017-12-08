@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:PRODUX.View.Producto"
+             x:Class="PRODUX.View.Producto.ProductoTab">
+    <NavigationPage Title="Consulta">
+            <x:Arguments>
+                <pages:ConsultaProducto/>
+            </x:Arguments>
+        </NavigationPage>
+    <NavigationPage Title="Nuevo">
+        <x:Arguments>
+            <pages:Producto/>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

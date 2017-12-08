@@ -13,7 +13,7 @@
             <Entry Placeholder="Contraseña"/>
             <Switch />
             <Label Text="Recordar Credenciales"/>
-            <Button Text="Iniciar Sesión"/>
+            <Button Text="Iniciar Sesión" Command="{Binding ValidarCredencialesCommand}"/>
         </StackLayout>        
     </ContentPage.Content>
 </ContentPage>

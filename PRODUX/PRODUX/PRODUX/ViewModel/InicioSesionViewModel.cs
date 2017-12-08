@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PRODUX.ViewModel
 {
@@ -37,17 +39,33 @@ namespace PRODUX.ViewModel
 
         #endregion
 
+        #region Instances
+
+        public ICommand ValidarCredencialesCommand { get; set; }
+
+        #endregion
+
         #region Métodos
 
         private void InicializarComandos()
         {
-
+            ValidarCredencialesCommand = new Command(validarCredenciales); 
 
         }
 
         private void InicializarClase()
         {
 
+        }
+
+        private void validarCredenciales()
+        {
+            NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
+            App.Current.MainPage = new MasterDetailPage
+            {
+                Master = new PRODUX.View.Menu.Menu(),
+                Detail = navigation
+            };
         }
 
         #endregion

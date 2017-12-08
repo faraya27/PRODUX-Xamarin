@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRODUX.View {
+namespace PRODUX.View.Cliente {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\f_ara\\source\\repos\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\InicioSesion" +
-        ".xaml")]
-    public partial class InicioSesion : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\f_ara\\source\\repos\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Cliente\\Clie" +
+        "nteTab.xaml")]
+    public partial class ClienteTab : global::Xamarin.Forms.TabbedPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(InicioSesion));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(ClienteTab));
         }
     }
 }
