@@ -4,9 +4,38 @@
              x:Class="PRODUX.View.Cliente.Cliente">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="NUEVO"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Label Text="Cliente"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Cédula:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Nombre:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Telefono:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Email:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Estado:"/>
+                <Switch/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Dirección:"/>
+                <Editor/>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Guardar"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

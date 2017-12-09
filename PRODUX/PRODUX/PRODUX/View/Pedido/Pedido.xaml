@@ -4,9 +4,40 @@
              x:Class="PRODUX.View.Pedido.Pedido">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="PEDIDO"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Label Text="Pedido"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Número:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Fecha:"/>
+                <DatePicker/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Cliente:"/>
+                <Picker/>
+            </StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Búsqueda"/>
+            </StackLayout>
+            <StackLayout>
+                <ListView>
+                
+                </ListView>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Total:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Guardar"/>
+                <Button Text="Eliminar"/>
+                <Button Text="Confirmar"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

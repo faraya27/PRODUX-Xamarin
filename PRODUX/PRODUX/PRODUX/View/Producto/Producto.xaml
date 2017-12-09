@@ -4,9 +4,42 @@
              x:Class="PRODUX.View.Producto.Producto">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="NUEVO"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Label Text="Productos"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Código:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Descripción:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Precio:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Cant. Inventario:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Estado:"/>
+                <Switch/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Observaciones:"/>
+                <Editor/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Imagen:"/>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Guardar"/>
+                <Button Text="Eliminar"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

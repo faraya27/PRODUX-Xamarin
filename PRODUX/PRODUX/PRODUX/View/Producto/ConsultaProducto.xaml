@@ -4,9 +4,14 @@
              x:Class="PRODUX.View.Producto.ConsultaProducto">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="CONSULTA"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Entry Placeholder="Búsqueda"/>            
+            </StackLayout>
+            <StackLayout>
+                <ListView>
+
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

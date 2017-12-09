@@ -4,9 +4,26 @@
              x:Class="PRODUX.View.Usuario.Usuario">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="NUEVO"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout>
+                <Label Text="Usuario"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Código:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Código:"/>
+                <Entry/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Estado:"/>
+                <Switch/>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Guardar"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
