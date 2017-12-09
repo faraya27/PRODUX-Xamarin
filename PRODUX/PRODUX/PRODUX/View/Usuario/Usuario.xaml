@@ -10,19 +10,19 @@
                     HorizontalOptions="CenterAndExpand" />
             </StackLayout>
             <StackLayout>
-                <Label Text="Código:"/>
-                <Entry/>
+                <Label Text="Usuario:"/>
+                <Entry Text="{Binding Usuario}"/>
             </StackLayout>
             <StackLayout>
-                <Label Text="Código:"/>
+                <Label Text="Contraseña:"/>
                 <Entry/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Estado:"/>
-                <Switch/>
+                <Switch IsToggled="{Binding Estado}"/>
             </StackLayout>
             <StackLayout>
-                <Button Text="Guardar"/>
+                <Button Text="Guardar" Command="{Binding GuardarUsuarioCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

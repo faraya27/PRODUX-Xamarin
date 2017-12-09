@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PRODUX.ViewModel
 {
@@ -37,14 +39,74 @@ namespace PRODUX.ViewModel
 
         #endregion
 
+        #region Variables
+
+        private string _Usuario = string.Empty;
+
+        private string _Contrasenna = string.Empty;
+
+        private bool _Estado = true;
+
+        #endregion
+
+        #region Propiedades
+
+        public ICommand GuardarUsuarioCommand { get; set; }
+
+        public string Usuario
+        {
+            get
+            {
+                return _Usuario;
+            }
+            set
+            {
+                _Usuario = value;
+                OnPropertyChanged("Usuario");
+            }
+        }
+
+        public string Contrasenna
+        {
+            get
+            {
+                return _Contrasenna;
+            }
+            set
+            {
+                _Contrasenna = value;
+                OnPropertyChanged("Contrasenna");
+            }
+        }
+
+        public bool Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                _Estado = value;
+                OnPropertyChanged("Estado");
+            }
+        }
+
+        #endregion
+
         #region Métodos
 
         private void InicializarComandos()
         {
-
+            GuardarUsuarioCommand = new Command(GuardarUsuario);
         }
 
         private void InicializarClase()
+        {
+
+        }
+
+        private void GuardarUsuario()
         {
 
         }

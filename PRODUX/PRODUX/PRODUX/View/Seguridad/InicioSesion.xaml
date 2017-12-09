@@ -8,10 +8,10 @@
             <Image />
             <Label Text="Inicio Sesión"/>
             <Image />
-            <Entry Placeholder="Usuario"/>
+            <Entry Placeholder="Usuario" Text="{Binding Usuario}"/>
             <Image />
-            <Entry Placeholder="Contraseña"/>
-            <Switch />
+            <Entry Placeholder="Contraseña" Text="{Binding Contrasenna}" IsPassword="True"/>
+            <Switch IsToggled="{Binding RecordarCredenciales}"/>
             <Label Text="Recordar Credenciales"/>
             <Button Text="Iniciar Sesión" Command="{Binding ValidarCredencialesCommand}"/>
         </StackLayout>        
