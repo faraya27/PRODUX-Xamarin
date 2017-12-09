@@ -110,3 +110,10 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debu
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\res\values\styles.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\R.cs.flag
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\uploadflags.txt
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.csprojResolveAssemblyReference.cache
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\PRODUX.Android.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\PRODUX.Android.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb

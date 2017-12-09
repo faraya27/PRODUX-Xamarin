@@ -69,7 +69,19 @@ namespace PRODUX.ViewModel
 
         private void AbrirPantallaProducto()
         {
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Producto.ProductoTab());
+            //((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Producto.ProductoTab());
+
+            TabbedPage ProductoTab = new PRODUX.View.Producto.ProductoTab();
+            ProductoTab.Children.Add( new PRODUX.View.Producto.ConsultaProducto());
+            ProductoTab.Children.Add(new PRODUX.View.Producto.Producto());
+
+            NavigationPage navigation = new NavigationPage(ProductoTab);
+            App.Current.MainPage = new MasterDetailPage
+            {
+                Master = new PRODUX.View.Menu.Menu(),
+                Detail = navigation
+            };
+
         }
 
         private void AbrirPantallaPedido()
