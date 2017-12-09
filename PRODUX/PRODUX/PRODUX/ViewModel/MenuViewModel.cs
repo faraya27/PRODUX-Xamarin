@@ -69,39 +69,65 @@ namespace PRODUX.ViewModel
 
         private void AbrirPantallaProducto()
         {
-            //((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Producto.ProductoTab());
-
             TabbedPage ProductoTab = new PRODUX.View.Producto.ProductoTab();
             ProductoTab.Children.Add( new PRODUX.View.Producto.ConsultaProducto());
             ProductoTab.Children.Add(new PRODUX.View.Producto.Producto());
 
-            NavigationPage navigation = new NavigationPage(ProductoTab);
-            App.Current.MainPage = new MasterDetailPage
-            {
-                Master = new PRODUX.View.Menu.Menu(),
-                Detail = navigation
-            };
+            //NavigationPage navigation = new NavigationPage(ProductoTab);
+            //App.Current.MainPage = new MasterDetailPage
+            //{
+            //    Master = new PRODUX.View.Menu.Menu(),
+            //    Detail = navigation
+            //};
 
+            ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ProductoTab);
         }
 
         private void AbrirPantallaPedido()
         {
+            ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.Pedido());
         }
 
         private void AbrirPantallaConsultaPedidos()
         {
+            ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.ConsultaPedido());
         }
 
         private void AbrirPantallaCliente()
         {
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Cliente.ClienteTab());
+            TabbedPage ClienteTab = new PRODUX.View.Cliente.ClienteTab();
+            ClienteTab.Children.Add(new PRODUX.View.Cliente.ConsultaCliente());
+            ClienteTab.Children.Add(new PRODUX.View.Cliente.Cliente());
+
+            //NavigationPage navigation = new NavigationPage(ClienteTab);
+            //App.Current.MainPage = new MasterDetailPage
+            //{
+            //    Master = new PRODUX.View.Menu.Menu(),
+            //    Detail = navigation
+            //};
+
+            ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ClienteTab);
         }
 
         private void AbrirPantallaUsuario()
         {
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Usuario.UsuarioTab());
+            TabbedPage UsuarioTab = new PRODUX.View.Usuario.UsuarioTab();
+            UsuarioTab.Children.Add(new PRODUX.View.Usuario.ConsultaUsuario());
+            UsuarioTab.Children.Add(new PRODUX.View.Usuario.Usuario());
+
+            //NavigationPage navigation = new NavigationPage(UsuarioTab);
+            //App.Current.MainPage = new MasterDetailPage
+            //{
+            //    Master = new PRODUX.View.Menu.Menu(),
+            //    Detail = navigation
+            //};
+
+            ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(UsuarioTab);
         }
 
         private void CerrarSesion()
