@@ -45,7 +45,7 @@ namespace PRODUX.ViewModel
 
         private string _Contrasenna = string.Empty;
 
-        private bool _RecordarCredenciales = true;
+        private bool _RecordarCredenciales = false;
 
         #endregion
 

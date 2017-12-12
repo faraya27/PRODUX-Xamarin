@@ -3,16 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRODUX.View.InicioSesion">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="PRODUX"/>
-            <Image />
-            <Label Text="Inicio Sesión"/>
-            <Image />
-            <Entry Placeholder="Usuario" Text="{Binding Usuario}"/>
-            <Image />
-            <Entry Placeholder="Contraseña" Text="{Binding Contrasenna}" IsPassword="True"/>
-            <Switch IsToggled="{Binding RecordarCredenciales}"/>
-            <Label Text="Recordar Credenciales"/>
+        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="PRODUX"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Inicio Sesión"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image />
+                <Entry Placeholder="Usuario" Text="{Binding Usuario}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image />
+                <Entry Placeholder="Contraseña" Text="{Binding Contrasenna}" IsPassword="True"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">                
+                <Label Text="Recordar Credenciales"/>
+                <Switch IsToggled="{Binding RecordarCredenciales}"/>
+            </StackLayout>
             <Button Text="Iniciar Sesión" Command="{Binding ValidarCredencialesCommand}"/>
         </StackLayout>        
     </ContentPage.Content>

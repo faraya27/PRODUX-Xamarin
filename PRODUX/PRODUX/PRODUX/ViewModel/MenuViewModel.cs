@@ -81,18 +81,21 @@ namespace PRODUX.ViewModel
             //};
 
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ProductoTab);
         }
 
         private void AbrirPantallaPedido()
         {
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.Pedido());
         }
 
         private void AbrirPantallaConsultaPedidos()
         {
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.ConsultaPedido());
         }
 
@@ -110,6 +113,7 @@ namespace PRODUX.ViewModel
             //};
 
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ClienteTab);
         }
 
@@ -127,6 +131,7 @@ namespace PRODUX.ViewModel
             //};
 
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(UsuarioTab);
         }
 
