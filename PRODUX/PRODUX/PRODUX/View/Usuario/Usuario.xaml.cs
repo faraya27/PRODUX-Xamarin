@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRODUX.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace PRODUX.View.Usuario
 		public Usuario ()
 		{
 			InitializeComponent ();
+
+            BindingContext = UsuarioViewModel.GetInstance();
 		}
 	}
 }

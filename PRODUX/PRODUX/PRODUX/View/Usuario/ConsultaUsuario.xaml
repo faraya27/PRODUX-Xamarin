@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Entry Placeholder="Búsqueda"/>
+                <Entry Placeholder="Búsqueda" Text="{Binding Filtro}"/>
             </StackLayout>
             <StackLayout>
                 <ListView>

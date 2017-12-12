@@ -41,6 +41,8 @@ namespace PRODUX.ViewModel
 
         #region Variables
 
+        private string _Filtro = string.Empty;
+
         private string _Cedula = string.Empty;
 
         private string _Nombre = string.Empty;
@@ -58,6 +60,19 @@ namespace PRODUX.ViewModel
         #region Propiedades
 
         public ICommand GuardarClienteCommand { get; set; }
+
+        public string Filtro
+        {
+            get
+            {
+                return _Filtro;
+            }
+            set
+            {
+                _Filtro = value;
+                OnPropertyChanged("Filtro");
+            }
+        }
 
         public string Cedula
         {

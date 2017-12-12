@@ -11,34 +11,34 @@
             </StackLayout>
             <StackLayout>
                 <Label Text="Código:"/>
-                <Entry/>
+                <Entry Text="{Binding Codigo}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Descripción:"/>
-                <Entry/>
+                <Entry Text="{Binding Descripcion}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Precio:"/>
-                <Entry/>
+                <Entry Text="{Binding Precio}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Cant. Inventario:"/>
-                <Entry/>
+                <Entry Text="{Binding CantidadInventario}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Estado:"/>
-                <Switch/>
+                <Switch IsToggled="{Binding Estado}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Observaciones:"/>
-                <Editor/>
+                <Editor Text="{Binding Observaciones}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Imagen:"/>
             </StackLayout>
             <StackLayout>
-                <Button Text="Guardar"/>
-                <Button Text="Eliminar"/>
+                <Button Text="Guardar" Command="{Binding GuardarProductoCommand}"/>
+                <Button Text="Eliminar" Command="{Binding EliminarProductoCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

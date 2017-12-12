@@ -11,6 +11,12 @@ namespace PRODUX.Model
     {
         public UsuarioModel() { }
 
+        public string Usuario { get; set; }
+
+        public string Contrasenna { get; set; }
+
+        public bool Estado { get; set; }
+
         public async Task<string> Autenticar(string usuario, string contrasena)
         {
             using (HttpClient client = new HttpClient())
@@ -19,7 +25,7 @@ namespace PRODUX.Model
 
                 var json = JsonConvert.SerializeObject(new { Usuario = usuario, Contrasenna = contrasena }); //Esto es un string
 
-                var content = new StringContent(json, Encoding.UTF8, "appliication/json");
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false); //Esto se puede obviar ConfigureAwait(false)
 

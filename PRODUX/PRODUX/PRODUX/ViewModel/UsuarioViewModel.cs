@@ -41,6 +41,8 @@ namespace PRODUX.ViewModel
 
         #region Variables
 
+        private string _Filtro = string.Empty;
+
         private string _Usuario = string.Empty;
 
         private string _Contrasenna = string.Empty;
@@ -52,6 +54,19 @@ namespace PRODUX.ViewModel
         #region Propiedades
 
         public ICommand GuardarUsuarioCommand { get; set; }
+
+        public string Filtro
+        {
+            get
+            {
+                return _Filtro;
+            }
+            set
+            {
+                _Filtro = value;
+                OnPropertyChanged("Filtro");
+            }
+        }
 
         public string Usuario
         {

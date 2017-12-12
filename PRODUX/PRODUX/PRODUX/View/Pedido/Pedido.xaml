@@ -11,15 +11,15 @@
             </StackLayout>
             <StackLayout>
                 <Label Text="Número:"/>
-                <Entry/>
+                <Entry Text="{Binding Numero}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Fecha:"/>
-                <DatePicker/>
+                <DatePicker Date="{Binding Fecha}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Cliente:"/>
-                <Picker/>
+                <Picker SelectedItem="{Binding Cliente}"/>
             </StackLayout>
             <StackLayout>
                 <Entry Placeholder="Búsqueda"/>
@@ -31,12 +31,12 @@
             </StackLayout>
             <StackLayout>
                 <Label Text="Total:"/>
-                <Entry/>
+                <Entry Text="{Binding TotalPedido}"/>
             </StackLayout>
             <StackLayout>
-                <Button Text="Guardar"/>
-                <Button Text="Eliminar"/>
-                <Button Text="Confirmar"/>
+                <Button Text="Guardar" Command="{Binding GuardarPedidoCommand}"/>
+                <Button Text="Eliminar" Command="{Binding EliminarPedidoCommand}"/>
+                <Button Text="Confirmar" Command="{Binding ConfirmarPedidoCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
