@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRODUX.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -109,6 +110,7 @@ namespace PRODUX.ViewModel
 
         private void validarCredenciales()
         {
+            //UsuarioModel.Autenticar(Usuario, Contrasenna);
             NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
             App.Current.MainPage = new MasterDetailPage
             {
