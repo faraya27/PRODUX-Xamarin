@@ -17,7 +17,7 @@ namespace PRODUX.Model
 
         public bool Estado { get; set; }
 
-        public async Task<string> Autenticar(string usuario, string contrasena)
+        public static async Task<string> Autenticar(string usuario, string contrasena)
         {
             using (HttpClient client = new HttpClient())
             {
