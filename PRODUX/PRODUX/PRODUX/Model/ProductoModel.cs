@@ -16,7 +16,7 @@ namespace PRODUX.Model
 
         public double CantidadInventario { get; set; }
 
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
 
         public string Observaciones { get; set; }
 
