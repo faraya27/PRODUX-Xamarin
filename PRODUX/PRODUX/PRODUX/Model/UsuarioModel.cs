@@ -15,7 +15,7 @@ namespace PRODUX.Model
 
         public string Contrasenna { get; set; }
 
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
 
         public static async Task<string> Autenticar(string usuario, string contrasena)
         {

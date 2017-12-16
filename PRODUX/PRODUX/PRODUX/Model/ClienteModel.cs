@@ -16,7 +16,7 @@ namespace PRODUX.Model
 
         public string Email { get; set; }
 
-        public bool Estado { get; set; }
+        public int Estado { get; set; }
 
         public string Direccion { get; set; }
     }
