@@ -108,15 +108,25 @@ namespace PRODUX.ViewModel
 
         }
 
-        private void validarCredenciales()
+        private async void validarCredenciales()
         {
-            //UsuarioModel.Autenticar(Usuario, Contrasenna);
-            NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
-            App.Current.MainPage = new MasterDetailPage
+            UsuarioModel u = new UsuarioModel();
+            u.Usuario = Usuario;
+            u.Contrasenna = Contrasenna;
+
+            string result = await UsuarioModel.Autenticar(u);
+
+            if (result == Usuario)
             {
-                Master = new PRODUX.View.Menu.Menu(),
-                Detail = navigation
-            };
+                NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
+                App.Current.MainPage = new MasterDetailPage
+                {
+                    Master = new PRODUX.View.Menu.Menu(),
+                    Detail = navigation
+                };
+            }
+
+            
         }
 
         #endregion

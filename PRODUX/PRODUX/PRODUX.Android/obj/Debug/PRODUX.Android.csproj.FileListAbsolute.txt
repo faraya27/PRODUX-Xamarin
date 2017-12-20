@@ -137,3 +137,15 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debu
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Plugin.Permissions.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Plugin.Media.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Plugin.Permissions.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.DataBinding.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.Sync.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Remotion.Linq.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.DataBinding.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.Sync.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.Sync.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Remotion.Linq.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
