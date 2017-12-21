@@ -110,21 +110,47 @@ namespace PRODUX.ViewModel
 
         private async void validarCredenciales()
         {
-            UsuarioModel u = new UsuarioModel();
-            u.Usuario = Usuario;
-            u.Contrasenna = Contrasenna;
+            string resultadoValidacion = string.Empty;
 
-            string result = await UsuarioModel.Autenticar(u);
-
-            if (result == Usuario)
+            try
             {
-                NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
-                App.Current.MainPage = new MasterDetailPage
+                if (Usuario.Equals(""))
                 {
-                    Master = new PRODUX.View.Menu.Menu(),
-                    Detail = navigation
-                };
+                    App.Current.MainPage.DisplayAlert("Login", "Debe ingresar el usuario!", "OK");
+                    return;
+                }
+
+                if (Contrasenna.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Login", "Debe ingresar la contraseña!", "OK");
+                    return;
+                }
+
+                UsuarioModel usuario = new UsuarioModel();
+                usuario.Usuario = Usuario;
+                usuario.Contrasenna = Contrasenna;
+
+                resultadoValidacion = await UsuarioModel.Autenticar(usuario);
+
+                if (resultadoValidacion == "VALIDO")
+                {
+                    NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
+                    App.Current.MainPage = new MasterDetailPage
+                    {
+                        Master = new PRODUX.View.Menu.Menu(),
+                        Detail = navigation
+                    };
+                }
+                else
+                {
+                    App.Current.MainPage.DisplayAlert("Login", "Usuario y contraseña incorrectas!", "OK");
+                }                
             }
+            catch (Exception ex)
+            {
+                App.Current.MainPage.DisplayAlert("Login", "No fue posible verificar las credenciales!", "OK");
+            }
+            
 
             
         }
