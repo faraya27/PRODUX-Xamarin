@@ -137,3 +137,6 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debu
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Plugin.Permissions.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Plugin.Media.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Plugin.Permissions.dll.mdb
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.csprojResolveAssemblyReference.cache
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.dll
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.pdb

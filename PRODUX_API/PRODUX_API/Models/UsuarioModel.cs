@@ -20,7 +20,7 @@ namespace PRODUX_API.Models
         public string Usuario_Creacion { get; set; }
 
 
-        public string ValidarUsuarios(string IdUsuario, string Contrasenna)
+        public static string ValidarUsuarios(string IdUsuario, string Contrasenna)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
@@ -202,7 +202,7 @@ namespace PRODUX_API.Models
             try
             {
                 OdbcCommand command = new OdbcCommand();
-                string Sql = "{call [dbo].[sp_Actualizar_Usuario](?,?,?,?)}";
+                string Sql = "{call [dbo].[sp_Actualizar_Usuario](?,?,?)}";
 
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = Sql;
@@ -214,8 +214,6 @@ namespace PRODUX_API.Models
                 command.Parameters["@Contrasenna"].Value = usuario.Contrasenna;
                 command.Parameters.Add("@Estado", OdbcType.Int);
                 command.Parameters["@Estado"].Value = usuario.Estado;
-                command.Parameters.Add("@Usuario_Creacion", OdbcType.VarChar);
-                command.Parameters["@Usuario_Creacion"].Value = usuario.Usuario_Creacion;//Usuario Logueado
 
                 command.ExecuteNonQuery();
 
@@ -234,6 +232,40 @@ namespace PRODUX_API.Models
             }
         }
         //Inactivar
+
+        public void InactivarUsuario(UsuarioModel usuario)
+        {
+            OdbcConnection conn = Conexion.obtenerConexion();
+            try
+            {
+                OdbcCommand command = new OdbcCommand();
+                string Sql = "{call [dbo].[sp_Inactivar_Usuario](?,?)}";
+
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = Sql;
+                command.Connection = conn;
+
+                command.Parameters.Add("@Id_Usuario", OdbcType.VarChar);
+                command.Parameters["@Id_Usuario"].Value = usuario.Usuario;
+                command.Parameters.Add("@Estado", OdbcType.Int);
+                command.Parameters["@Estado"].Value = usuario.Estado;
+
+                command.ExecuteNonQuery();
+
+                command.Dispose();
+
+
+            }
+            catch (OdbcException ax)
+            {
+                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+        }
     }
 
 }
