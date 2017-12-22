@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PRODUX.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
@@ -48,6 +50,8 @@ namespace PRODUX.ViewModel
         private string _Contrasenna = string.Empty;
 
         private bool _Estado = true;
+
+        private ObservableCollection<UsuarioModel> _lstUsuarios = new ObservableCollection<UsuarioModel>();
 
         #endregion
 
@@ -107,6 +111,19 @@ namespace PRODUX.ViewModel
             }
         }
 
+        public ObservableCollection<UsuarioModel> LstUsuarios
+        {
+            get
+            {
+                return _lstUsuarios;
+            }
+            set
+            {
+                _lstUsuarios = value;
+                OnPropertyChanged("LstUsuarios");
+            }
+        }
+
         #endregion
 
         #region Métodos
@@ -118,12 +135,38 @@ namespace PRODUX.ViewModel
 
         private void InicializarClase()
         {
-
+            //LstUsuarios = ;
         }
 
         private void GuardarUsuario()
         {
+            try
+            {
+                if (Usuario.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar el usuario!", "OK");
+                    return;
+                }
 
+                if (Contrasenna.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar la contraseña!", "OK");
+                    return;
+                }
+
+                UsuarioModel objUsuario = new UsuarioModel();
+                objUsuario.Usuario = Usuario;
+                objUsuario.Contrasenna = Contrasenna;
+                objUsuario.Estado = Convert.ToInt32(Estado);
+                objUsuario.Usuario_Creacion = ""; //FALTA ASIGNAR
+                objUsuario.Fecha_Creacion = DateTime.Now;
+
+                //Llamar al método de insertar
+            }
+            catch (Exception ex)
+            {
+                App.Current.MainPage.DisplayAlert("Usuarios", "No fue posible insertar el usuario!", "OK");
+            }
         }
 
         #endregion

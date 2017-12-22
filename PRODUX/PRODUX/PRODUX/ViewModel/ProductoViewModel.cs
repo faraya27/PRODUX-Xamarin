@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PRODUX.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
@@ -56,6 +58,8 @@ namespace PRODUX.ViewModel
         private string _Observaciones = string.Empty;
 
         private string _Imagen = string.Empty;
+
+        private ObservableCollection<ProductoModel> _lstProductos = new ObservableCollection<ProductoModel>();
 
         #endregion
 
@@ -169,6 +173,19 @@ namespace PRODUX.ViewModel
             }
         }
 
+        public ObservableCollection<ProductoModel> LstProductos
+        {
+            get
+            {
+                return _lstProductos;
+            }
+            set
+            {
+                _lstProductos = value;
+                OnPropertyChanged("LstProductos");
+            }
+        }
+
         #endregion
 
         #region Métodos
@@ -181,12 +198,54 @@ namespace PRODUX.ViewModel
 
         private void InicializarClase()
         {
-
+            //LstProductos = ;
         }
 
         private void GuardarProducto()
         {
+            try
+            {
+                if (Codigo.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Productos", "Debe ingresar el código!", "OK");
+                    return;
+                }
 
+                if (Descripcion.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Productos", "Debe ingresar la descripción!", "OK");
+                    return;
+                }
+
+                if (Precio == 0)
+                {
+                    App.Current.MainPage.DisplayAlert("Productos", "Debe ingresar el precio!", "OK");
+                    return;
+                }
+
+                if (Imagen.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Productos", "Debe seleccionar una imagen!", "OK");
+                    return;
+                }
+
+                ProductoModel objProducto = new ProductoModel();
+                objProducto.Codigo = Codigo;
+                objProducto.Descripcion = Descripcion;
+                objProducto.Precio = Precio;
+                objProducto.CantidadInventario = CantidadInventario;
+                objProducto.Estado = Convert.ToInt32(Estado);
+                objProducto.Observaciones = Observaciones;
+                objProducto.Imagen = Imagen;
+                objProducto.Usuario_Creacion = ""; //FALTA ASIGNAR
+                objProducto.Fecha_Creacion = DateTime.Now;
+
+                //Llamar al método de insertar
+            }
+            catch (Exception ex)
+            {
+                App.Current.MainPage.DisplayAlert("Productos", "No fue posible insertar el producto!", "OK");
+            }
         }
 
         private void EliminarProducto()

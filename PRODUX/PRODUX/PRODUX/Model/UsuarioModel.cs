@@ -29,6 +29,8 @@ namespace PRODUX.Model
 
         public string Usuario_Creacion { get; set; }
 
+        public DateTime Fecha_Creacion { get; set; }
+
         #endregion
 
         #region Métodos

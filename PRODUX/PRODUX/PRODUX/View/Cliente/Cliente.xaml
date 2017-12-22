@@ -34,7 +34,7 @@
                 <Editor Text="{Binding Direccion}"/>
             </StackLayout>
             <StackLayout>
-                <Button Text="Guardar" Command="{Binding GuardarUsuarioCommand}"/>
+                <Button Text="Guardar" Command="{Binding GuardarClienteCommand}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
