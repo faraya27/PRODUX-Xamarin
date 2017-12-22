@@ -108,15 +108,51 @@ namespace PRODUX.ViewModel
 
         }
 
-        private void validarCredenciales()
+        private async void validarCredenciales()
         {
-            //UsuarioModel.Autenticar(Usuario, Contrasenna);
-            NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
-            App.Current.MainPage = new MasterDetailPage
+            string resultadoValidacion = string.Empty;
+
+            try
             {
-                Master = new PRODUX.View.Menu.Menu(),
-                Detail = navigation
-            };
+                if (Usuario.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Login", "Debe ingresar el usuario!", "OK");
+                    return;
+                }
+
+                if (Contrasenna.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Login", "Debe ingresar la contraseña!", "OK");
+                    return;
+                }
+
+                UsuarioModel objUsuario = new UsuarioModel();
+                objUsuario.Usuario = Usuario;
+                objUsuario.Contrasenna = Contrasenna;
+
+                resultadoValidacion = "VALIDO";//await UsuarioModel.Autenticar(objUsuario);
+
+                if (resultadoValidacion == "VALIDO")
+                {
+                    NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
+                    App.Current.MainPage = new MasterDetailPage
+                    {
+                        Master = new PRODUX.View.Menu.Menu(),
+                        Detail = navigation
+                    };
+                }
+                else
+                {
+                    App.Current.MainPage.DisplayAlert("Login", "Usuario y contraseña incorrectas!", "OK");
+                }                
+            }
+            catch (Exception ex)
+            {
+                App.Current.MainPage.DisplayAlert("Login", "No fue posible verificar las credenciales!", "OK");
+            }
+            
+
+            
         }
 
         #endregion

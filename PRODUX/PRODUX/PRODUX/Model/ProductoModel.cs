@@ -8,6 +8,8 @@ namespace PRODUX.Model
     {
         public ProductoModel() { }
 
+        #region Propiedades
+
         public string Codigo { get; set; }
 
         public string Descripcion { get; set; }
@@ -21,5 +23,15 @@ namespace PRODUX.Model
         public string Observaciones { get; set; }
 
         public string Imagen { get; set; }
+
+        public string Usuario_Creacion { get; set; }
+
+        public DateTime Fecha_Creacion { get; set; }
+
+        #endregion
+
+        #region Métodos
+
+        #endregion
     }
 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PRODUX.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
@@ -54,6 +56,8 @@ namespace PRODUX.ViewModel
         private bool _Estado = true;
 
         private string _Direccion = string.Empty;
+
+        private ObservableCollection<ClienteModel> _lstClientes = new ObservableCollection<ClienteModel>();
 
         #endregion
 
@@ -152,6 +156,19 @@ namespace PRODUX.ViewModel
             }
         }
 
+        public ObservableCollection<ClienteModel> LstClientes
+        {
+            get
+            {
+                return _lstClientes;
+            }
+            set
+            {
+                _lstClientes = value;
+                OnPropertyChanged("LstClientes");
+            }
+        }
+
         #endregion
 
         #region Métodos
@@ -163,12 +180,58 @@ namespace PRODUX.ViewModel
 
         private void InicializarClase()
         {
-            
+            //LstClientes = ;
         }
 
         private void GuardarCliente()
         {
+            try
+            {
+                if (Cedula.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar la cédula!", "OK");
+                    return;
+                }
 
+                if (Nombre.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar el nombre!", "OK");
+                    return;
+                }
+
+                if (Telefono.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar el teléfono!", "OK");
+                    return;
+                }
+
+                if (Email.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar el email!", "OK");
+                    return;
+                }
+
+                if (Direccion.Equals(""))
+                {
+                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar la dirección!", "OK");
+                    return;
+                }
+
+                ClienteModel objCliente = new ClienteModel();
+                objCliente.Cedula = Cedula;
+                objCliente.Nombre = Nombre;
+                objCliente.Telefono = Telefono;
+                objCliente.Estado = Convert.ToInt32(Estado);
+                objCliente.Direccion = Direccion;
+                objCliente.Usuario_Creacion = ""; //FALTA ASIGNAR
+                objCliente.Fecha_Creacion = DateTime.Now;
+
+                //Llamar al método de insertar
+            }
+            catch (Exception ex)
+            {
+                App.Current.MainPage.DisplayAlert("Clientes", "No fue posible insertar el cliente!", "OK");
+            }
         }
 
         #endregion

@@ -8,6 +8,8 @@ namespace PRODUX.Model
     {
         public ClienteModel() { }
 
+        #region Propiedades
+
         public string Cedula { get; set; }
 
         public string Nombre { get; set; }
@@ -19,5 +21,15 @@ namespace PRODUX.Model
         public int Estado { get; set; }
 
         public string Direccion { get; set; }
+
+        public string Usuario_Creacion { get; set; }
+
+        public DateTime Fecha_Creacion { get; set; }
+
+        #endregion
+
+        #region Métodos
+
+        #endregion
     }
 }

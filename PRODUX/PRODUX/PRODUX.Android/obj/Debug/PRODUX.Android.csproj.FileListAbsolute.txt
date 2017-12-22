@@ -111,12 +111,6 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debu
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\R.cs.flag
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\uploadflags.txt
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.csprojResolveAssemblyReference.cache
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\PRODUX.Android.dll.mdb
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\PRODUX.Android.dll.mdb
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Newtonsoft.Json.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Newtonsoft.Json.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Plugin.CurrentActivity.dll
@@ -135,8 +129,29 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debu
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Plugin.Permissions.Abstractions.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Plugin.Media.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Plugin.Permissions.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.DataBinding.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.Sync.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Remotion.Linq.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.DataBinding.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.Sync.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Realm.Sync.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\Remotion.Linq.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debug\PRODUX.Android.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Plugin.Media.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Plugin.Permissions.dll.mdb
+<<<<<<< HEAD
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.csprojResolveAssemblyReference.cache
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.dll
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.pdb
+=======
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\PRODUX.Android.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+>>>>>>> 47c8b2ca2fb944a915a795c9c8e956bc6da73fee
