@@ -16,7 +16,7 @@ namespace PRODUX.Model
 
         public ClienteModel Cliente { get; set; }
 
-        public UsuarioModel Unidad { get; set; }
+        public UsuarioModel Usuario { get; set; }
 
         public double TotalPedido { get; set; }
 

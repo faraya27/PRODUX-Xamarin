@@ -22,10 +22,10 @@
                 <Picker SelectedItem="{Binding Cliente}"/>
             </StackLayout>
             <StackLayout>
-                <Entry Placeholder="Búsqueda"/>
+                <Entry Placeholder="Búsqueda" Text="{Binding Filtro}"/>
             </StackLayout>
             <StackLayout>
-                <ListView>
+                <ListView ItemsSource="{Binding LstProductos}">
                 
                 </ListView>
             </StackLayout>

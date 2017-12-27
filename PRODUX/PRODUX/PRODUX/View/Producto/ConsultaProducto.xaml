@@ -8,7 +8,7 @@
                 <Entry Placeholder="Búsqueda" Text="{Binding Filtro}"/>            
             </StackLayout>
             <StackLayout>
-                <ListView>
+                <ListView ItemsSource="{Binding LstProductos}">
 
                 </ListView>
             </StackLayout>

@@ -1,6 +1,7 @@
 ﻿using PRODUX.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
@@ -53,6 +54,8 @@ namespace PRODUX.ViewModel
         private UsuarioModel _Usuario = new UsuarioModel();
 
         private double _TotalPedido = 0;
+
+        private ObservableCollection<ProductoModel> _lstProductos = new ObservableCollection<ProductoModel>();
 
         #endregion
 
@@ -139,6 +142,19 @@ namespace PRODUX.ViewModel
             {
                 _TotalPedido = value;
                 OnPropertyChanged("TotalPedido");
+            }
+        }
+
+        public ObservableCollection<ProductoModel> LstProductos
+        {
+            get
+            {
+                return _lstProductos;
+            }
+            set
+            {
+                _lstProductos = value;
+                OnPropertyChanged("LstProductos");
             }
         }
 
