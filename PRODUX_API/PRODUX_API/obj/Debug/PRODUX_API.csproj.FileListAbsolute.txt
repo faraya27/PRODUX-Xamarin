@@ -42,7 +42,6 @@ C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX_API\PRODUX_API\bin\Micr
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX_API\PRODUX_API\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX_API\PRODUX_API\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX_API\PRODUX_API\bin\Microsoft.AI.Web.xml
-C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX_API\PRODUX_API\obj\Debug\PRODUX_API.csprojResolveAssemblyReference.cache
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX_API\PRODUX_API\obj\Debug\PRODUX_API.csproj.CoreCompileInputs.cache
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX_API\PRODUX_API\obj\Debug\PRODUX_API.dll
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX_API\PRODUX_API\obj\Debug\PRODUX_API.pdb

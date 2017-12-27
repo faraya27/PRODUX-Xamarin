@@ -145,7 +145,13 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\bin\Debu
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Plugin.Media.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Plugin.Permissions.dll.mdb
+<<<<<<< HEAD
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.csprojResolveAssemblyReference.cache
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.dll
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\PRODUX.Android.pdb
+=======
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\PRODUX.Android.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Core.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX\PRODUX.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.dll.mdb
+>>>>>>> 47c8b2ca2fb944a915a795c9c8e956bc6da73fee
