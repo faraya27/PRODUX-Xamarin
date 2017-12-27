@@ -92,7 +92,39 @@ namespace PRODUX.Model
                         
         }
 
+        public static async Task<string> SeleccionarUsuarios(UsuarioModel usuario)
+       {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri("https://152b4592.ngrok.io/api/prueba"); //Direccion de mi API
 
+                    //HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false); //Esto se puede obviar ConfigureAwait(false)
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
+                    string ans = await response.Content.ReadAsStringAsync();
+
+                    //UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(ans)
+
+                    return ans;
+                }
+
+
+               
+                return "";
+            }
+            catch (WebException ex)
+            {
+
+                throw;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
 
 
         #endregion
