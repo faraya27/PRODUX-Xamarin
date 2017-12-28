@@ -5,7 +5,7 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Web;
 
-namespace PRODUX_API.Models
+namespace API_PRODUX.Models
 {
     public class Conexion
     {
