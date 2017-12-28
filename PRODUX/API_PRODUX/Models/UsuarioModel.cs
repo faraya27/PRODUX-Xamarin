@@ -66,7 +66,7 @@ namespace API_PRODUX.Models
         }
 
         //Lista
-        public List<UsuarioModel> SeleccionarUsuarios()
+        public static List<UsuarioModel> SeleccionarUsuarios()
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 

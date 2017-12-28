@@ -1,5 +1,8 @@
-﻿using System;
+﻿using API_PRODUX.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,31 +12,24 @@ namespace API_PRODUX.Controllers
 {
     public class UsuarioController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+
+
+        public string Autenticar([FromBody]UsuarioModel usuario)
         {
-            return new string[] { "value1", "value2" };
+            return UsuarioModel.ValidarUsuarios(usuario.Usuario, usuario.Contrasenna);
+
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        [HttpGet]
+        public string SeleccionarUsuarios()
         {
-            return "value";
+            return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuarios());
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        [HttpGet]
+        public string SeleccionarUsuarios2(int a)
         {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuarios());
         }
     }
 }

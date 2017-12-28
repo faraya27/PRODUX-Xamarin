@@ -250,6 +250,42 @@ namespace API_PRODUX.Models
                 conn.Dispose();
             }
         }
+
+        public void ConfirmarPedido(PedidoModel pedido)
+        {
+            OdbcConnection conn = Conexion.obtenerConexion();
+            try
+            {
+                OdbcCommand command = new OdbcCommand();
+                string Sql = "{call [dbo].[sp_Confirmar_Pedido](?,?,?)}";
+
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = Sql;
+                command.Connection = conn;
+
+                command.Parameters.Add("@Id_Pedido", OdbcType.VarChar);
+                command.Parameters["@Id_Pedido"].Value = pedido.Id_Pedido;
+                command.Parameters.Add("@Estado", OdbcType.Int);
+                command.Parameters["@Estado"].Value = pedido.Estado;
+                command.Parameters.Add("@Usuario_Confirmacion", OdbcType.VarChar);
+                command.Parameters["@Usuario_Confirmacion"].Value = pedido.Usuario_Confirmacion;
+
+                command.ExecuteNonQuery();
+
+                command.Dispose();
+
+
+            }
+            catch (OdbcException ax)
+            {
+                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+        }
     }
 }
         //Confirmar
