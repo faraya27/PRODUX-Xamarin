@@ -27,7 +27,7 @@ namespace API_PRODUX.Models
         //Lista
 
 
-        public List<ClienteModel> SeleccionarClientes()
+        public static List<ClienteModel> SeleccionarClientes()
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
@@ -74,7 +74,7 @@ namespace API_PRODUX.Models
         }
         //Por codigo
 
-        public List<ClienteModel> SeleccionarClientesPorCodigo(string Cedula)
+        public static List<ClienteModel> SeleccionarClientesPorCodigo(string Cedula)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
@@ -126,7 +126,7 @@ namespace API_PRODUX.Models
         }
         //insertar
 
-        public void InsertarCliente(ClienteModel cliente)
+        public static string InsertarCliente(ClienteModel cliente)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -156,11 +156,13 @@ namespace API_PRODUX.Models
 
                 command.Dispose();
 
+                return "true";
 
             }
             catch (OdbcException ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+
+                return "false";
             }
             finally
             {
@@ -169,7 +171,7 @@ namespace API_PRODUX.Models
             }
         }
         //Modificar
-        public void ActualizarCliente(ClienteModel cliente)
+        public static string ActualizarCliente(ClienteModel cliente)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -197,11 +199,13 @@ namespace API_PRODUX.Models
 
                 command.Dispose();
 
+                return "true";
 
             }
-            catch (OdbcException ax)
+            catch (Exception ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+
+                return "false";
             }
             finally
             {
@@ -211,7 +215,7 @@ namespace API_PRODUX.Models
         }
         //Inactivar
 
-        public void InactivarCliente(UsuarioModel usuario)
+        public static string InactivarCliente(ClienteModel cliente)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -223,20 +227,22 @@ namespace API_PRODUX.Models
                 command.CommandText = Sql;
                 command.Connection = conn;
 
-                command.Parameters.Add("@Id_Usuario", OdbcType.VarChar);
-                command.Parameters["@Id_Usuario"].Value = usuario.Usuario;
+                command.Parameters.Add("@Cedula", OdbcType.VarChar);
+                command.Parameters["@Cedula"].Value = cliente.Cedula;
                 command.Parameters.Add("@Estado", OdbcType.Int);
-                command.Parameters["@Estado"].Value = usuario.Estado;
+                command.Parameters["@Estado"].Value = cliente.Estado;
 
                 command.ExecuteNonQuery();
 
                 command.Dispose();
 
+                return "true";
 
             }
-            catch (OdbcException ax)
+            catch (Exception ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+
+                return "true";
             }
             finally
             {

@@ -31,7 +31,7 @@ namespace API_PRODUX.Models
         //Lista
 
 
-        public List<ProductoModel> SeleccionarProductos()
+        public static List<ProductoModel> SeleccionarProductos()
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
@@ -79,7 +79,7 @@ namespace API_PRODUX.Models
         }
         //Por codigo
 
-        public List<ProductoModel> SeleccionarProductoPorCodigo(string Cedula)
+        public static List<ProductoModel> SeleccionarProductoPorCodigo(string IdProducto)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
@@ -92,8 +92,8 @@ namespace API_PRODUX.Models
                 command.CommandText = Sql;
                 command.Connection = conn;
 
-                command.Parameters.Add("@Cedula", OdbcType.VarChar);
-                command.Parameters["@Cedula"].Value = Cedula;
+                command.Parameters.Add("@Id_Producto", OdbcType.VarChar);
+                command.Parameters["@Id_Producto"].Value = IdProducto;
 
                 OdbcDataReader reader = command.ExecuteReader();
 
@@ -131,7 +131,7 @@ namespace API_PRODUX.Models
         }
         //insertar
 
-        public void InsertarProducto(ProductoModel producto)
+        public static string InsertarProducto(ProductoModel producto)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -162,12 +162,12 @@ namespace API_PRODUX.Models
                 command.ExecuteNonQuery();
 
                 command.Dispose();
-
+                return "true";
 
             }
-            catch (OdbcException ax)
+            catch (Exception ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+                return "false";
             }
             finally
             {
@@ -176,7 +176,7 @@ namespace API_PRODUX.Models
             }
         }
         //Modificar
-        public void ActualizarProducto(ProductoModel producto)
+        public static string ActualizarProducto(ProductoModel producto)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -206,11 +206,12 @@ namespace API_PRODUX.Models
 
                 command.Dispose();
 
+                return "true";
 
             }
-            catch (OdbcException ax)
+            catch (Exception ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+                return "false";
             }
             finally
             {
@@ -220,7 +221,7 @@ namespace API_PRODUX.Models
         }
         //Eliminar
 
-        public void EliminarProducto(ProductoModel producto)
+        public static string EliminarProducto(ProductoModel producto)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -239,11 +240,12 @@ namespace API_PRODUX.Models
 
                 command.Dispose();
 
+                return "true";
 
             }
-            catch (OdbcException ax)
+            catch (Exception ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+                return "false";
             }
             finally
             {

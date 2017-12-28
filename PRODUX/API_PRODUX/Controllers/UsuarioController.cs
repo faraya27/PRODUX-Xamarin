@@ -17,7 +17,6 @@ namespace API_PRODUX.Controllers
         public string Autenticar([FromBody]UsuarioModel usuario)
         {
             return UsuarioModel.ValidarUsuarios(usuario.Usuario, usuario.Contrasenna);
-
         }
 
         [HttpGet]
@@ -27,9 +26,24 @@ namespace API_PRODUX.Controllers
         }
 
         [HttpGet]
-        public string SeleccionarUsuarios2(int a)
+        public string SeleccionarUsuariosPorCodigo(string codigo)
         {
-            return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuarios());
+            return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuariosPorCodigo(codigo));
+        }
+        [HttpPost]
+        public string InsertarUsuario([FromBody]UsuarioModel usuario)
+        {
+             return UsuarioModel.InsertarUsuario(usuario);
+        }
+        [HttpPost]
+        public string ActualizarUsuario([FromBody]UsuarioModel usuario)
+        {
+            return UsuarioModel.ActualizarUsuario(usuario);
+        }
+        [HttpPost]
+        public string InactivarUsuario([FromBody]UsuarioModel usuario)
+        {
+            return UsuarioModel.InactivarUsuario(usuario);
         }
     }
 }
