@@ -5,7 +5,7 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Web;
 
-namespace PRODUX_API.Models
+namespace API_PRODUX.Models
 {
     public class UsuarioModel
     {
@@ -66,7 +66,7 @@ namespace PRODUX_API.Models
         }
 
         //Lista
-        public List<UsuarioModel> SeleccionarUsuarios()
+        public static List<UsuarioModel> SeleccionarUsuarios()
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
@@ -110,14 +110,14 @@ namespace PRODUX_API.Models
         }
         //Por codigo
 
-        public List<UsuarioModel> SeleccionarUsuariosPorCodigo(string IdUsuario)
+        public static List<UsuarioModel> SeleccionarUsuariosPorCodigo(string IdUsuario)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
             try
             {
                 OdbcCommand command = new OdbcCommand();
-                string Sql = "{call [dbo].[sp_Seleccionar_Usuarios](?)}";
+                string Sql = "{call [dbo].[sp_Seleccionar_Usuarios_Por_Codigo](?)}";
 
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = Sql;
@@ -158,7 +158,7 @@ namespace PRODUX_API.Models
         }
         //insertar
 
-        public void InsertarUsuario(UsuarioModel usuario)
+        public static string InsertarUsuario(UsuarioModel usuario)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -183,12 +183,14 @@ namespace PRODUX_API.Models
 
                 command.Dispose();
 
-
+                return "true";
             }
-            catch (OdbcException ax)
+            catch (Exception ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+               
+                return "false";
             }
+           
             finally
             {
                 conn.Close();
@@ -196,7 +198,7 @@ namespace PRODUX_API.Models
             }
         }
         //Modificar
-        public void ActualizarUsuario(UsuarioModel usuario)
+        public static string ActualizarUsuario(UsuarioModel usuario)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -218,12 +220,12 @@ namespace PRODUX_API.Models
                 command.ExecuteNonQuery();
 
                 command.Dispose();
-
+                return "true";
 
             }
-            catch (OdbcException ax)
+            catch (Exception ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+                return "false";
             }
             finally
             {
@@ -233,7 +235,7 @@ namespace PRODUX_API.Models
         }
         //Inactivar
 
-        public void InactivarUsuario(UsuarioModel usuario)
+        public static string InactivarUsuario(UsuarioModel usuario)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -253,12 +255,12 @@ namespace PRODUX_API.Models
                 command.ExecuteNonQuery();
 
                 command.Dispose();
-
+                return "true";
 
             }
-            catch (OdbcException ax)
+            catch (Exception ax)
             {
-                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+                return "false";
             }
             finally
             {
