@@ -130,9 +130,9 @@ namespace PRODUX.ViewModel
                 objUsuario.Usuario = Usuario;
                 objUsuario.Contrasenna = Contrasenna;
 
-                resultadoValidacion = "VALIDO";//await UsuarioModel.Autenticar(objUsuario);
+                resultadoValidacion = await UsuarioModel.Autenticar(objUsuario);//"VALIDO";
 
-                if (resultadoValidacion == "VALIDO")
+                if (resultadoValidacion == Usuario)
                 {
                     NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
                     App.Current.MainPage = new MasterDetailPage

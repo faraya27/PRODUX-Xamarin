@@ -8,7 +8,11 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+<<<<<<< HEAD
+    <NameOfLastUsedPublishProfile>CustomProfile</NameOfLastUsedPublishProfile>
+=======
     <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
+>>>>>>> 4020a8f4d489dc4ecc7e5f4742a39e90c2f67dbe
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

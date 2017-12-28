@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Net;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace PRODUX.Model
 {
@@ -36,26 +37,30 @@ namespace PRODUX.Model
         #region Métodos
 
         public static async Task<string> Autenticar(UsuarioModel usuario)
-        //public static string Autenticar(UsuarioModel usuario)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri("https://152b4592.ngrok.io/api/prueba"); //Direccion de mi API
+                    var uri = new Uri(URLAPI.Usuario() + "autenticar"); //Direccion de mi API
 
                     //var json = JsonConvert.SerializeObject(new { Usuario = usuario.Usuario, Contrasenna = usuario.Contrasenna, Estado = usuario.Estado, Usuario_Creacion = usuario.Usuario_Creacion }); //Esto es un string
-                    var json = JsonConvert.SerializeObject(new { Usuario = usuario.Usuario, Contrasenna = usuario.Contrasenna }); //Esto es un string
+                    var json = JsonConvert.SerializeObject(
+                                                            new {
+                                                                    Usuario = usuario.Usuario,
+                                                                    Contrasenna = usuario.Contrasenna
+                                                                }
+                                                            ); //Esto es un string
 
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                     //HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false); //Esto se puede obviar ConfigureAwait(false)
                     HttpResponseMessage response = client.PostAsync(uri, content).Result;
-                    string ans = await response.Content.ReadAsStringAsync();
+                    string resultado = await response.Content.ReadAsStringAsync();
 
                     //UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(ans)
 
-                    return ans;
+                    return resultado;
                 }
 
 
@@ -79,25 +84,134 @@ namespace PRODUX.Model
 
                 return "";
             }
-            catch (WebException ex)
+            catch (WebException wex)
             {
-
-                throw;
+                throw wex;
             }
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
                         
         }
 
+<<<<<<< HEAD
+        public static async Task<ObservableCollection<UsuarioModel>> SeleccionarTodos()
+        {
+=======
         public static async Task<string> SeleccionarUsuarios(UsuarioModel usuario)
        {
+>>>>>>> 4020a8f4d489dc4ecc7e5f4742a39e90c2f67dbe
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
+<<<<<<< HEAD
+                    var uri = new Uri(URLAPI.Usuario() + "SeleccionarUsuarios"); 
+                    
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return JsonConvert.DeserializeObject<ObservableCollection<UsuarioModel>>(resultado);
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public static async Task<UsuarioModel> SeleccionarPorCodigo()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Usuario() + "SeleccionarUsuariosPorCodigo");
+
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return JsonConvert.DeserializeObject<UsuarioModel>(resultado);
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public static async Task<string> Insertar(UsuarioModel usuario)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Usuario() + "InsertarUsuario");
+                    
+                    var json = JsonConvert.SerializeObject(
+                                                            new {
+                                                                    Usuario = usuario.Usuario,
+                                                                    Contrasenna = usuario.Contrasenna,
+                                                                    Estado = usuario.Estado,
+                                                                    Usuario_Creacion = usuario.Usuario_Creacion,
+                                                                    Fecha_Creacion = usuario.Fecha_Creacion
+                                                                }
+                                                            );
+
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    
+                    HttpResponseMessage response = client.PostAsync(uri, content).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return resultado;
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public static async Task<string> Actualizar(UsuarioModel usuario)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Usuario() + "ActualizarUsuarioInactivarUsuario");
+
+                    var json = JsonConvert.SerializeObject(
+                                                            new {
+                                                                    Usuario = usuario.Usuario,
+                                                                    Contrasenna = usuario.Contrasenna,
+                                                                    Estado = usuario.Estado,
+                                                                    Usuario_Creacion = usuario.Usuario_Creacion,
+                                                                    Fecha_Creacion = usuario.Fecha_Creacion
+                                                                }
+                                                            );
+
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = client.PostAsync(uri, content).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+=======
                     var uri = new Uri("https://152b4592.ngrok.io/api/prueba"); //Direccion de mi API
 
                     //HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false); //Esto se puede obviar ConfigureAwait(false)
@@ -125,7 +239,21 @@ namespace PRODUX.Model
             }
 
         }
+>>>>>>> 4020a8f4d489dc4ecc7e5f4742a39e90c2f67dbe
 
+                    return resultado;
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
         #endregion
     }
