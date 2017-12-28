@@ -138,7 +138,7 @@ namespace PRODUX.ViewModel
             //LstUsuarios = ;
         }
 
-        private void GuardarUsuario()
+        private async void GuardarUsuario()
         {
             try
             {
@@ -158,10 +158,11 @@ namespace PRODUX.ViewModel
                 objUsuario.Usuario = Usuario;
                 objUsuario.Contrasenna = Contrasenna;
                 objUsuario.Estado = Convert.ToInt32(Estado);
-                objUsuario.Usuario_Creacion = ""; //FALTA ASIGNAR
+                objUsuario.Usuario_Creacion = "admin"; //FALTA ASIGNAR
                 objUsuario.Fecha_Creacion = DateTime.Now;
 
                 //Llamar al método de insertar
+                await UsuarioModel.Insertar(objUsuario);
             }
             catch (Exception ex)
             {

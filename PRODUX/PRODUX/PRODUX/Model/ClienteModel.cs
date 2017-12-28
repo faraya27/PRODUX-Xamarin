@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PRODUX.Model
 {
@@ -29,6 +34,135 @@ namespace PRODUX.Model
         #endregion
 
         #region Métodos
+
+        public static async Task<ObservableCollection<ClienteModel>> SeleccionarTodos()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Cliente() + "");
+
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return JsonConvert.DeserializeObject<ObservableCollection<ClienteModel>>(resultado);
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public static async Task<ClienteModel> SeleccionarPorCodigo()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Cliente() + "");
+
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return JsonConvert.DeserializeObject<ClienteModel>(resultado);
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public static async Task<string> Insertar(ClienteModel cliente)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Cliente() + "");
+
+                    var json = JsonConvert.SerializeObject(
+                                                            new {
+                                                                    Cedula = cliente.Cedula,
+                                                                    Nombre = cliente.Nombre,
+                                                                    Telefono = cliente.Telefono,
+                                                                    Estado = cliente.Estado,
+                                                                    Direccion = cliente.Direccion,
+                                                                    Usuario_Creacion = cliente.Usuario_Creacion,
+                                                                    Fecha_Creacion = cliente.Fecha_Creacion
+                                                                }
+                                                            );
+
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = client.PostAsync(uri, content).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return resultado;
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public static async Task<string> Actualizar(ClienteModel cliente)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Cliente() + "");
+
+                    var json = JsonConvert.SerializeObject(
+                                                            new
+                                                            {
+                                                                Cedula = cliente.Cedula,
+                                                                Nombre = cliente.Nombre,
+                                                                Telefono = cliente.Telefono,
+                                                                Estado = cliente.Estado,
+                                                                Direccion = cliente.Direccion,
+                                                                Usuario_Creacion = cliente.Usuario_Creacion,
+                                                                Fecha_Creacion = cliente.Fecha_Creacion
+                                                            }
+                                                            );
+
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = client.PostAsync(uri, content).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return resultado;
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
         #endregion
     }
