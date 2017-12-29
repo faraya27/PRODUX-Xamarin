@@ -95,19 +95,13 @@ namespace PRODUX.Model
             }
                         
         }
-
-<<<<<<< HEAD
+        
         public static async Task<ObservableCollection<UsuarioModel>> SeleccionarTodos()
         {
-=======
-        public static async Task<string> SeleccionarUsuarios(UsuarioModel usuario)
-       {
->>>>>>> 4020a8f4d489dc4ecc7e5f4742a39e90c2f67dbe
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-<<<<<<< HEAD
                     var uri = new Uri(URLAPI.Usuario() + "SeleccionarUsuarios"); 
                     
                     HttpResponseMessage response = client.GetAsync(uri).Result;
@@ -127,7 +121,7 @@ namespace PRODUX.Model
 
         }
 
-        public static async Task<UsuarioModel> SeleccionarPorCodigo()
+        public static async Task<UsuarioModel> SeleccionarPorCodigo(string codigo)
         {
             try
             {
@@ -211,21 +205,10 @@ namespace PRODUX.Model
 
                     HttpResponseMessage response = client.PostAsync(uri, content).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
-=======
-                    var uri = new Uri("https://152b4592.ngrok.io/api/prueba"); //Direccion de mi API
+                    
 
-                    //HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false); //Esto se puede obviar ConfigureAwait(false)
-                    HttpResponseMessage response = client.GetAsync(uri).Result;
-                    string ans = await response.Content.ReadAsStringAsync();
-
-                    //UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(ans)
-
-                    return ans;
+                    return resultado;
                 }
-
-
-               
-                return "";
             }
             catch (WebException ex)
             {
@@ -236,21 +219,6 @@ namespace PRODUX.Model
             {
 
                 throw;
-            }
-
-        }
->>>>>>> 4020a8f4d489dc4ecc7e5f4742a39e90c2f67dbe
-
-                    return resultado;
-                }
-            }
-            catch (WebException wex)
-            {
-                throw wex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
 
         }

@@ -41,7 +41,7 @@ namespace PRODUX.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Cliente() + "");
+                    var uri = new Uri(URLAPI.Cliente() + "SeleccionarClientes");
 
                     HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
@@ -60,13 +60,13 @@ namespace PRODUX.Model
 
         }
 
-        public static async Task<ClienteModel> SeleccionarPorCodigo()
+        public static async Task<ClienteModel> SeleccionarPorCodigo(string codigo)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Cliente() + "");
+                    var uri = new Uri(URLAPI.Cliente() + "SeleccionarClientesPorCodigo");
 
                     HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
@@ -91,7 +91,7 @@ namespace PRODUX.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Cliente() + "");
+                    var uri = new Uri(URLAPI.Cliente() + "InsertarCliente");
 
                     var json = JsonConvert.SerializeObject(
                                                             new {
@@ -130,7 +130,7 @@ namespace PRODUX.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Cliente() + "");
+                    var uri = new Uri(URLAPI.Cliente() + "ActualizarClienteInactivarCliente");
 
                     var json = JsonConvert.SerializeObject(
                                                             new
