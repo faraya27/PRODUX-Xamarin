@@ -79,7 +79,7 @@ namespace API_PRODUX.Models
         }
         //Por codigo
 
-        public static List<ProductoModel> SeleccionarProductoPorCodigo(string IdProducto)
+        public static List<ProductoModel> SeleccionarProductosPorCodigo(string IdProducto)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 

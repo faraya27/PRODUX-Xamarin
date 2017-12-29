@@ -21,7 +21,7 @@ namespace API_PRODUX.Controllers
         [HttpGet]
         public string SeleccionarProductoPorCodigo(string codigo)
         {
-            return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductoPorCodigo(codigo));
+            return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductosPorCodigo(codigo));
         }
         [HttpPost]
         public string InsertarProducto([FromBody]ProductoModel producto)

@@ -16,15 +16,11 @@ namespace API_PRODUX.Models
         public DateTime Fecha { get; set; }
 
         public string Cliente { get; set; }
-
-        public string Unidad { get; set; }
+        
         public string Estado { get; set; }
 
         public double TotalPedido { get; set; }
-        public string Id_Producto { get; set; }
-        public double Cant_Solicitada { get; set; }
-        public double Precio_Unitario { get; set; }
-        public double Subtotal { get; set; }
+       
 
         public string Usuario_Confirmacion { get; set; }
         public string Usuario_Creacion { get; set; }
@@ -32,7 +28,7 @@ namespace API_PRODUX.Models
         //Lista
 
 
-        public static List<PedidoModel> SeleccionarPedido()
+        public static List<PedidoModel> SeleccionarPedidos()
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
@@ -80,7 +76,7 @@ namespace API_PRODUX.Models
         }
         //Por codigo
 
-        public static List<PedidoModel> SeleccionarPedidoPorCodigo(string IdPedido)
+        public static List<PedidoModel> SeleccionarPedidosPorCodigo(string IdPedido)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 

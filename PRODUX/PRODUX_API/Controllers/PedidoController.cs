@@ -15,13 +15,13 @@ namespace API_PRODUX.Controllers
         [HttpGet]
         public string SeleccionarPedido()
         {
-            return JsonConvert.SerializeObject(PedidoModel.SeleccionarPedido());
+            return JsonConvert.SerializeObject(PedidoModel.SeleccionarPedidos());
         }
 
         [HttpGet]
         public string SeleccionarPedidoPorCodigo(string codigo)
         {
-            return JsonConvert.SerializeObject(PedidoModel.SeleccionarPedidoPorCodigo(codigo));
+            return JsonConvert.SerializeObject(PedidoModel.SeleccionarPedidosPorCodigo(codigo));
         }
         [HttpPost]
         public string InsertarPedido([FromBody]PedidoModel producto)
