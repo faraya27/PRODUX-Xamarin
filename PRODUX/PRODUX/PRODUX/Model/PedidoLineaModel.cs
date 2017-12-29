@@ -9,42 +9,38 @@ using System.Threading.Tasks;
 
 namespace PRODUX.Model
 {
-    public class PedidoModel
+    public class PedidoLineaModel
     {
-        public PedidoModel() { }
+        public PedidoLineaModel() { }
 
         #region Propiedades
 
         public string Id_Pedido { get; set; }
 
-        public DateTime Fecha { get; set; }
+        public string Id_Producto { get; set; }
 
-        public string Cliente { get; set; }
+        public double Cant_Solicitada { get; set; }
 
-        public string Estado { get; set; }
+        public double Precio_Unitario { get; set; }
 
-        public double TotalPedido { get; set; }
-
-        public string Usuario_Confirmacion { get; set; }
-
-        public string Usuario_Creacion { get; set; }
+        public double Subtotal { get; set; }
 
         #endregion
 
         #region Métodos
 
-        public static async Task<ObservableCollection<PedidoModel>> SeleccionarTodos()
+        public static async Task<ObservableCollection<PedidoLineaModel>> SeleccionarPorPedido(string pedido)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Pedido() + "SeleccionarPedidos");
+                    var uri = new Uri(URLAPI.PedidoLinea() + "SeleccionarPedidoLinea");
 
                     HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
 
-                    return JsonConvert.DeserializeObject<ObservableCollection<PedidoModel>>(resultado);
+                    return JsonConvert.DeserializeObject<ObservableCollection<PedidoLineaModel>>(resultado);
                 }
             }
             catch (WebException wex)
@@ -58,48 +54,22 @@ namespace PRODUX.Model
 
         }
 
-        public static async Task<PedidoModel> SeleccionarPorCodigo(string codigo)
+        public static async Task<string> Insertar(PedidoLineaModel pedidoLinea)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Pedido() + "SeleccionarPedidosPorCodigo");
-
-                    HttpResponseMessage response = client.GetAsync(uri).Result;
-                    string resultado = await response.Content.ReadAsStringAsync();
-
-                    return JsonConvert.DeserializeObject<PedidoModel>(resultado);
-                }
-            }
-            catch (WebException wex)
-            {
-                throw wex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        public static async Task<string> Insertar(PedidoModel pedido)
-        {
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    var uri = new Uri(URLAPI.Pedido() + "InsertarPedido");
+                    var uri = new Uri(URLAPI.PedidoLinea() + "InsertarPedidoLinea");
 
                     var json = JsonConvert.SerializeObject(
                                                             new
                                                             {
-                                                                Id_Pedido = pedido.Id_Pedido,
-                                                                Fecha = pedido.Fecha,
-                                                                Cliente = pedido.Cliente,
-                                                                ToTalPedido = pedido.TotalPedido,
-                                                                Estado = pedido.Estado,
-                                                                Usuario_Creacion = pedido.Usuario_Creacion
+                                                                Id_Pedido = pedidoLinea.Id_Pedido,
+                                                                Id_Producto = pedidoLinea.Id_Producto,
+                                                                Cantidad_Solicitada = pedidoLinea.Cant_Solicitada,
+                                                                Precio_Unitario = pedidoLinea.Precio_Unitario,
+                                                                Subtotal = pedidoLinea.Subtotal
                                                             }
                                                             );
 
@@ -122,23 +92,22 @@ namespace PRODUX.Model
 
         }
 
-        public static async Task<string> Actualizar(PedidoModel pedido)
+        public static async Task<string> Actualizar(PedidoLineaModel pedidoLinea)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Pedido() + "ActualizarPedido");
+                    var uri = new Uri(URLAPI.PedidoLinea() + "ActualizarPedidoLinea");
 
                     var json = JsonConvert.SerializeObject(
                                                             new
                                                             {
-                                                                Id_Pedido = pedido.Id_Pedido,
-                                                                Fecha = pedido.Fecha,
-                                                                Cliente = pedido.Cliente,
-                                                                ToTalPedido = pedido.TotalPedido,
-                                                                Estado = pedido.Estado,
-                                                                Usuario_Confirmacion = pedido.Usuario_Confirmacion
+                                                                Id_Pedido = pedidoLinea.Id_Pedido,
+                                                                Id_Producto = pedidoLinea.Id_Producto,
+                                                                Cantidad_Solicitada = pedidoLinea.Cant_Solicitada,
+                                                                Precio_Unitario = pedidoLinea.Precio_Unitario,
+                                                                Subtotal = pedidoLinea.Subtotal
                                                             }
                                                             );
 
@@ -161,23 +130,22 @@ namespace PRODUX.Model
 
         }
 
-        public static async Task<string> Eliminar(PedidoModel pedido)
+        public static async Task<string> Eliminar(PedidoLineaModel pedidoLinea)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Pedido() + "EliminarPedido");
+                    var uri = new Uri(URLAPI.PedidoLinea() + "EliminarPedidoLinea");
 
                     var json = JsonConvert.SerializeObject(
                                                             new
                                                             {
-                                                                Id_Pedido = pedido.Id_Pedido,
-                                                                Fecha = pedido.Fecha,
-                                                                Cliente = pedido.Cliente,
-                                                                ToTalPedido = pedido.TotalPedido,
-                                                                Estado = pedido.Estado,
-                                                                Usuario_Confirmacion = pedido.Usuario_Confirmacion
+                                                                Id_Pedido = pedidoLinea.Id_Pedido,
+                                                                Id_Producto = pedidoLinea.Id_Producto,
+                                                                Cantidad_Solicitada = pedidoLinea.Cant_Solicitada,
+                                                                Precio_Unitario = pedidoLinea.Precio_Unitario,
+                                                                Subtotal = pedidoLinea.Subtotal
                                                             }
                                                             );
 

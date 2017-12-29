@@ -27,5 +27,10 @@ namespace PRODUX.Model
         {
             return URLRaiz + "/api/pedido/";
         }
+
+        public static string PedidoLinea()
+        {
+            return URLRaiz + "/api/pedidolinea/";
+        }
     }
 }

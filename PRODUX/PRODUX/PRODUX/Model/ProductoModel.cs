@@ -169,6 +169,48 @@ namespace PRODUX.Model
 
         }
 
+        public static async Task<string> Eliminar(ProductoModel producto)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Producto() + "EliminarProducto");
+
+                    var json = JsonConvert.SerializeObject(
+                                                            new
+                                                            {
+                                                                Codigo = producto.Codigo,
+                                                                Descripcion = producto.Descripcion,
+                                                                Precio = producto.Precio,
+                                                                CantidadInventario = producto.CantidadInventario,
+                                                                Estado = producto.Estado,
+                                                                Observaciones = producto.Observaciones,
+                                                                Imagen = producto.Imagen,
+                                                                Usuario_Creacion = producto.Usuario_Creacion,
+                                                                Fecha_Creacion = producto.Fecha_Creacion
+                                                            }
+                                                            );
+
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    HttpResponseMessage response = client.PostAsync(uri, content).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return resultado;
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         #endregion
     }
 }
