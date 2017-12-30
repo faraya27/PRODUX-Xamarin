@@ -59,6 +59,8 @@ namespace PRODUX.ViewModel
 
         public ICommand GuardarUsuarioCommand { get; set; }
 
+        public ICommand EditarUsuarioCommand { get; set; }
+
         public string Filtro
         {
             get
@@ -131,11 +133,12 @@ namespace PRODUX.ViewModel
         private void InicializarComandos()
         {
             GuardarUsuarioCommand = new Command(GuardarUsuario);
+            EditarUsuarioCommand = new Command<UsuarioModel>(EditarUsuario);
         }
 
-        private void InicializarClase()
+        private async void InicializarClase()
         {
-            //LstUsuarios = ;
+            LstUsuarios = await UsuarioModel.SeleccionarTodos();
         }
 
         private async void GuardarUsuario()
@@ -168,6 +171,13 @@ namespace PRODUX.ViewModel
             {
                 App.Current.MainPage.DisplayAlert("Usuarios", "No fue posible insertar el usuario!", "OK");
             }
+        }
+
+        private void EditarUsuario(UsuarioModel usuario)
+        {
+            Usuario = usuario.Usuario;
+            Contrasenna = usuario.Contrasenna;
+            Estado = Convert.ToBoolean(usuario.Estado);
         }
 
         #endregion

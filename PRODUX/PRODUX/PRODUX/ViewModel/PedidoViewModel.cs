@@ -45,7 +45,7 @@ namespace PRODUX.ViewModel
 
         private string _Filtro = string.Empty;
 
-        private string _Numero = string.Empty;
+        private string _IdPedido = string.Empty;
 
         private DateTime _Fecha = DateTime.Now;
 
@@ -54,6 +54,8 @@ namespace PRODUX.ViewModel
         private UsuarioModel _Usuario = new UsuarioModel();
 
         private double _TotalPedido = 0;
+
+        private ObservableCollection<PedidoModel> _lstPedidos = new ObservableCollection<PedidoModel>();
 
         private ObservableCollection<ProductoModel> _lstProductos = new ObservableCollection<ProductoModel>();
 
@@ -66,6 +68,8 @@ namespace PRODUX.ViewModel
         public ICommand EliminarPedidoCommand { get; set; }
 
         public ICommand ConfirmarPedidoCommand { get; set; }
+
+        public ICommand EditarPedidoCommand { get; set; }
 
         public string Filtro
         {
@@ -80,16 +84,16 @@ namespace PRODUX.ViewModel
             }
         }
 
-        public string Numero
+        public string IdPedido
         {
             get
             {
-                return _Numero;
+                return _IdPedido;
             }
             set
             {
-                _Numero = value;
-                OnPropertyChanged("Numero");
+                _IdPedido = value;
+                OnPropertyChanged("IdPedido");
             }
         }
 
@@ -158,6 +162,19 @@ namespace PRODUX.ViewModel
             }
         }
 
+        public ObservableCollection<PedidoModel> LstPedidos
+        {
+            get
+            {
+                return _lstPedidos;
+            }
+            set
+            {
+                _lstPedidos = value;
+                OnPropertyChanged("LstPedidos");
+            }
+        }
+
         #endregion
 
         #region Métodos
@@ -167,11 +184,12 @@ namespace PRODUX.ViewModel
             GuardarPedidoCommand = new Command(GuardarPedido);
             EliminarPedidoCommand = new Command(EliminarPedido);
             ConfirmarPedidoCommand = new Command(ConfirmarPedido);
+            EditarPedidoCommand = new Command<PedidoModel>(EditarPedido);
         }
 
-        private void InicializarClase()
+        private async void InicializarClase()
         {
-
+            LstPedidos = await PedidoModel.SeleccionarTodos();
         }
 
         private void GuardarPedido()
@@ -187,6 +205,13 @@ namespace PRODUX.ViewModel
         private void ConfirmarPedido()
         {
 
+        }
+
+        private void EditarPedido(PedidoModel pedido)
+        {
+            IdPedido = pedido.Id_Pedido;
+            Fecha = pedido.Fecha;
+            //Cliente = pedido.Cliente;
         }
 
         #endregion

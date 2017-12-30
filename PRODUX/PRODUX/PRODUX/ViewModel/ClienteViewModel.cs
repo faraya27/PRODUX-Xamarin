@@ -65,6 +65,8 @@ namespace PRODUX.ViewModel
 
         public ICommand GuardarClienteCommand { get; set; }
 
+        public ICommand EditarClienteCommand { get; set; }
+
         public string Filtro
         {
             get
@@ -176,14 +178,15 @@ namespace PRODUX.ViewModel
         private void InicializarComandos()
         {
             GuardarClienteCommand = new Command(GuardarCliente);
+            EditarClienteCommand = new Command<ClienteModel>(EditarCliente);
         }
 
-        private void InicializarClase()
+        private async void InicializarClase()
         {
-            //LstClientes = ;
+            LstClientes = await ClienteModel.SeleccionarTodos();
         }
 
-        private void GuardarCliente()
+        private async void GuardarCliente()
         {
             try
             {
@@ -227,11 +230,22 @@ namespace PRODUX.ViewModel
                 objCliente.Fecha_Creacion = DateTime.Now;
 
                 //Llamar al método de insertar
+                await ClienteModel.Insertar(objCliente);
             }
             catch (Exception ex)
             {
                 App.Current.MainPage.DisplayAlert("Clientes", "No fue posible insertar el cliente!", "OK");
             }
+        }
+
+        private void EditarCliente(ClienteModel cliente)
+        {
+            Cedula = cliente.Cedula;
+            Nombre = cliente.Nombre;
+            Telefono = cliente.Telefono;
+            Email = cliente.Email;
+            Estado = Convert.ToBoolean(cliente.Estado);
+            Direccion = cliente.Direccion;
         }
 
         #endregion

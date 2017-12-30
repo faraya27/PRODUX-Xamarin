@@ -69,6 +69,8 @@ namespace PRODUX.ViewModel
 
         public ICommand EliminarProductoCommand { get; set; }
 
+        public ICommand EditarProductoCommand { get; set; }
+
         public string Filtro
         {
             get
@@ -194,11 +196,12 @@ namespace PRODUX.ViewModel
         {
             GuardarProductoCommand = new Command(GuardarProducto);
             EliminarProductoCommand = new Command(EliminarProducto);
+            EditarProductoCommand = new Command<ProductoModel>(EditarProducto);
         }
 
-        private void InicializarClase()
+        private async void InicializarClase()
         {
-            //LstProductos = ;
+            LstProductos = await ProductoModel.SeleccionarTodos();
         }
 
         private void GuardarProducto()
@@ -251,6 +254,17 @@ namespace PRODUX.ViewModel
         private void EliminarProducto()
         {
 
+        }
+
+        private void EditarProducto(ProductoModel producto)
+        {
+            Codigo = producto.Codigo;
+            Descripcion = producto.Descripcion;
+            Precio = producto.Precio;
+            CantidadInventario = producto.CantidadInventario;
+            Estado = Convert.ToBoolean(producto.Estado);
+            Observaciones = producto.Observaciones;
+            Imagen = producto.Imagen;
         }
 
         #endregion
