@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -59,7 +60,11 @@ namespace PRODUX.ViewModel
 
         private string _Imagen = string.Empty;
 
+        private List<ProductoModel> _lstOriginalProductos = new List<ProductoModel>();
+
         private ObservableCollection<ProductoModel> _lstProductos = new ObservableCollection<ProductoModel>();
+
+        private ProductoModel _ProductoActual = null;
 
         #endregion
 
@@ -81,6 +86,7 @@ namespace PRODUX.ViewModel
             {
                 _Filtro = value;
                 OnPropertyChanged("Filtro");
+                FiltrarLista(_Filtro);
             }
         }
 
@@ -202,9 +208,10 @@ namespace PRODUX.ViewModel
         private async void InicializarClase()
         {
             LstProductos = await ProductoModel.SeleccionarTodos();
+            _lstOriginalProductos = LstProductos.ToList();
         }
 
-        private void GuardarProducto()
+        private async void GuardarProducto()
         {
             try
             {
@@ -243,7 +250,8 @@ namespace PRODUX.ViewModel
                 objProducto.Usuario_Creacion = ""; //FALTA ASIGNAR
                 objProducto.Fecha_Creacion = DateTime.Now;
 
-                //Llamar al método de insertar
+                if(_ProductoActual == null) await ProductoModel.Insertar(objProducto);
+                else await ProductoModel.Actualizar(objProducto);
             }
             catch (Exception ex)
             {
@@ -258,6 +266,8 @@ namespace PRODUX.ViewModel
 
         private void EditarProducto(ProductoModel producto)
         {
+            _ProductoActual = producto;
+
             Codigo = producto.Codigo;
             Descripcion = producto.Descripcion;
             Precio = producto.Precio;
@@ -265,6 +275,12 @@ namespace PRODUX.ViewModel
             Estado = Convert.ToBoolean(producto.Estado);
             Observaciones = producto.Observaciones;
             Imagen = producto.Imagen;
+        }
+
+        private void FiltrarLista(string filtro)
+        {
+            LstProductos.Clear();
+            _lstOriginalProductos.Where(x => x.Descripcion.ToLower().Contains(filtro.ToLower())).ToList().ForEach(x => LstProductos.Add(x));
         }
 
         #endregion

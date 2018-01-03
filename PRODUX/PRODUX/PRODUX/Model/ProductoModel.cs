@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -48,7 +49,7 @@ namespace PRODUX.Model
                     HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
 
-                    return JsonConvert.DeserializeObject<ObservableCollection<ProductoModel>>(resultado);
+                    return new ObservableCollection<ProductoModel>(JsonConvert.DeserializeObject<ProductoModel[]>(resultado).ToList());
                 }
             }
             catch (WebException wex)

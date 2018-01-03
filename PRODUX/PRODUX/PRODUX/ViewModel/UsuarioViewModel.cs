@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -51,7 +52,11 @@ namespace PRODUX.ViewModel
 
         private bool _Estado = true;
 
+        private List<UsuarioModel> _lstOriginalUsuarios = new List<UsuarioModel>();
+
         private ObservableCollection<UsuarioModel> _lstUsuarios = new ObservableCollection<UsuarioModel>();
+
+        private UsuarioModel _UsuarioActual = null;
 
         #endregion
 
@@ -71,6 +76,7 @@ namespace PRODUX.ViewModel
             {
                 _Filtro = value;
                 OnPropertyChanged("Filtro");
+                FiltrarLista(_Filtro);
             }
         }
 
@@ -139,6 +145,7 @@ namespace PRODUX.ViewModel
         private async void InicializarClase()
         {
             LstUsuarios = await UsuarioModel.SeleccionarTodos();
+            _lstOriginalUsuarios = LstUsuarios.ToList();
         }
 
         private async void GuardarUsuario()
@@ -164,8 +171,9 @@ namespace PRODUX.ViewModel
                 objUsuario.Usuario_Creacion = "admin"; //FALTA ASIGNAR
                 objUsuario.Fecha_Creacion = DateTime.Now;
 
-                //Llamar al método de insertar
-                await UsuarioModel.Insertar(objUsuario);
+                if (_UsuarioActual == null) await UsuarioModel.Insertar(objUsuario);
+                else await UsuarioModel.Actualizar(objUsuario);
+
             }
             catch (Exception ex)
             {
@@ -175,9 +183,17 @@ namespace PRODUX.ViewModel
 
         private void EditarUsuario(UsuarioModel usuario)
         {
+            _UsuarioActual = usuario;
+
             Usuario = usuario.Usuario;
             Contrasenna = usuario.Contrasenna;
             Estado = Convert.ToBoolean(usuario.Estado);
+        }
+
+        private void FiltrarLista(string filtro)
+        {
+            LstUsuarios.Clear();
+            _lstOriginalUsuarios.Where(x => x.Usuario.ToLower().Contains(filtro.ToLower())).ToList().ForEach(x => LstUsuarios.Add(x));
         }
 
         #endregion

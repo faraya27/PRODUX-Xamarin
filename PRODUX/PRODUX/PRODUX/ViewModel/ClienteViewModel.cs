@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -57,7 +58,11 @@ namespace PRODUX.ViewModel
 
         private string _Direccion = string.Empty;
 
+        private List<ClienteModel> _lstOriginalClientes = new List<ClienteModel>();
+
         private ObservableCollection<ClienteModel> _lstClientes = new ObservableCollection<ClienteModel>();
+
+        private ClienteModel _ClienteActual = null;
 
         #endregion
 
@@ -77,6 +82,7 @@ namespace PRODUX.ViewModel
             {
                 _Filtro = value;
                 OnPropertyChanged("Filtro");
+                FiltrarLista(_Filtro);
             }
         }
 
@@ -184,6 +190,7 @@ namespace PRODUX.ViewModel
         private async void InicializarClase()
         {
             LstClientes = await ClienteModel.SeleccionarTodos();
+            _lstOriginalClientes = LstClientes.ToList();
         }
 
         private async void GuardarCliente()
@@ -229,8 +236,8 @@ namespace PRODUX.ViewModel
                 objCliente.Usuario_Creacion = ""; //FALTA ASIGNAR
                 objCliente.Fecha_Creacion = DateTime.Now;
 
-                //Llamar al método de insertar
-                await ClienteModel.Insertar(objCliente);
+                if(_ClienteActual == null) await ClienteModel.Insertar(objCliente);
+                else await ClienteModel.Actualizar(objCliente);
             }
             catch (Exception ex)
             {
@@ -240,12 +247,20 @@ namespace PRODUX.ViewModel
 
         private void EditarCliente(ClienteModel cliente)
         {
+            _ClienteActual = cliente;
+
             Cedula = cliente.Cedula;
             Nombre = cliente.Nombre;
             Telefono = cliente.Telefono;
             Email = cliente.Email;
             Estado = Convert.ToBoolean(cliente.Estado);
             Direccion = cliente.Direccion;
+        }
+
+        private void FiltrarLista(string filtro)
+        {
+            LstClientes.Clear();
+            _lstOriginalClientes.Where(x => x.Nombre.ToLower().Contains(filtro.ToLower())).ToList().ForEach(x => LstClientes.Add(x));
         }
 
         #endregion

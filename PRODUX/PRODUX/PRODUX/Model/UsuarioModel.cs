@@ -57,7 +57,7 @@ namespace PRODUX.Model
                     //HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false); //Esto se puede obviar ConfigureAwait(false)
                     HttpResponseMessage response = client.PostAsync(uri, content).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
-
+                    resultado = JsonConvert.DeserializeObject<string>(resultado);
                     //UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(ans)
 
                     return resultado;
@@ -98,6 +98,13 @@ namespace PRODUX.Model
         
         public static async Task<ObservableCollection<UsuarioModel>> SeleccionarTodos()
         {
+            //string json = "[{\"Usuario\":\"Admin\",\"Contrasenna\":\"admin\",\"Estado\":1,\"Usuario_Creacion\":\"caro\"},{\"Usuario\":\"c\",\"Contrasenna\":\"c\",\"Estado\":1,\"Usuario_Creacion\":\"caro\"},{\"Usuario\":\"Carolina\",\"Contrasenna\":\"a\",\"Estado\":1,\"Usuario_Creacion\":\"Admin\"},{\"Usuario\":\"Carolina1\",\"Contrasenna\":\"a\",\"Estado\":1,\"Usuario_Creacion\":\"Caro\"},{\"Usuario\":\"Carolina1k\",\"Contrasenna\":\"a\",\"Estado\":1,\"Usuario_Creacion\":\"Caro\"}]";
+
+            //UsuarioModel[] jsonObject = JsonConvert.DeserializeObject<UsuarioModel[]>(json);
+
+            //ObservableCollection<UsuarioModel> LstUsuarios = new ObservableCollection<UsuarioModel>(jsonObject.ToList());
+            //return;
+
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -107,7 +114,7 @@ namespace PRODUX.Model
                     HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
 
-                    return JsonConvert.DeserializeObject<ObservableCollection<UsuarioModel>>(resultado);
+                    return new ObservableCollection<UsuarioModel>(JsonConvert.DeserializeObject<UsuarioModel[]>(resultado).ToList());
                 }
             }
             catch (WebException wex)

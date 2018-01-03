@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -55,6 +56,8 @@ namespace PRODUX.ViewModel
 
         private double _TotalPedido = 0;
 
+        private List<PedidoModel> _lstOriginalPedidos = new List<PedidoModel>();
+
         private ObservableCollection<PedidoModel> _lstPedidos = new ObservableCollection<PedidoModel>();
 
         private ObservableCollection<ProductoModel> _lstProductos = new ObservableCollection<ProductoModel>();
@@ -81,6 +84,7 @@ namespace PRODUX.ViewModel
             {
                 _Filtro = value;
                 OnPropertyChanged("Filtro");
+                FiltrarLista(_Filtro);
             }
         }
 
@@ -190,6 +194,7 @@ namespace PRODUX.ViewModel
         private async void InicializarClase()
         {
             LstPedidos = await PedidoModel.SeleccionarTodos();
+            _lstOriginalPedidos = LstPedidos.ToList();
         }
 
         private void GuardarPedido()
@@ -212,6 +217,12 @@ namespace PRODUX.ViewModel
             IdPedido = pedido.Id_Pedido;
             Fecha = pedido.Fecha;
             //Cliente = pedido.Cliente;
+        }
+
+        private void FiltrarLista(string filtro)
+        {
+            LstPedidos.Clear();
+            _lstOriginalPedidos.Where(x => x.Id_Pedido.ToLower().Contains(filtro.ToLower())).ToList().ForEach(x => LstPedidos.Add(x));
         }
 
         #endregion
