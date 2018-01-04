@@ -188,6 +188,9 @@ namespace PRODUX.ViewModel
             Usuario = usuario.Usuario;
             Contrasenna = usuario.Contrasenna;
             Estado = Convert.ToBoolean(usuario.Estado);
+                        
+            //((TabbedPage)App.Current.MainPage).CurrentPage = ((TabbedPage)App.Current.MainPage).Children[1];
+            //((TabbedPage)App.Current.MainPage).CurrentPage.Focus();
         }
 
         private void FiltrarLista(string filtro)
