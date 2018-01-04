@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.IO;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json.Linq;
 
 namespace PRODUX.Model
 {
@@ -98,7 +99,7 @@ namespace PRODUX.Model
         
         public static async Task<ObservableCollection<UsuarioModel>> SeleccionarTodos()
         {
-            //string json = "[{\"Usuario\":\"Admin\",\"Contrasenna\":\"admin\",\"Estado\":1,\"Usuario_Creacion\":\"caro\"},{\"Usuario\":\"c\",\"Contrasenna\":\"c\",\"Estado\":1,\"Usuario_Creacion\":\"caro\"},{\"Usuario\":\"Carolina\",\"Contrasenna\":\"a\",\"Estado\":1,\"Usuario_Creacion\":\"Admin\"},{\"Usuario\":\"Carolina1\",\"Contrasenna\":\"a\",\"Estado\":1,\"Usuario_Creacion\":\"Caro\"},{\"Usuario\":\"Carolina1k\",\"Contrasenna\":\"a\",\"Estado\":1,\"Usuario_Creacion\":\"Caro\"}]";
+           // string json = "\"[{\\\"Usuario\\\":\\\"Admin\\\",\\\"Contrasenna\\\":\\\"admin\\\",\\\"Estado\\\":1,\\\"Usuario_Creacion\\\":\\\"caro\\\",\\\"Fecha_Creacion\\\":\\\"2018-01-02T20:23:24\\\"},{\\\"Usuario\\\":\\\"c\\\",\\\"Contrasenna\\\":\\\"c\\\",\\\"Estado\\\":1,\\\"Usuario_Creacion\\\":\\\"caro\\\",\\\"Fecha_Creacion\\\":\\\"2017-12-27T20:39:20\\\"},{\\\"Usuario\\\":\\\"Carolina\\\",\\\"Contrasenna\\\":\\\"a\\\",\\\"Estado\\\":1,\\\"Usuario_Creacion\\\":\\\"Admin\\\",\\\"Fecha_Creacion\\\":\\\"2017-12-14T20:31:45\\\"},{\\\"Usuario\\\":\\\"Carolina1\\\",\\\"Contrasenna\\\":\\\"a\\\",\\\"Estado\\\":1,\\\"Usuario_Creacion\\\":\\\"Caro\\\",\\\"Fecha_Creacion\\\":\\\"2017-12-27T20:40:53\\\"},{\\\"Usuario\\\":\\\"Carolina1k\\\",\\\"Contrasenna\\\":\\\"a\\\",\\\"Estado\\\":1,\\\"Usuario_Creacion\\\":\\\"Caro\\\",\\\"Fecha_Creacion\\\":\\\"2017-12-27T20:48:45\\\"}]\"";
 
             //UsuarioModel[] jsonObject = JsonConvert.DeserializeObject<UsuarioModel[]>(json);
 
@@ -113,7 +114,6 @@ namespace PRODUX.Model
                     
                     HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
-
                     return new ObservableCollection<UsuarioModel>(JsonConvert.DeserializeObject<UsuarioModel[]>(resultado).ToList());
                 }
             }
