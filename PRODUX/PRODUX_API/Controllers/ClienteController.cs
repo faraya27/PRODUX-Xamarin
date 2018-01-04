@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace API_PRODUX.Controllers
@@ -13,15 +14,21 @@ namespace API_PRODUX.Controllers
     {
 
         [HttpGet]
-        public string SeleccionarClientes()
+        public HttpResponseMessage SeleccionarClientes()
         {
-            return JsonConvert.SerializeObject(ClienteModel.SeleccionarClientes());
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(ClienteModel.SeleccionarClientes()), Encoding.UTF8, "application/json");
+            return response;
+            //return JsonConvert.SerializeObject(ClienteModel.SeleccionarClientes());
         }
 
         [HttpGet]
-        public string SeleccionarClientesPorCodigo(string codigo)
+        public HttpResponseMessage SeleccionarClientesPorCodigo(string codigo)
         {
-            return JsonConvert.SerializeObject(ClienteModel.SeleccionarClientesPorCodigo(codigo));
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(ClienteModel.SeleccionarClientesPorCodigo(codigo)), Encoding.UTF8, "application/json");
+            return response;
+            //return JsonConvert.SerializeObject(ClienteModel.SeleccionarClientesPorCodigo(codigo));
         }
         [HttpPost]
         public string InsertarCliente([FromBody]ClienteModel cliente)

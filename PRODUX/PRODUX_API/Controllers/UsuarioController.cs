@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace API_PRODUX.Controllers
@@ -20,15 +21,21 @@ namespace API_PRODUX.Controllers
         }
 
         [HttpGet]
-        public string SeleccionarUsuarios()
+        public HttpResponseMessage SeleccionarUsuarios()
         {
-            return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuarios());
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuarios()), Encoding.UTF8, "application/json");
+            return response;
+            //return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuarios());
         }
 
         [HttpGet]
-        public string SeleccionarUsuariosPorCodigo(string codigo)
+        public HttpResponseMessage SeleccionarUsuariosPorCodigo(string codigo)
         {
-            return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuariosPorCodigo(codigo));
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuariosPorCodigo(codigo)), Encoding.UTF8, "application/json");
+            return response;
+            //return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuariosPorCodigo(codigo));
         }
         [HttpPost]
         public string InsertarUsuario([FromBody]UsuarioModel usuario)

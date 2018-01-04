@@ -19,6 +19,8 @@ namespace API_PRODUX.Models
 
         public string Usuario_Creacion { get; set; }
 
+        public DateTime Fecha_Creacion { get; set; }
+
 
         public static string ValidarUsuarios(string IdUsuario, string Contrasenna)
         {
@@ -89,6 +91,9 @@ namespace API_PRODUX.Models
                     Usuario.Usuario = reader["Id_Usuario"].ToString();
                     Usuario.Contrasenna = reader["Contrasenna"].ToString();
                     Usuario.Estado = Convert.ToInt32(reader["Estado"].ToString());
+                    Usuario.Usuario_Creacion = reader["Usuario_Creacion"].ToString();
+                    Usuario.Fecha_Creacion = Convert.ToDateTime(reader["Fecha_Creacion"].ToString());
+
                     lista.Add(Usuario);
                 }
                 reader.Close();

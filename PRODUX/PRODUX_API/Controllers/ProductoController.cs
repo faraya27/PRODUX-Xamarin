@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace API_PRODUX.Controllers
@@ -13,15 +14,22 @@ namespace API_PRODUX.Controllers
     {
 
         [HttpGet]
-        public string SeleccionarProductos()
+        public HttpResponseMessage SeleccionarProductos()
         {
-            return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductos());
+
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(ProductoModel.SeleccionarProductos()), Encoding.UTF8, "application/json");
+            return response;
+            //return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductos());
         }
 
         [HttpGet]
-        public string SeleccionarProductoPorCodigo(string codigo)
+        public HttpResponseMessage SeleccionarProductoPorCodigo(string codigo)
         {
-            return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductosPorCodigo(codigo));
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(ProductoModel.SeleccionarProductosPorCodigo(codigo)), Encoding.UTF8, "application/json");
+            return response;
+            //return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductosPorCodigo(codigo));
         }
         [HttpPost]
         public string InsertarProducto([FromBody]ProductoModel producto)
