@@ -287,24 +287,31 @@ namespace PRODUX.ViewModel
 
         private async void TomarFoto()
         {
-            string rutaFoto;
-
-            await CrossMedia.Current.Initialize();
-
-            if (CrossMedia.Current.IsTakePhotoSupported)
+            try
             {
-                Plugin.Media.Abstractions.StoreCameraMediaOptions opciones = new Plugin.Media.Abstractions.StoreCameraMediaOptions();
-                
-                var foto = await CrossMedia.Current.TakePhotoAsync(opciones);
+                string rutaFoto;
 
-                if (foto != null)
+                await CrossMedia.Current.Initialize();
+
+                if (CrossMedia.Current.IsTakePhotoSupported)
                 {
-                    rutaFoto = foto.Path;
+                    Plugin.Media.Abstractions.StoreCameraMediaOptions opciones = new Plugin.Media.Abstractions.StoreCameraMediaOptions();
 
-                    byte[] array = File.ReadAllBytes(rutaFoto);
-                    Imagen = Convert.ToBase64String(array);
+                    var foto = await CrossMedia.Current.TakePhotoAsync(opciones);
+
+                    if (foto != null)
+                    {
+                        rutaFoto = foto.Path;
+
+                        byte[] array = File.ReadAllBytes(rutaFoto);
+                        Imagen = Convert.ToBase64String(array);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                App.Current.MainPage.DisplayAlert("Productos", "No fue posible tomar la foto!", "OK");
+            }            
         }
 
         #endregion

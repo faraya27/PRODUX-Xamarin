@@ -30,8 +30,9 @@ namespace PRODUX.Model
         public int Estado { get; set; }
 
         public string Usuario_Creacion { get; set; }
-
-        public DateTime Fecha_Creacion { get; set; }
+        
+        [Ignored] //El tipo de dato DateTime no es admitido por realm, tiene que ser DateTimeOffset
+        public DateTime Fecha_Creacion { get; set; } 
 
         #endregion
 

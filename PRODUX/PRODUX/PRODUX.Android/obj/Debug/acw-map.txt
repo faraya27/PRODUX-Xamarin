@@ -6,10 +6,10 @@ PRODUX.Droid.MainApplication, PRODUX.Android;md560de8d6b2b9c7f1ee85128a9b8782e25
 PRODUX.Droid.MainApplication, PRODUX.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md560de8d6b2b9c7f1ee85128a9b8782e25.MainApplication
 PRODUX.Droid.MainApplication;md560de8d6b2b9c7f1ee85128a9b8782e25.MainApplication
 produx.droid.MainApplication;md560de8d6b2b9c7f1ee85128a9b8782e25.MainApplication
-Plugin.Media.MediaPickerActivity, Plugin.Media;md53a863c3de0ddfd328a1a6f9b5c6656b4.MediaPickerActivity
-Plugin.Media.MediaPickerActivity, Plugin.Media, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null;md53a863c3de0ddfd328a1a6f9b5c6656b4.MediaPickerActivity
-Plugin.Media.MediaPickerActivity;md53a863c3de0ddfd328a1a6f9b5c6656b4.MediaPickerActivity
-plugin.media.MediaPickerActivity;md53a863c3de0ddfd328a1a6f9b5c6656b4.MediaPickerActivity
+Plugin.Media.MediaPickerActivity, Plugin.Media;md55b01af31820394fbfb172542d1258596.MediaPickerActivity
+Plugin.Media.MediaPickerActivity, Plugin.Media, Version=3.1.2.0, Culture=neutral, PublicKeyToken=null;md55b01af31820394fbfb172542d1258596.MediaPickerActivity
+Plugin.Media.MediaPickerActivity;md55b01af31820394fbfb172542d1258596.MediaPickerActivity
+plugin.media.MediaPickerActivity;md55b01af31820394fbfb172542d1258596.MediaPickerActivity
 Android.Support.V4.Widget.SearchViewCompat/IOnCloseListenerImplementor, Xamarin.Android.Support.Compat;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat+IOnCloseListenerImplementor, Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat.IOnCloseListenerImplementor;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
