@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 
 namespace PRODUX.Model
 {
-    public class UsuarioModel /*: RealmObject*/
+    public class UsuarioModel : RealmObject
     {
         public UsuarioModel() {
             //var realm = Realm.GetInstance();
@@ -231,5 +231,24 @@ namespace PRODUX.Model
         }
 
         #endregion
+
+        private void insertarUsuario()
+        {
+            var realm = Realm.GetInstance();
+            
+            realm.Write(() =>
+            {
+                var usuario = new UsuarioModel
+                { 
+                    Usuario = "Carolina",
+                    Contrasenna = "a"
+                };
+
+                realm.Add(usuario);
+            });
+
+            var usuarios = realm.All<UsuarioModel>();
+        }
+
     }
 }

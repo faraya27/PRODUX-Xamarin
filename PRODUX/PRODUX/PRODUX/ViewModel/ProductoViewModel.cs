@@ -1,8 +1,10 @@
-﻿using PRODUX.Model;
+﻿using Plugin.Media;
+using PRODUX.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -281,6 +283,28 @@ namespace PRODUX.ViewModel
         {
             LstProductos.Clear();
             _lstOriginalProductos.Where(x => x.Descripcion.ToLower().Contains(filtro.ToLower())).ToList().ForEach(x => LstProductos.Add(x));
+        }
+
+        private async void TomarFoto()
+        {
+            string rutaFoto;
+
+            await CrossMedia.Current.Initialize();
+
+            if (CrossMedia.Current.IsTakePhotoSupported)
+            {
+                Plugin.Media.Abstractions.StoreCameraMediaOptions opciones = new Plugin.Media.Abstractions.StoreCameraMediaOptions();
+                
+                var foto = await CrossMedia.Current.TakePhotoAsync(opciones);
+
+                if (foto != null)
+                {
+                    rutaFoto = foto.Path;
+
+                    byte[] array = File.ReadAllBytes(rutaFoto);
+                    Imagen = Convert.ToBase64String(array);
+                }
+            }
         }
 
         #endregion
