@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PRODUX.Model;
+using PRODUX.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +14,25 @@ namespace PRODUX
 		public App ()
 		{
 			InitializeComponent();
-            
-            MainPage = new PRODUX.View.InicioSesion();
+
+            UsuarioModel usuario = new UsuarioModel();
+            List<UsuarioModel> lstUsuarios = UsuarioModel.ObtenerUsuarioRealm();
+
+            if (lstUsuarios.Count > 0)
+            {
+                //Falta asignar usuario global
+
+                NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
+                MainPage = new MasterDetailPage
+                {
+                    Master = new PRODUX.View.Menu.Menu(),
+                    Detail = navigation
+                };
+            }
+            else
+            {
+                MainPage = new InicioSesion();
+            }            
         }
 
 		protected override void OnStart ()

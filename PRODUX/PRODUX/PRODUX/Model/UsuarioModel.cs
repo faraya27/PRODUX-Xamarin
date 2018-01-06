@@ -31,7 +31,7 @@ namespace PRODUX.Model
 
         public string Usuario_Creacion { get; set; }
         
-        [Ignored] //El tipo de dato DateTime no es admitido por realm, tiene que ser DateTimeOffset
+        [Ignored] //El tipo de dato DateTime no es admitido por realm, tiene que ser DateTimeOffset. Se convierte a DateTime asi DateTimeOffset.DateTime
         public DateTime Fecha_Creacion { get; set; } 
 
         #endregion
@@ -231,25 +231,48 @@ namespace PRODUX.Model
 
         }
 
-        #endregion
-
-        private void insertarUsuario()
+        //Metodos REALM
+        public static void InsertarUsuarioRealm()
         {
             var realm = Realm.GetInstance();
-            
+
             realm.Write(() =>
             {
                 var usuario = new UsuarioModel
-                { 
+                {
                     Usuario = "Carolina",
                     Contrasenna = "a"
                 };
 
                 realm.Add(usuario);
-            });
-
-            var usuarios = realm.All<UsuarioModel>();
+            });            
         }
 
+        public static void EliminarUsuarioRealm()
+        {
+            var realm = Realm.GetInstance();
+
+            List<UsuarioModel> lstUsuarios = realm.All<UsuarioModel>().ToList();
+
+            using (var trans = realm.BeginWrite())
+            {
+                foreach (UsuarioModel usuario in lstUsuarios)
+                {
+                    realm.Remove(usuario);
+                }
+
+                trans.Commit();
+            }                
+        }
+
+        public static List<UsuarioModel> ObtenerUsuarioRealm()
+        {
+            var realm = Realm.GetInstance();
+
+            return realm.All<UsuarioModel>().ToList();
+        }
+
+        #endregion
+        
     }
 }
