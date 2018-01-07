@@ -187,43 +187,66 @@ namespace PRODUX.ViewModel
             EditarClienteCommand = new Command<ClienteModel>(EditarCliente);
         }
 
-        private async void InicializarClase()
+        private void InicializarClase()
+        {
+            RefrescarLista();            
+        }
+
+        private async void RefrescarLista()
         {
             LstClientes = await ClienteModel.SeleccionarTodos();
             _lstOriginalClientes = LstClientes.ToList();
         }
 
+        private void Limpiar()
+        {
+            Cedula = string.Empty;
+            Nombre = string.Empty;
+            Telefono = string.Empty;
+            Email = string.Empty;
+            Estado = false;
+            Direccion = string.Empty;
+        }
+
+        public void MostrarMensaje(string mensaje)
+        {
+            App.Current.MainPage.DisplayAlert("Clientes", mensaje, "OK");
+            //Toasts.MakeText(Forms.Context, mensaje, ToastLength.Short).Show();
+        }
+
         private async void GuardarCliente()
         {
+            string resultado = string.Empty;
+
             try
             {
                 if (Cedula.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar la cédula!", "OK");
+                    MostrarMensaje("Debe ingresar la cédula!");
                     return;
                 }
 
                 if (Nombre.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar el nombre!", "OK");
+                    MostrarMensaje("Debe ingresar el nombre!");
                     return;
                 }
 
                 if (Telefono.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar el teléfono!", "OK");
+                    MostrarMensaje("Debe ingresar el teléfono!");
                     return;
                 }
 
                 if (Email.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar el email!", "OK");
+                    MostrarMensaje("Debe ingresar el email!");
                     return;
                 }
 
                 if (Direccion.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar la dirección!", "OK");
+                    MostrarMensaje("Debe ingresar la dirección!");
                     return;
                 }
 
@@ -231,17 +254,31 @@ namespace PRODUX.ViewModel
                 objCliente.Cedula = Cedula;
                 objCliente.Nombre = Nombre;
                 objCliente.Telefono = Telefono;
+                objCliente.Email = Email;
                 objCliente.Estado = Convert.ToInt32(Estado);
                 objCliente.Direccion = Direccion;
-                objCliente.Usuario_Creacion = ""; //FALTA ASIGNAR
+                objCliente.Usuario_Creacion = "admin"; //FALTA ASIGNAR
                 objCliente.Fecha_Creacion = DateTime.Now;
 
-                if(_ClienteActual == null) await ClienteModel.Insertar(objCliente);
-                else await ClienteModel.Actualizar(objCliente);
+                if(_ClienteActual == null) resultado = await ClienteModel.Insertar(objCliente);
+                else resultado = await ClienteModel.Actualizar(objCliente);
+
+                if (resultado.Equals("true"))
+                {
+                    RefrescarLista();
+                    MostrarMensaje("Cliente guardado");
+                    Limpiar();
+                    return;
+                }
+                else
+                {
+                    MostrarMensaje("No fue posible guardar el cliente, por favor verificar los datos ingresados");
+                    return;
+                }
             }
             catch (Exception ex)
             {
-                App.Current.MainPage.DisplayAlert("Clientes", "No fue posible insertar el cliente!", "OK");
+                MostrarMensaje("No fue posible insertar el cliente!");
             }
         }
 

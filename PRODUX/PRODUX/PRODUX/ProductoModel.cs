@@ -22,7 +22,7 @@ namespace PRODUX.Model
 
         public double Precio { get; set; }
 
-        public double CantidadInventario { get; set; }
+        public int CantidadInventario { get; set; }
 
         public int Estado { get; set; }
 

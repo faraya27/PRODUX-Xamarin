@@ -142,25 +142,45 @@ namespace PRODUX.ViewModel
             EditarUsuarioCommand = new Command<UsuarioModel>(EditarUsuario);
         }
 
-        private async void InicializarClase()
+        private void InicializarClase()
+        {
+            RefrescarLista();
+        }
+        
+        private async void RefrescarLista()
         {
             LstUsuarios = await UsuarioModel.SeleccionarTodos();
             _lstOriginalUsuarios = LstUsuarios.ToList();
         }
 
+        private void Limpiar()
+        {
+            Usuario = string.Empty;
+            Contrasenna = string.Empty;
+            Estado = false;
+        }
+
+        public void MostrarMensaje(string mensaje)
+        {
+            App.Current.MainPage.DisplayAlert("Usuarios", mensaje, "OK");
+            //Toasts.MakeText(Forms.Context, mensaje, ToastLength.Short).Show();
+        }
+
         private async void GuardarUsuario()
         {
+            string resultado = string.Empty;
+
             try
             {
                 if (Usuario.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar el usuario!", "OK");
+                    MostrarMensaje("Debe ingresar el usuario!");
                     return;
                 }
 
                 if (Contrasenna.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Usuarios", "Debe ingresar la contraseña!", "OK");
+                    MostrarMensaje("Debe ingresar la contraseña!");
                     return;
                 }
 
@@ -170,17 +190,29 @@ namespace PRODUX.ViewModel
                 objUsuario.Estado = Convert.ToInt32(Estado);
                 objUsuario.Usuario_Creacion = "admin"; //FALTA ASIGNAR
                 objUsuario.Fecha_Creacion = DateTime.Now;
+                
+                if (_UsuarioActual == null) resultado = await UsuarioModel.Insertar(objUsuario);
+                else resultado = await UsuarioModel.Actualizar(objUsuario);
 
-                if (_UsuarioActual == null) await UsuarioModel.Insertar(objUsuario);
-                else await UsuarioModel.Actualizar(objUsuario);
-
+                if (resultado.Equals("true"))
+                {
+                    RefrescarLista();
+                    MostrarMensaje("Usuario guardado");
+                    Limpiar();
+                    return;
+                }
+                else
+                {
+                    MostrarMensaje("No fue posible guardar el usuario, por favor verificar los datos ingresados");
+                    return;
+                }              
             }
             catch (Exception ex)
             {
-                App.Current.MainPage.DisplayAlert("Usuarios", "No fue posible insertar el usuario!", "OK");
+                MostrarMensaje("No fue posible insertar el usuario!");
             }
         }
-
+        
         private void EditarUsuario(UsuarioModel usuario)
         {
             _UsuarioActual = usuario;

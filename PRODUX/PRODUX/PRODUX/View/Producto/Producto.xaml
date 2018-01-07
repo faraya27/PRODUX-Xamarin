@@ -36,6 +36,7 @@
             </StackLayout>
             <StackLayout>
                 <Label Text="Imagen:"/>
+                <Button Text="Tomar Foto" Command="{Binding TomarFotoCommand}"/>
             </StackLayout>
             <StackLayout>
                 <Button Text="Guardar" Command="{Binding GuardarProductoCommand}"/>

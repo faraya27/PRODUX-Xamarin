@@ -197,7 +197,7 @@ namespace PRODUX.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Usuario() + "ActualizarUsuarioInactivarUsuario");
+                    var uri = new Uri(URLAPI.Usuario() + "ActualizarUsuario");
 
                     var json = JsonConvert.SerializeObject(
                                                             new {

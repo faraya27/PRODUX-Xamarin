@@ -110,7 +110,8 @@ namespace PRODUX.ViewModel
 
         private void InicializarClase()
         {
-
+            Usuario = "Carolina";
+            Contrasenna = "a";
         }
 
         private async void validarCredenciales()

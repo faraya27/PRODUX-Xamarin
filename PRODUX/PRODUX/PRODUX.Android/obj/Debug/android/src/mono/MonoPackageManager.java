@@ -119,6 +119,7 @@ class MonoPackageManager_Resources {
 		"Realm.Sync.dll",
 		"Remotion.Linq.dll",
 		"System.Runtime.CompilerServices.Unsafe.dll",
+		"Toasts.Forms.Plugin.Abstractions.dll",
 		"Xamarin.Android.Support.Animated.Vector.Drawable.dll",
 		"Xamarin.Android.Support.Annotations.dll",
 		"Xamarin.Android.Support.Compat.dll",

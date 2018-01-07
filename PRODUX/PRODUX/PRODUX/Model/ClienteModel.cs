@@ -99,6 +99,7 @@ namespace PRODUX.Model
                                                                     Cedula = cliente.Cedula,
                                                                     Nombre = cliente.Nombre,
                                                                     Telefono = cliente.Telefono,
+                                                                    Email = cliente.Email,
                                                                     Estado = cliente.Estado,
                                                                     Direccion = cliente.Direccion,
                                                                     Usuario_Creacion = cliente.Usuario_Creacion,
@@ -131,7 +132,7 @@ namespace PRODUX.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Cliente() + "ActualizarClienteInactivarCliente");
+                    var uri = new Uri(URLAPI.Cliente() + "ActualizarCliente");
 
                     var json = JsonConvert.SerializeObject(
                                                             new
@@ -139,6 +140,7 @@ namespace PRODUX.Model
                                                                 Cedula = cliente.Cedula,
                                                                 Nombre = cliente.Nombre,
                                                                 Telefono = cliente.Telefono,
+                                                                Email = cliente.Email,
                                                                 Estado = cliente.Estado,
                                                                 Direccion = cliente.Direccion,
                                                                 Usuario_Creacion = cliente.Usuario_Creacion,

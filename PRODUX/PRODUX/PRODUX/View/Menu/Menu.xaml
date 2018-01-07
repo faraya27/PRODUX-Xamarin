@@ -6,11 +6,11 @@
              Title="Menu Principal">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="40">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirProductoCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Productos"/>
+                <Label Text="Productos" FontSize="Medium"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <StackLayout.GestureRecognizers>

@@ -90,7 +90,6 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.AI.De
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.AI.Web.xml
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csprojResolveAssemblyReference.cache
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csproj.CoreCompileInputs.cache
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.pdb
@@ -100,3 +99,4 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.pd
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.pdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Toasts.Forms.Plugin.Abstractions.dll

@@ -54,7 +54,7 @@ namespace PRODUX.ViewModel
 
         private double _Precio = 0;
 
-        private double _CantidadInventario = 0;
+        private int _CantidadInventario = 0;
 
         private bool _Estado = true;
 
@@ -77,6 +77,8 @@ namespace PRODUX.ViewModel
         public ICommand EliminarProductoCommand { get; set; }
 
         public ICommand EditarProductoCommand { get; set; }
+
+        public ICommand TomarFotoCommand { get; set; }
 
         public string Filtro
         {
@@ -131,7 +133,7 @@ namespace PRODUX.ViewModel
             }
         }
 
-        public double CantidadInventario
+        public int CantidadInventario
         {
             get
             {
@@ -205,39 +207,58 @@ namespace PRODUX.ViewModel
             GuardarProductoCommand = new Command(GuardarProducto);
             EliminarProductoCommand = new Command(EliminarProducto);
             EditarProductoCommand = new Command<ProductoModel>(EditarProducto);
+            TomarFotoCommand = new Command(TomarFoto);
         }
 
-        private async void InicializarClase()
+        private void InicializarClase()
+        {            
+            RefrescarLista();
+        }
+
+        private async void RefrescarLista()
         {
             LstProductos = await ProductoModel.SeleccionarTodos();
             _lstOriginalProductos = LstProductos.ToList();
         }
 
+        private void Limpiar()
+        {
+            Codigo = string.Empty;
+            Descripcion = string.Empty;
+            Precio = 0;
+            CantidadInventario = 0;
+            Estado = false;
+            Observaciones = string.Empty;
+            Imagen = string.Empty;
+        }
+
+        public void MostrarMensaje(string mensaje)
+        {
+            App.Current.MainPage.DisplayAlert("Productos", mensaje, "OK");
+            //Toasts.MakeText(Forms.Context, mensaje, ToastLength.Short).Show();
+        }
+
         private async void GuardarProducto()
         {
+            string resultado = string.Empty;
+
             try
             {
                 if (Codigo.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Productos", "Debe ingresar el código!", "OK");
+                    MostrarMensaje("Debe ingresar el código!");
                     return;
                 }
 
                 if (Descripcion.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Productos", "Debe ingresar la descripción!", "OK");
+                    MostrarMensaje("Debe ingresar la descripción!");
                     return;
                 }
 
                 if (Precio == 0)
                 {
-                    App.Current.MainPage.DisplayAlert("Productos", "Debe ingresar el precio!", "OK");
-                    return;
-                }
-
-                if (Imagen.Equals(""))
-                {
-                    App.Current.MainPage.DisplayAlert("Productos", "Debe seleccionar una imagen!", "OK");
+                    MostrarMensaje("Debe ingresar el precio!");
                     return;
                 }
 
@@ -249,15 +270,28 @@ namespace PRODUX.ViewModel
                 objProducto.Estado = Convert.ToInt32(Estado);
                 objProducto.Observaciones = Observaciones;
                 objProducto.Imagen = Imagen;
-                objProducto.Usuario_Creacion = ""; //FALTA ASIGNAR
+                objProducto.Usuario_Creacion = "admin"; //FALTA ASIGNAR
                 objProducto.Fecha_Creacion = DateTime.Now;
 
-                if(_ProductoActual == null) await ProductoModel.Insertar(objProducto);
-                else await ProductoModel.Actualizar(objProducto);
+                if(_ProductoActual == null) resultado = await ProductoModel.Insertar(objProducto);
+                else resultado = await ProductoModel.Actualizar(objProducto);
+
+                if (resultado.Equals("true"))
+                {
+                    RefrescarLista();
+                    MostrarMensaje("Producto guardado");
+                    Limpiar();
+                    return;
+                }
+                else
+                {
+                    MostrarMensaje("No fue posible guardar el producto, por favor verificar los datos ingresados");
+                    return;
+                }
             }
             catch (Exception ex)
             {
-                App.Current.MainPage.DisplayAlert("Productos", "No fue posible insertar el producto!", "OK");
+                MostrarMensaje("No fue posible insertar el producto!");
             }
         }
 
@@ -310,7 +344,7 @@ namespace PRODUX.ViewModel
             }
             catch (Exception ex)
             {
-                App.Current.MainPage.DisplayAlert("Productos", "No fue posible tomar la foto!", "OK");
+                MostrarMensaje("No fue posible tomar la foto!");
             }            
         }
 
