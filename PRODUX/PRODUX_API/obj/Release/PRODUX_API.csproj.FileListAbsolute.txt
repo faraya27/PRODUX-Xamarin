@@ -46,3 +46,10 @@ C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Release\
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Release\PRODUX_API.csproj.CoreCompileInputs.cache
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Release\PRODUX_API.dll
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Release\PRODUX_API.pdb
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.dll
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.dll
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Toasts.Forms.Plugin.Abstractions.dll
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.pdb
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.xml
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.pdb
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.xml

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Odbc;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -26,6 +28,8 @@ namespace API_PRODUX.Models
         public string Imagen { get; set; }
 
         public string Usuario_Creacion { get; set; }
+
+        public DateTime Fecha_Creacion { get; set; }
 
 
         //Lista
@@ -133,9 +137,21 @@ namespace API_PRODUX.Models
 
         public static string InsertarProducto(ProductoModel producto)
         {
+
             OdbcConnection conn = Conexion.obtenerConexion();
             try
             {
+
+                byte[] Imagen = Convert.FromBase64String(producto.Imagen);
+                
+                string ruta= @"C:\Users\Carolina\Documents\GitHub\Imagenes";
+                if (!Directory.Exists(ruta))
+                {
+                    Directory.CreateDirectory(ruta);
+                }
+                File.WriteAllBytes(ruta+ @"\Foto.png", Imagen);
+
+
                 OdbcCommand command = new OdbcCommand();
                 string Sql = "{call [dbo].[sp_Insertar_Producto](?,?,?,?,?,?,?,?)}";
 
@@ -154,7 +170,7 @@ namespace API_PRODUX.Models
                 command.Parameters.Add("@Observaciones", OdbcType.VarChar);
                 command.Parameters["@Observaciones"].Value = producto.Observaciones;
                 command.Parameters.Add("@Imagen", OdbcType.VarChar);
-                command.Parameters["@Imagen"].Value = producto.Imagen;
+                command.Parameters["@Imagen"].Value = "hola";
                 command.Parameters.Add("@Estado", OdbcType.Int);
                 command.Parameters["@Estado"].Value = producto.Estado;
                 command.Parameters.Add("@Usuario_Creacion", OdbcType.VarChar);
@@ -167,7 +183,17 @@ namespace API_PRODUX.Models
             }
             catch (Exception ax)
             {
-                return "false";
+                //if (!EventLog.SourceExists("MySource"))
+                //{
+                //    EventLog.CreateEventSource("MySource", "MyNewLog");
+                //}
+
+                //// Create an EventLog instance and assign its source.
+                //EventLog myLog = new EventLog();
+                //myLog.Source = "MySource";
+
+                //myLog.WriteEntry(ax.Message);
+                return ax.Message; // "false";
             }
             finally
             {
@@ -244,7 +270,7 @@ namespace API_PRODUX.Models
 
             }
             catch (Exception ax)
-            {
+            {                
                 return "false";
             }
             finally
