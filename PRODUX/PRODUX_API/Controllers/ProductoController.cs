@@ -32,19 +32,28 @@ namespace API_PRODUX.Controllers
             //return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductosPorCodigo(codigo));
         }
         [HttpPost]
-        public string InsertarProducto([FromBody]ProductoModel producto)
+        public HttpResponseMessage InsertarProducto([FromBody]ProductoModel producto)
         {
-            return ProductoModel.InsertarProducto(producto);
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(ProductoModel.InsertarProducto(producto), Encoding.UTF8, "text/plain");
+            return response;
+           // return ProductoModel.InsertarProducto(producto);
         }
         [HttpPost]
-        public string ActualizarProducto([FromBody]ProductoModel producto)
+        public HttpResponseMessage ActualizarProducto([FromBody]ProductoModel producto)
         {
-           return ProductoModel.ActualizarProducto(producto);
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(ProductoModel.ActualizarProducto(producto), Encoding.UTF8, "text/plain");
+            return response;
+           // return ProductoModel.ActualizarProducto(producto);
         }
         [HttpPost]
-        public string EliminarProducto([FromBody]ProductoModel producto)
+        public HttpResponseMessage EliminarProducto([FromBody]ProductoModel producto)
         {
-            return ProductoModel.EliminarProducto(producto);
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(ProductoModel.EliminarProducto(producto), Encoding.UTF8, "text/plain");
+            return response;
+            //return ProductoModel.EliminarProducto(producto);
         }
 
         // GET api/<controller>

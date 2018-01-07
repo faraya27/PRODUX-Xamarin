@@ -38,14 +38,20 @@ namespace API_PRODUX.Controllers
             //return JsonConvert.SerializeObject(UsuarioModel.SeleccionarUsuariosPorCodigo(codigo));
         }
         [HttpPost]
-        public string InsertarUsuario([FromBody]UsuarioModel usuario)
+        public HttpResponseMessage InsertarUsuario([FromBody]UsuarioModel usuario)
         {
-             return UsuarioModel.InsertarUsuario(usuario);
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(UsuarioModel.InsertarUsuario(usuario), Encoding.UTF8, "text/plain");
+            return response;
+           // return UsuarioModel.InsertarUsuario(usuario);
         }
         [HttpPost]
-        public string ActualizarUsuario([FromBody]UsuarioModel usuario)
+        public HttpResponseMessage ActualizarUsuario([FromBody]UsuarioModel usuario)
         {
-            return UsuarioModel.ActualizarUsuario(usuario);
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(UsuarioModel.ActualizarUsuario(usuario), Encoding.UTF8, "text/plain");
+            return response;
+            //return UsuarioModel.ActualizarUsuario(usuario);
         }
         [HttpPost]
         public string InactivarUsuario([FromBody]UsuarioModel usuario)

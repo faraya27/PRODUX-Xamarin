@@ -24,6 +24,8 @@ namespace API_PRODUX.Models
         public string Direccion { get; set; }
         public string Usuario_Creacion { get; set; }
 
+        public DateTime Fecha_Creacion { get; set; }
+
         //Lista
 
 
@@ -35,6 +37,53 @@ namespace API_PRODUX.Models
             {
                 OdbcCommand command = new OdbcCommand();
                 string Sql = "{call [dbo].[sp_Seleccionar_Cliente]}";
+
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = Sql;
+                command.Connection = conn;
+
+                OdbcDataReader reader = command.ExecuteReader();
+
+                List<ClienteModel> lista = new List<ClienteModel>();
+                while (reader.Read())
+                {
+                    ClienteModel Cliente = new ClienteModel();
+
+                    Cliente.Cedula = reader["Cedula"].ToString();
+                    Cliente.Nombre = reader["Nombre"].ToString();
+                    Cliente.Direccion = reader["Direccion"].ToString();
+                    Cliente.Telefono = reader["Telefono"].ToString();
+                    Cliente.Email = reader["Correo"].ToString();
+                    Cliente.Estado = Convert.ToInt32(reader["Estado"].ToString());
+                    lista.Add(Cliente);
+                }
+                reader.Close();
+                return lista;
+            }
+            catch (OdbcException ax)
+            {
+                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("ERROR AL OBTENER LA CONSULTA. DETALLE: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
+
+        public static List<ClienteModel> SeleccionarClientesActivos()
+        {
+            OdbcConnection conn = Conexion.obtenerConexion();
+
+            try
+            {
+                OdbcCommand command = new OdbcCommand();
+                string Sql = "{call [dbo].[sp_Seleccionar_Cliente_Activos]}";
 
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = Sql;
