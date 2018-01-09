@@ -10,6 +10,22 @@ Plugin.Media.MediaPickerActivity, Plugin.Media;md55b01af31820394fbfb172542d12585
 Plugin.Media.MediaPickerActivity, Plugin.Media, Version=3.1.2.0, Culture=neutral, PublicKeyToken=null;md55b01af31820394fbfb172542d1258596.MediaPickerActivity
 Plugin.Media.MediaPickerActivity;md55b01af31820394fbfb172542d1258596.MediaPickerActivity
 plugin.media.MediaPickerActivity;md55b01af31820394fbfb172542d1258596.MediaPickerActivity
+Plugin.Toasts.AlarmHandler, Toasts.Forms.Plugin.Droid;md52d189d64b7b0ac40b59b56928c06114b.AlarmHandler
+Plugin.Toasts.AlarmHandler, Toasts.Forms.Plugin.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md52d189d64b7b0ac40b59b56928c06114b.AlarmHandler
+Plugin.Toasts.AlarmHandler;md52d189d64b7b0ac40b59b56928c06114b.AlarmHandler
+plugin.toasts.AlarmHandler;md52d189d64b7b0ac40b59b56928c06114b.AlarmHandler
+Plugin.Toasts.NotificationReceiver, Toasts.Forms.Plugin.Droid;md52d189d64b7b0ac40b59b56928c06114b.NotificationReceiver
+Plugin.Toasts.NotificationReceiver, Toasts.Forms.Plugin.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md52d189d64b7b0ac40b59b56928c06114b.NotificationReceiver
+Plugin.Toasts.NotificationReceiver;md52d189d64b7b0ac40b59b56928c06114b.NotificationReceiver
+plugin.toasts.NotificationReceiver;md52d189d64b7b0ac40b59b56928c06114b.NotificationReceiver
+Plugin.Toasts.ToastCallback, Toasts.Forms.Plugin.Droid;md52d189d64b7b0ac40b59b56928c06114b.ToastCallback
+Plugin.Toasts.ToastCallback, Toasts.Forms.Plugin.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md52d189d64b7b0ac40b59b56928c06114b.ToastCallback
+Plugin.Toasts.ToastCallback;md52d189d64b7b0ac40b59b56928c06114b.ToastCallback
+plugin.toasts.ToastCallback;md52d189d64b7b0ac40b59b56928c06114b.ToastCallback
+Plugin.Toasts.EmptyOnClickListener, Toasts.Forms.Plugin.Droid;md52d189d64b7b0ac40b59b56928c06114b.EmptyOnClickListener
+Plugin.Toasts.EmptyOnClickListener, Toasts.Forms.Plugin.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md52d189d64b7b0ac40b59b56928c06114b.EmptyOnClickListener
+Plugin.Toasts.EmptyOnClickListener;md52d189d64b7b0ac40b59b56928c06114b.EmptyOnClickListener
+plugin.toasts.EmptyOnClickListener;md52d189d64b7b0ac40b59b56928c06114b.EmptyOnClickListener
 Android.Support.V4.Widget.SearchViewCompat/IOnCloseListenerImplementor, Xamarin.Android.Support.Compat;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat+IOnCloseListenerImplementor, Xamarin.Android.Support.Compat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor
 Android.Support.V4.Widget.SearchViewCompat.IOnCloseListenerImplementor;mono.android.support.v4.widget.SearchViewCompat_OnCloseListenerImplementor

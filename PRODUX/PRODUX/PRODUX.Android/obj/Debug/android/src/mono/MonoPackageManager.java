@@ -120,6 +120,7 @@ class MonoPackageManager_Resources {
 		"Remotion.Linq.dll",
 		"System.Runtime.CompilerServices.Unsafe.dll",
 		"Toasts.Forms.Plugin.Abstractions.dll",
+		"Toasts.Forms.Plugin.Droid.dll",
 		"Xamarin.Android.Support.Animated.Vector.Drawable.dll",
 		"Xamarin.Android.Support.Annotations.dll",
 		"Xamarin.Android.Support.Compat.dll",

@@ -100,3 +100,4 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.xm
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.pdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Toasts.Forms.Plugin.Abstractions.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csprojResolveAssemblyReference.cache

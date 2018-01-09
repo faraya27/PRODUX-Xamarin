@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Plugin.Media;
+using Plugin.Toasts;
 using PRODUX.Model;
 using System;
 using System.Collections.Generic;
@@ -150,7 +151,11 @@ namespace PRODUX.ViewModel
                 else
                 {
                     App.Current.MainPage.DisplayAlert("Login", "Usuario y contraseña incorrectas!", "OK");
-                }                
+                }
+
+                Usuario = string.Empty;
+                Contrasenna = string.Empty;
+                RecordarCredenciales = false;
             }
             catch (Exception ex)
             {

@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
+using Plugin.Toasts;
 
 namespace PRODUX.Droid
 {
@@ -20,7 +22,8 @@ namespace PRODUX.Droid
 			base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
-			LoadApplication (new PRODUX.App ());
+
+            LoadApplication (new PRODUX.App ());
 		}
 	}
 }
