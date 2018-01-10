@@ -23,6 +23,15 @@ namespace API_PRODUX.Controllers
         }
 
         [HttpGet]
+        public HttpResponseMessage SeleccionarClientesActivos()
+        {
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(ClienteModel.SeleccionarClientesActivos()), Encoding.UTF8, "application/json");
+            return response;
+            //return JsonConvert.SerializeObject(ClienteModel.SeleccionarClientes());
+        }
+
+        [HttpGet]
         public HttpResponseMessage SeleccionarClientesPorCodigo(string codigo)
         {
             var response = Request.CreateResponse(HttpStatusCode.OK);

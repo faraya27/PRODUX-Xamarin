@@ -23,6 +23,17 @@ namespace API_PRODUX.Controllers
             //return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductos());
         }
 
+
+        [HttpGet]
+        public HttpResponseMessage SeleccionarProductosActivos()
+        {
+
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(ProductoModel.SeleccionarProductosActivos()), Encoding.UTF8, "application/json");
+            return response;
+            //return JsonConvert.SerializeObject(ProductoModel.SeleccionarProductos());
+        }
+
         [HttpGet]
         public HttpResponseMessage SeleccionarProductoPorCodigo(string codigo)
         {
