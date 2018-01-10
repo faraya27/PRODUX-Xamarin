@@ -19,14 +19,25 @@
             </StackLayout>
             <StackLayout>
                 <Label Text="Cliente:"/>
-                <Picker SelectedItem="{Binding Cliente}"/>
+                <Picker Title="Seleccione un cliente" SelectedItem="{Binding Cliente}" ItemsSource="{Binding LstClientes}" ItemDisplayBinding="{Binding Nombre}" />
             </StackLayout>
             <StackLayout>
                 <Entry Placeholder="Búsqueda" Text="{Binding Filtro}"/>
             </StackLayout>
             <StackLayout>
                 <ListView ItemsSource="{Binding LstProductos}">
-                
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image/>
+                                    <Label Text="{Binding Descripcion}" HorizontalOptions="Center"/>
+                                    <Entry Keyboard="Numeric"/>
+                                    <Switch/>
+                                </StackLayout>                                
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
             <StackLayout>

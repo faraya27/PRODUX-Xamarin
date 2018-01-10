@@ -6,7 +6,7 @@ namespace PRODUX.Model
 {
     public class URLAPI
     {
-        private static string URLRaiz = "https://fe6a8d34.ngrok.io";
+        private static string URLRaiz = "https://69fe996a.ngrok.io";
 
         public static string Usuario()
         {

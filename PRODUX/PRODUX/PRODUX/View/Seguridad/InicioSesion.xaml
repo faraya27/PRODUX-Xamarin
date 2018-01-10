@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRODUX.View.InicioSesion">
     <ContentPage.Content>
+        <!--<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+            <Label Text="PRODUX" AbsoluteLayout.LayoutBounds=".2,.1,100,100"/>
+        </AbsoluteLayout>-->
         <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Label Text="PRODUX"/>
@@ -26,6 +29,7 @@
                 <Switch IsToggled="{Binding RecordarCredenciales}"/>
             </StackLayout>
             <Button Text="Iniciar Sesión" Command="{Binding ValidarCredencialesCommand}"/>
-        </StackLayout>        
+        </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

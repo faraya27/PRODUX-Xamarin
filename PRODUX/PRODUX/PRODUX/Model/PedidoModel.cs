@@ -40,7 +40,7 @@ namespace PRODUX.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Pedido() + "SeleccionarPedidos");
+                    var uri = new Uri(URLAPI.Pedido() + "SeleccionarPedido");
 
                     HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();

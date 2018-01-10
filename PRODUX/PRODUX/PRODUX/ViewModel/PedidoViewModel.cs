@@ -60,6 +60,10 @@ namespace PRODUX.ViewModel
 
         private ObservableCollection<PedidoModel> _lstPedidos = new ObservableCollection<PedidoModel>();
 
+        private ObservableCollection<ProductoModel> _lstProductosPedido = new ObservableCollection<ProductoModel>();
+
+        private ObservableCollection<ClienteModel> _lstClientes = new ObservableCollection<ClienteModel>();
+
         private ObservableCollection<ProductoModel> _lstProductos = new ObservableCollection<ProductoModel>();
 
         #endregion
@@ -153,6 +157,19 @@ namespace PRODUX.ViewModel
             }
         }
 
+        public ObservableCollection<ProductoModel> LstProductosPedido
+        {
+            get
+            {
+                return _lstProductosPedido;
+            }
+            set
+            {
+                _lstProductosPedido = value;
+                OnPropertyChanged("LstProductosPedido");
+            }
+        }
+
         public ObservableCollection<ProductoModel> LstProductos
         {
             get
@@ -163,6 +180,19 @@ namespace PRODUX.ViewModel
             {
                 _lstProductos = value;
                 OnPropertyChanged("LstProductos");
+            }
+        }
+
+        public ObservableCollection<ClienteModel> LstClientes
+        {
+            get
+            {
+                return _lstClientes;
+            }
+            set
+            {
+                _lstClientes = value;
+                OnPropertyChanged("LstClientes");
             }
         }
 
@@ -195,6 +225,9 @@ namespace PRODUX.ViewModel
         {
             LstPedidos = await PedidoModel.SeleccionarTodos();
             _lstOriginalPedidos = LstPedidos.ToList();
+
+            LstClientes = await ClienteModel.SeleccionarActivos();
+            LstProductos = await ProductoModel.SeleccionarActivos();
         }
 
         private void GuardarPedido()

@@ -115,6 +115,12 @@ namespace PRODUX.ViewModel
             Contrasenna = "a";
         }
 
+        public void MostrarMensaje(string mensaje)
+        {
+            App.Current.MainPage.DisplayAlert("Usuarios", mensaje, "OK");
+            //Toasts.MakeText(Forms.Context, mensaje, ToastLength.Short).Show();
+        }
+
         private async void validarCredenciales()
         {
             string resultadoValidacion = string.Empty;
@@ -123,13 +129,13 @@ namespace PRODUX.ViewModel
             {
                 if (Usuario.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Login", "Debe ingresar el usuario!", "OK");
+                    MostrarMensaje("Debe ingresar el usuario!");
                     return;
                 }
 
                 if (Contrasenna.Equals(""))
                 {
-                    App.Current.MainPage.DisplayAlert("Login", "Debe ingresar la contraseña!", "OK");
+                    MostrarMensaje("Debe ingresar la contraseña!");
                     return;
                 }
 
@@ -150,7 +156,7 @@ namespace PRODUX.ViewModel
                 }
                 else
                 {
-                    App.Current.MainPage.DisplayAlert("Login", "Usuario y contraseña incorrectas!", "OK");
+                    MostrarMensaje("Usuario y contraseña incorrectas!");
                 }
 
                 Usuario = string.Empty;
@@ -159,7 +165,7 @@ namespace PRODUX.ViewModel
             }
             catch (Exception ex)
             {
-                App.Current.MainPage.DisplayAlert("Login", "No fue posible verificar las credenciales!", "OK");
+                MostrarMensaje("No fue posible verificar las credenciales!");
             }
             
 

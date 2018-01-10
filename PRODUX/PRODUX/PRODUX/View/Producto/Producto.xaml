@@ -20,11 +20,11 @@
             </StackLayout>
             <StackLayout>
                 <Label Text="Precio:"/>
-                <Entry Text="{Binding Precio}"/>
+                <Entry Keyboard="Numeric" Text="{Binding Precio}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Cant. Inventario:"/>
-                <Entry Text="{Binding CantidadInventario}"/>
+                <Entry Keyboard="Numeric" Text="{Binding CantidadInventario}"/>
             </StackLayout>
             <StackLayout>
                 <Label Text="Estado:"/>

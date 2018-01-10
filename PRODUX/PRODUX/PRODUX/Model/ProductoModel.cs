@@ -63,6 +63,31 @@ namespace PRODUX.Model
 
         }
 
+        public static async Task<ObservableCollection<ProductoModel>> SeleccionarActivos()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Producto() + "SeleccionarProductosActivos");
+
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return new ObservableCollection<ProductoModel>(JsonConvert.DeserializeObject<ProductoModel[]>(resultado).ToList());
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public static async Task<ProductoModel> SeleccionarPorCodigo(string codigo)
         {
             try
@@ -97,17 +122,18 @@ namespace PRODUX.Model
                     var uri = new Uri(URLAPI.Producto() + "InsertarProducto");
 
                     var json = JsonConvert.SerializeObject(
-                                                            new {
-                                                                    Codigo = producto.Codigo,
-                                                                    Descripcion = producto.Descripcion,
-                                                                    Precio = producto.Precio,
-                                                                    CantidadInventario = producto.CantidadInventario,
-                                                                    Estado = producto.Estado,
-                                                                    Observaciones = producto.Observaciones,
-                                                                    Imagen = producto.Imagen,
-                                                                    Usuario_Creacion = producto.Usuario_Creacion,
-                                                                    Fecha_Creacion = producto.Fecha_Creacion
-                                                                }
+                                                            new
+                                                            {
+                                                                Codigo = producto.Codigo,
+                                                                Descripcion = producto.Descripcion,
+                                                                Precio = producto.Precio,
+                                                                CantidadInventario = producto.CantidadInventario,
+                                                                Estado = producto.Estado,
+                                                                Observaciones = producto.Observaciones,
+                                                                Imagen = producto.Imagen,
+                                                                Usuario_Creacion = producto.Usuario_Creacion,
+                                                                Fecha_Creacion = producto.Fecha_Creacion
+                                                            }
                                                             );
 
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -138,17 +164,18 @@ namespace PRODUX.Model
                     var uri = new Uri(URLAPI.Producto() + "ActualizarProducto");
 
                     var json = JsonConvert.SerializeObject(
-                                                            new {
-                                                                    Codigo = producto.Codigo,
-                                                                    Descripcion = producto.Descripcion,
-                                                                    Precio = producto.Precio,
-                                                                    CantidadInventario = producto.CantidadInventario,
-                                                                    Estado = producto.Estado,
-                                                                    Observaciones = producto.Observaciones,
-                                                                    Imagen = producto.Imagen,
-                                                                    Usuario_Creacion = producto.Usuario_Creacion,
-                                                                    Fecha_Creacion = producto.Fecha_Creacion
-                                                                }
+                                                            new
+                                                            {
+                                                                Codigo = producto.Codigo,
+                                                                Descripcion = producto.Descripcion,
+                                                                Precio = producto.Precio,
+                                                                CantidadInventario = producto.CantidadInventario,
+                                                                Estado = producto.Estado,
+                                                                Observaciones = producto.Observaciones,
+                                                                Imagen = producto.Imagen,
+                                                                Usuario_Creacion = producto.Usuario_Creacion,
+                                                                Fecha_Creacion = producto.Fecha_Creacion
+                                                            }
                                                             );
 
                     var content = new StringContent(json, Encoding.UTF8, "application/json");

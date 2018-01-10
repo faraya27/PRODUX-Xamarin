@@ -15,7 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\ClienteModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PedidoLineaModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PedidoModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ProductoModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ProductoModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\URLAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\UsuarioModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ClienteViewModel.cs" />

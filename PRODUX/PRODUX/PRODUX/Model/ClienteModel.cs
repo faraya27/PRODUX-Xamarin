@@ -61,6 +61,31 @@ namespace PRODUX.Model
 
         }
 
+        public static async Task<ObservableCollection<ClienteModel>> SeleccionarActivos()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Cliente() + "SeleccionarClientesActivos");
+
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return new ObservableCollection<ClienteModel>(JsonConvert.DeserializeObject<ClienteModel[]>(resultado).ToList());
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public static async Task<ClienteModel> SeleccionarPorCodigo(string codigo)
         {
             try
