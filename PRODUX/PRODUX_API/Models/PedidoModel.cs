@@ -35,7 +35,7 @@ namespace API_PRODUX.Models
             try
             {
                 OdbcCommand command = new OdbcCommand();
-                string Sql = "{call [dbo].[sp_Seleccionar_Productos]}";
+                string Sql = "{call [dbo].[sp_Seleccionar_Pedidos]}";
 
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = Sql;

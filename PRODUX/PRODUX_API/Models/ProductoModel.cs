@@ -81,6 +81,52 @@ namespace API_PRODUX.Models
                 conn.Dispose();
             }
         }
+        public static List<ProductoModel> SeleccionarProductosActivos()
+        {
+            OdbcConnection conn = Conexion.obtenerConexion();
+
+            try
+            {
+                OdbcCommand command = new OdbcCommand();
+                string Sql = "{call [dbo].[sp_Seleccionar_ProductosActivos]}";
+
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = Sql;
+                command.Connection = conn;
+
+                OdbcDataReader reader = command.ExecuteReader();
+
+                List<ProductoModel> lista = new List<ProductoModel>();
+                while (reader.Read())
+                {
+                    ProductoModel Producto = new ProductoModel();
+
+                    Producto.Codigo = reader["Id_Producto"].ToString();
+                    Producto.Descripcion = reader["Descripcion"].ToString();
+                    Producto.Precio = Convert.ToDouble(reader["Precio"].ToString());
+                    Producto.CantidadInventario = Convert.ToInt32(reader["Cant_Inventario"].ToString());
+                    Producto.Observaciones = reader["Observaciones"].ToString();
+                    Producto.Imagen = reader["Imagen"].ToString();
+                    Producto.Estado = Convert.ToInt32(reader["Estado"].ToString());
+                    lista.Add(Producto);
+                }
+                reader.Close();
+                return lista;
+            }
+            catch (OdbcException ax)
+            {
+                throw new ApplicationException("Error en Base de Datos..! \n" + ax.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("ERROR AL OBTENER LA CONSULTA. DETALLE: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+        }
         //Por codigo
 
         public static List<ProductoModel> SeleccionarProductosPorCodigo(string IdProducto)

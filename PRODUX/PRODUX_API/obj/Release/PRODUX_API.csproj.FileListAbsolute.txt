@@ -53,3 +53,4 @@ C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.M
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.xml
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.pdb
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.xml
+C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Toasts.Forms.Plugin.Abstractions.pdb
