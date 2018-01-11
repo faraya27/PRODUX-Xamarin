@@ -80,6 +80,8 @@ namespace PRODUX.ViewModel
 
         public ICommand TomarFotoCommand { get; set; }
 
+        public ICommand VerImagenCommand { get; set; }
+
         public string Filtro
         {
             get
@@ -185,6 +187,19 @@ namespace PRODUX.ViewModel
             }
         }
 
+        public ProductoModel ProductoActual
+        {
+            get
+            {
+                return _ProductoActual;
+            }
+            set
+            {
+                _ProductoActual = value;
+                OnPropertyChanged("ProductoActual");
+            }
+        }
+
         public ObservableCollection<ProductoModel> LstProductos
         {
             get
@@ -208,6 +223,7 @@ namespace PRODUX.ViewModel
             EliminarProductoCommand = new Command(EliminarProducto);
             EditarProductoCommand = new Command<ProductoModel>(EditarProducto);
             TomarFotoCommand = new Command(TomarFoto);
+            VerImagenCommand = new Command<ProductoModel>(VerImagen);
         }
 
         private void InicializarClase()
@@ -346,6 +362,12 @@ namespace PRODUX.ViewModel
             {
                 MostrarMensaje("No fue posible tomar la foto!");
             }            
+        }
+
+        private void VerImagen(ProductoModel producto)
+        {
+            ProductoActual = producto;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Producto.ImagenProducto());
         }
 
         #endregion

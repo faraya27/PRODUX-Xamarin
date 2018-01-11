@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PRODUX.View.Pedido.Pedido">
-    <ContentPage.Content>
+             x:Class="PRODUX.View.Pedido.Pedido"
+             xmlns:local="clr-namespace:PRODUX.View.Convertidores">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImagenConverter x:Key="cnvImagen"></local:ImagenConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>        
         <StackLayout>
             <StackLayout>
                 <Label Text="Pedido"
@@ -30,7 +36,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Image/>
+                                    <Image Source="{Binding Imagen, Converter={StaticResource cnvImagen}}" />
                                     <Label Text="{Binding Descripcion}" HorizontalOptions="Center"/>
                                     <Entry Keyboard="Numeric"/>
                                     <Switch/>
