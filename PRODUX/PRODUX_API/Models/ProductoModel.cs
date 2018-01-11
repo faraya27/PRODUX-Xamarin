@@ -60,7 +60,15 @@ namespace API_PRODUX.Models
                     Producto.Precio = Convert.ToDouble(reader["Precio"].ToString());
                     Producto.CantidadInventario = Convert.ToInt32(reader["Cant_Inventario"].ToString());
                     Producto.Observaciones = reader["Observaciones"].ToString();
-                    Producto.Imagen = reader["Imagen"].ToString();
+                    string ruta = reader["Imagen"].ToString();
+                    string imagen = "";
+                    if (File.Exists(ruta))
+                    {
+                        byte[] bytesImagen = File.ReadAllBytes(ruta);
+                        imagen = Convert.ToBase64String(bytesImagen);
+                    }
+
+                    Producto.Imagen = imagen;
                     Producto.Estado = Convert.ToInt32(reader["Estado"].ToString());
                     lista.Add(Producto);
                 }
@@ -106,7 +114,15 @@ namespace API_PRODUX.Models
                     Producto.Precio = Convert.ToDouble(reader["Precio"].ToString());
                     Producto.CantidadInventario = Convert.ToInt32(reader["Cant_Inventario"].ToString());
                     Producto.Observaciones = reader["Observaciones"].ToString();
-                    Producto.Imagen = reader["Imagen"].ToString();
+                    string ruta = reader["Imagen"].ToString();
+                    string imagen = "";
+                    if (File.Exists(ruta))
+                    {
+                        byte[] bytesImagen = File.ReadAllBytes(ruta);
+                         imagen = Convert.ToBase64String(bytesImagen);
+                    }
+
+                    Producto.Imagen = imagen;
                     Producto.Estado = Convert.ToInt32(reader["Estado"].ToString());
                     lista.Add(Producto);
                 }
@@ -158,6 +174,12 @@ namespace API_PRODUX.Models
                     Producto.Precio = Convert.ToDouble(reader["Precio"].ToString());
                     Producto.CantidadInventario = Convert.ToInt32(reader["Cant_Inventario"].ToString());
                     Producto.Observaciones = reader["Observaciones"].ToString();
+                    string ruta = reader["Imagen"].ToString();
+                    if (!File.Exists(ruta))
+                    {
+                       FileStream fs = File.Open(ruta,FileMode.Open);
+                    }
+
                     Producto.Imagen = reader["Imagen"].ToString();
                     Producto.Estado = Convert.ToInt32(reader["Estado"].ToString());
                     lista.Add(Producto);
@@ -195,7 +217,7 @@ namespace API_PRODUX.Models
                 {
                     Directory.CreateDirectory(ruta);
                 }
-                File.WriteAllBytes(ruta+ @"\Foto.png", Imagen);
+                File.WriteAllBytes(ruta+ @"\"+ producto.Descripcion+".png", Imagen);
 
 
                 OdbcCommand command = new OdbcCommand();
@@ -216,7 +238,7 @@ namespace API_PRODUX.Models
                 command.Parameters.Add("@Observaciones", OdbcType.VarChar);
                 command.Parameters["@Observaciones"].Value = producto.Observaciones;
                 command.Parameters.Add("@Imagen", OdbcType.VarChar);
-                command.Parameters["@Imagen"].Value = "hola";
+                command.Parameters["@Imagen"].Value = ruta + @"\" + producto.Descripcion + ".png";
                 command.Parameters.Add("@Estado", OdbcType.Int);
                 command.Parameters["@Estado"].Value = producto.Estado;
                 command.Parameters.Add("@Usuario_Creacion", OdbcType.VarChar);
