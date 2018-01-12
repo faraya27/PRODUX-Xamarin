@@ -15,12 +15,14 @@ namespace PRODUX
 		{
 			InitializeComponent();
 
-            UsuarioModel usuario = new UsuarioModel();
-            List<UsuarioModel> lstUsuarios = UsuarioModel.ObtenerUsuarioRealm();
+            //List<UsuarioModel> lstUsuarios = UsuarioModel.ObtenerUsuarioRealm();
+            UsuarioModel usuario = UsuarioModel.ObtenerUsuarioRealm();
 
-            if (lstUsuarios.Count > 0)
+            //if (lstUsuarios.Count > 0)
+            if (usuario != null)
             {
-                //Falta asignar usuario global
+                
+                PRODUX.ViewModel.Globales.UsuarioActivo = usuario.Usuario;
 
                 NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
                 MainPage = new MasterDetailPage

@@ -83,6 +83,7 @@ namespace PRODUX.ViewModel
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ProductoTab);
+            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
         }
 
         private void AbrirPantallaPedido()
@@ -90,6 +91,7 @@ namespace PRODUX.ViewModel
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.Pedido());
+            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
         }
 
         private void AbrirPantallaConsultaPedidos()
@@ -97,6 +99,7 @@ namespace PRODUX.ViewModel
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.ConsultaPedido());
+            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
         }
 
         private void AbrirPantallaCliente()
@@ -115,6 +118,7 @@ namespace PRODUX.ViewModel
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ClienteTab);
+            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
         }
 
         private void AbrirPantallaUsuario()
@@ -129,14 +133,17 @@ namespace PRODUX.ViewModel
             //    Master = new PRODUX.View.Menu.Menu(),
             //    Detail = navigation
             //};
-
+            
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(UsuarioTab);
+            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
         }
 
         private void CerrarSesion()
         {
+            PRODUX.Model.UsuarioModel.EliminarUsuarioRealm();
+
             Application.Current.MainPage = new PRODUX.View.InicioSesion();
         }
 

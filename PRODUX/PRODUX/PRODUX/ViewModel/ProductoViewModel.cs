@@ -246,6 +246,8 @@ namespace PRODUX.ViewModel
             Estado = false;
             Observaciones = string.Empty;
             Imagen = string.Empty;
+
+            ProductoActual = null;
         }
 
         public void MostrarMensaje(string mensaje)
@@ -311,14 +313,35 @@ namespace PRODUX.ViewModel
             }
         }
 
-        private void EliminarProducto()
+        private async void EliminarProducto()
         {
+            string resultado = string.Empty;
 
+            if (ProductoActual == null)
+            {
+                MostrarMensaje("Debe seleccionar un producto para poder eliminarlo");
+                return;
+            }
+
+            resultado = await ProductoModel.Eliminar(ProductoActual);
+
+            if (resultado.Equals("true"))
+            {
+                RefrescarLista();
+                MostrarMensaje("Producto eliminado");
+                Limpiar();
+                return;
+            }
+            else
+            {
+                MostrarMensaje("No fue posible eliminar el producto");
+                return;
+            }
         }
 
         private void EditarProducto(ProductoModel producto)
         {
-            _ProductoActual = producto;
+            ProductoActual = producto;
 
             Codigo = producto.Codigo;
             Descripcion = producto.Descripcion;

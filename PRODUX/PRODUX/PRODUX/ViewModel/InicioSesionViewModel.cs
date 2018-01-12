@@ -147,7 +147,16 @@ namespace PRODUX.ViewModel
 
                 if (resultadoValidacion == Usuario)
                 {
+                    if (RecordarCredenciales)
+                    {
+                        UsuarioModel.InsertarUsuarioRealm(objUsuario);
+                    }
+
+                    PRODUX.ViewModel.Globales.UsuarioActivo = Usuario;
+
                     NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
+                    navigation.CurrentPage.Title = Usuario;                    
+
                     App.Current.MainPage = new MasterDetailPage
                     {
                         Master = new PRODUX.View.Menu.Menu(),

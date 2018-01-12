@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\URLAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\UsuarioModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ClienteViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\Globales.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\InicioSesionViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MenuViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\PedidoViewModel.cs" />

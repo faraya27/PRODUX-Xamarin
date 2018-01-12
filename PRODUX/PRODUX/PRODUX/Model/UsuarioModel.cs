@@ -232,19 +232,19 @@ namespace PRODUX.Model
         }
 
         //Metodos REALM
-        public static void InsertarUsuarioRealm()
+        public static void InsertarUsuarioRealm(UsuarioModel usuario)
         {
             var realm = Realm.GetInstance();
 
             realm.Write(() =>
             {
-                var usuario = new UsuarioModel
+                var usuarioRealm = new UsuarioModel
                 {
-                    Usuario = "Carolina",
-                    Contrasenna = "a"
+                    Usuario = usuario.Usuario,
+                    Contrasenna = usuario.Contrasenna
                 };
 
-                realm.Add(usuario);
+                realm.Add(usuarioRealm);
             });            
         }
 
@@ -265,11 +265,11 @@ namespace PRODUX.Model
             }                
         }
 
-        public static List<UsuarioModel> ObtenerUsuarioRealm()
+        public static UsuarioModel ObtenerUsuarioRealm()
         {
             var realm = Realm.GetInstance();
 
-            return realm.All<UsuarioModel>().ToList();
+            return realm.All<UsuarioModel>().First();
         }
 
         #endregion
