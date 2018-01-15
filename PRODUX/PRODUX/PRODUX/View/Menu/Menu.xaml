@@ -5,61 +5,50 @@
              x:Class="PRODUX.View.Menu.Menu" 
              Title="Menu Principal">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="40">
+        <StackLayout Orientation="Vertical" BackgroundColor="Black">
+            <StackLayout BackgroundColor="White" HeightRequest="1"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirProductoCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Productos" FontSize="Medium"/>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirProductoCommand, Source={x:Reference Menu}}"/>
-                </Label.GestureRecognizers>
+                <Label Text="Productos" FontSize="Medium" TextColor="White"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="40">
+            <StackLayout BackgroundColor="White" HeightRequest="1"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirPedidoCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Pedidos" FontSize="Medium"/>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirPedidoCommand, Source={x:Reference Menu}}"/>
-                </Label.GestureRecognizers>
+                <Label Text="Pedidos" FontSize="Medium" TextColor="White"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="40">
+            <StackLayout BackgroundColor="White" HeightRequest="1"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirConsultaPedidosCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Consulta de Pedidos" FontSize="Medium"/>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirConsultaPedidosCommand, Source={x:Reference Menu}}"/>
-                </Label.GestureRecognizers>
+                <Label Text="Consulta de Pedidos" FontSize="Medium" TextColor="White"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="40">
+            <StackLayout BackgroundColor="White" HeightRequest="1"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirClienteCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Clientes" FontSize="Medium"/>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirClienteCommand, Source={x:Reference Menu}}"/>
-                </Label.GestureRecognizers>
+                <Label Text="Clientes" FontSize="Medium" TextColor="White"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="40">
+            <StackLayout BackgroundColor="White" HeightRequest="1"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirUsuarioCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Usuarios" FontSize="Medium"/>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirUsuarioCommand, Source={x:Reference Menu}}"/>
-                </Label.GestureRecognizers>
+                <Label Text="Usuarios" FontSize="Medium" TextColor="White"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="40">
+            <StackLayout BackgroundColor="White" HeightRequest="1"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.CerrarSesionCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Cerrar Sesión" FontSize="Medium"/>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=BindingContext.CerrarSesionCommand, Source={x:Reference Menu}}"/>
-                </Label.GestureRecognizers>
+                <Label Text="Cerrar Sesión" FontSize="Medium" TextColor="White"/>
             </StackLayout>
+            <StackLayout BackgroundColor="White" HeightRequest="1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

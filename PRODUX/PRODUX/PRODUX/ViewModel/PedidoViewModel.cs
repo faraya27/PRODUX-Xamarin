@@ -60,7 +60,7 @@ namespace PRODUX.ViewModel
 
         private ObservableCollection<PedidoModel> _lstPedidos = new ObservableCollection<PedidoModel>();
 
-        private ObservableCollection<ProductoModel> _lstProductosPedido = new ObservableCollection<ProductoModel>();
+        private ObservableCollection<PedidoLineaModel> _lstPedidoLinea = new ObservableCollection<PedidoLineaModel>();
 
         private ObservableCollection<ClienteModel> _lstClientes = new ObservableCollection<ClienteModel>();
 
@@ -77,6 +77,10 @@ namespace PRODUX.ViewModel
         public ICommand ConfirmarPedidoCommand { get; set; }
 
         public ICommand EditarPedidoCommand { get; set; }
+
+        public ICommand ProductoSeleccionadoCommand { get; set; }
+
+        public ICommand CantidadCambiadaCommand { get; set; }
 
         public string Filtro
         {
@@ -157,16 +161,16 @@ namespace PRODUX.ViewModel
             }
         }
 
-        public ObservableCollection<ProductoModel> LstProductosPedido
+        public ObservableCollection<PedidoLineaModel> LstPedidoLinea
         {
             get
             {
-                return _lstProductosPedido;
+                return _lstPedidoLinea;
             }
             set
             {
-                _lstProductosPedido = value;
-                OnPropertyChanged("LstProductosPedido");
+                _lstPedidoLinea = value;
+                OnPropertyChanged("LstPedidoLinea");
             }
         }
 
@@ -219,6 +223,8 @@ namespace PRODUX.ViewModel
             EliminarPedidoCommand = new Command(EliminarPedido);
             ConfirmarPedidoCommand = new Command(ConfirmarPedido);
             EditarPedidoCommand = new Command<PedidoModel>(EditarPedido);
+            ProductoSeleccionadoCommand = new Command<PedidoLineaModel>(ProductoSeleccionado);
+            CantidadCambiadaCommand = new Command<PedidoLineaModel>(CantidadCambiada);
         }
 
         private async void InicializarClase()
@@ -250,6 +256,16 @@ namespace PRODUX.ViewModel
             IdPedido = pedido.Id_Pedido;
             Fecha = pedido.Fecha;
             //Cliente = pedido.Cliente;
+        }
+
+        private void ProductoSeleccionado(PedidoLineaModel pedidoLinea)
+        {
+            pedidoLinea.Seleccionado = true;
+        }
+
+        private void CantidadCambiada(PedidoLineaModel pedidoLinea)
+        {
+            
         }
 
         private void FiltrarLista(string filtro)

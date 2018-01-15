@@ -60,6 +60,8 @@ namespace PRODUX.ViewModel
 
         public ICommand ValidarCredencialesCommand { get; set; }
 
+        public ICommand TextoCambiadoCommand { get; set; }
+
         public string Usuario
         {
             get
@@ -105,8 +107,7 @@ namespace PRODUX.ViewModel
 
         private void InicializarComandos()
         {
-            ValidarCredencialesCommand = new Command(validarCredenciales); 
-
+            ValidarCredencialesCommand = new Command(validarCredenciales);
         }
 
         private void InicializarClase()
@@ -143,6 +144,8 @@ namespace PRODUX.ViewModel
                 objUsuario.Usuario = Usuario;
                 objUsuario.Contrasenna = Contrasenna;
 
+                //UsuarioModel.InsertarUsuarioRealm(objUsuario);
+                
                 resultadoValidacion = await UsuarioModel.Autenticar(objUsuario);//"VALIDO";
 
                 if (resultadoValidacion == Usuario)
@@ -155,7 +158,9 @@ namespace PRODUX.ViewModel
                     PRODUX.ViewModel.Globales.UsuarioActivo = Usuario;
 
                     NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
-                    navigation.CurrentPage.Title = Usuario;                    
+                    navigation.CurrentPage.Title = Usuario;
+                    navigation.BarBackgroundColor = Color.Black;
+                    navigation.BarTextColor = Color.White;
 
                     App.Current.MainPage = new MasterDetailPage
                     {

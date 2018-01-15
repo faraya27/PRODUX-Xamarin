@@ -72,34 +72,27 @@ namespace PRODUX.ViewModel
             TabbedPage ProductoTab = new PRODUX.View.Producto.ProductoTab();
             ProductoTab.Children.Add( new PRODUX.View.Producto.ConsultaProducto());
             ProductoTab.Children.Add(new PRODUX.View.Producto.Producto());
-
-            //NavigationPage navigation = new NavigationPage(ProductoTab);
-            //App.Current.MainPage = new MasterDetailPage
-            //{
-            //    Master = new PRODUX.View.Menu.Menu(),
-            //    Detail = navigation
-            //};
+            ProductoTab.Title = "Productos";
+            ProductoTab.BarBackgroundColor = Color.Black;
+            ProductoTab.BarTextColor = Color.White;
 
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ProductoTab);
-            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ProductoTab);            
         }
 
         private void AbrirPantallaPedido()
         {
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.Pedido());
-            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.Pedido { Title = "Pedidos" });            
         }
 
         private void AbrirPantallaConsultaPedidos()
         {
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.ConsultaPedido());
-            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.ConsultaPedido { Title = "Pedidos" });            
         }
 
         private void AbrirPantallaCliente()
@@ -107,18 +100,13 @@ namespace PRODUX.ViewModel
             TabbedPage ClienteTab = new PRODUX.View.Cliente.ClienteTab();
             ClienteTab.Children.Add(new PRODUX.View.Cliente.ConsultaCliente());
             ClienteTab.Children.Add(new PRODUX.View.Cliente.Cliente());
-
-            //NavigationPage navigation = new NavigationPage(ClienteTab);
-            //App.Current.MainPage = new MasterDetailPage
-            //{
-            //    Master = new PRODUX.View.Menu.Menu(),
-            //    Detail = navigation
-            //};
+            ClienteTab.Title = "Clientes";
+            ClienteTab.BarBackgroundColor = Color.Black;
+            ClienteTab.BarTextColor = Color.White;
 
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ClienteTab);
-            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(ClienteTab);            
         }
 
         private void AbrirPantallaUsuario()
@@ -126,18 +114,13 @@ namespace PRODUX.ViewModel
             TabbedPage UsuarioTab = new PRODUX.View.Usuario.UsuarioTab();
             UsuarioTab.Children.Add(new PRODUX.View.Usuario.ConsultaUsuario());
             UsuarioTab.Children.Add(new PRODUX.View.Usuario.Usuario());
+            UsuarioTab.Title = "Usuarios";
+            UsuarioTab.BarBackgroundColor = Color.Black;
+            UsuarioTab.BarTextColor = Color.White;
 
-            //NavigationPage navigation = new NavigationPage(UsuarioTab);
-            //App.Current.MainPage = new MasterDetailPage
-            //{
-            //    Master = new PRODUX.View.Menu.Menu(),
-            //    Detail = navigation
-            //};
-            
             ((MasterDetailPage)App.Current.MainPage).IsPresented = false;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(UsuarioTab);
-            ((MasterDetailPage)App.Current.MainPage).Detail.Title = Globales.UsuarioActivo;
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(UsuarioTab);            
         }
 
         private void CerrarSesion()

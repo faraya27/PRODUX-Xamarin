@@ -25,6 +25,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\PedidoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ProductoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\UsuarioViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Behaviors\BehaviorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\Behaviors\EventToCommandBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Cliente\Cliente.xaml.cs">
       <DependentUpon>Cliente.xaml</DependentUpon>
       <SubType>Code</SubType>

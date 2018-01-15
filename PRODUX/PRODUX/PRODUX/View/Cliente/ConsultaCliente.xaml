@@ -5,12 +5,12 @@
              x:Class="PRODUX.View.Cliente.ConsultaCliente" 
              Title="Consulta">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
             <StackLayout>
                 <Entry Placeholder="Búsqueda" Text="{Binding Filtro}"/>            
             </StackLayout>
-            <StackLayout>
-                <ListView ItemsSource="{Binding LstClientes}">
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding LstClientes}" VerticalOptions="FillAndExpand">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

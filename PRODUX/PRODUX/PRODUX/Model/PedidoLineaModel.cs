@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -9,9 +10,17 @@ using System.Threading.Tasks;
 
 namespace PRODUX.Model
 {
-    public class PedidoLineaModel
+    public class PedidoLineaModel : INotifyPropertyChanged
     {
         public PedidoLineaModel() { }
+
+        #region Variables
+
+        private bool _Seleccionado = false;
+
+        private double _Cant_Solicitada = 0;
+
+        #endregion
 
         #region Propiedades
 
@@ -19,8 +28,36 @@ namespace PRODUX.Model
 
         public string Id_Producto { get; set; }
 
-        public double Cant_Solicitada { get; set; }
+        public string Desc_Producto { get; set; }
 
+        public string Imagen { get; set; }
+
+        public bool Seleccionado
+        {
+            get
+            {
+                return _Seleccionado;
+            }
+            set
+            {
+                _Seleccionado = value;
+                OnPropertyChanged("Seleccionado");
+            }
+        }
+
+        public double Cant_Solicitada
+        {
+            get
+            {
+                return _Cant_Solicitada;
+            }
+            set
+            {
+                _Cant_Solicitada = value;
+                OnPropertyChanged("Cant_Solicitada");
+            }
+        }
+                
         public double Precio_Unitario { get; set; }
 
         public double Subtotal { get; set; }
@@ -166,6 +203,18 @@ namespace PRODUX.Model
                 throw ex;
             }
 
+        }
+
+        #endregion
+
+        #region Notified Interface
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string PropertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
 
         #endregion

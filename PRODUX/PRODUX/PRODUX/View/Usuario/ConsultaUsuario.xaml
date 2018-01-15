@@ -9,7 +9,7 @@
             <StackLayout>
                 <Entry Placeholder="Búsqueda" Text="{Binding Filtro}"/>
             </StackLayout>
-            <StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand">
                 <ListView ItemsSource="{Binding LstUsuarios}">
                     <ListView.ItemTemplate>
                         <DataTemplate>

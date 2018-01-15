@@ -238,13 +238,16 @@ namespace PRODUX.Model
 
             realm.Write(() =>
             {
-                var usuarioRealm = new UsuarioModel
+                UsuarioModel usuarioRealm = new UsuarioModel
                 {
                     Usuario = usuario.Usuario,
                     Contrasenna = usuario.Contrasenna
                 };
 
-                realm.Add(usuarioRealm);
+                realm.Add<UsuarioModel>(usuarioRealm);
+                /*UsuarioModel usuarioRealm = realm.CreateObject("UsuarioModel","");
+                usuarioRealm.Usuario = usuario.Usuario;
+                usuarioRealm.Contrasenna = usuario.Contrasenna;*/
             });            
         }
 
@@ -267,9 +270,21 @@ namespace PRODUX.Model
 
         public static UsuarioModel ObtenerUsuarioRealm()
         {
+            UsuarioModel usuario = null;
+            UsuarioModel usuarioRealm;
             var realm = Realm.GetInstance();
 
-            return realm.All<UsuarioModel>().First();
+            if (realm.All<UsuarioModel>().Count() > 0) usuarioRealm = realm.All<UsuarioModel>().FirstOrDefault();
+            else usuarioRealm = null;
+
+            if (usuarioRealm != null)
+            {
+                usuario = new UsuarioModel();
+                usuario.Usuario = usuarioRealm.Usuario;
+                usuario.Contrasenna = usuarioRealm.Contrasenna;
+            }
+
+            return usuario;
         }
 
         #endregion

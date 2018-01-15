@@ -80,6 +80,8 @@ namespace PRODUX.ViewModel
 
         public ICommand TomarFotoCommand { get; set; }
 
+        public ICommand SeleccionarFotoCommand { get; set; }
+
         public ICommand VerImagenCommand { get; set; }
 
         public string Filtro
@@ -223,6 +225,7 @@ namespace PRODUX.ViewModel
             EliminarProductoCommand = new Command(EliminarProducto);
             EditarProductoCommand = new Command<ProductoModel>(EditarProducto);
             TomarFotoCommand = new Command(TomarFoto);
+            SeleccionarFotoCommand = new Command(SeleccionarFoto);
             VerImagenCommand = new Command<ProductoModel>(VerImagen);
         }
 
@@ -366,7 +369,7 @@ namespace PRODUX.ViewModel
 
                 await CrossMedia.Current.Initialize();
 
-                if (CrossMedia.Current.IsTakePhotoSupported)
+                if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
                 {
                     Plugin.Media.Abstractions.StoreCameraMediaOptions opciones = new Plugin.Media.Abstractions.StoreCameraMediaOptions();
 
@@ -385,6 +388,33 @@ namespace PRODUX.ViewModel
             {
                 MostrarMensaje("No fue posible tomar la foto!");
             }            
+        }
+
+        private async void SeleccionarFoto()
+        {
+            try
+            {
+                string rutaFoto;
+
+                await CrossMedia.Current.Initialize();
+
+                if (CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    var foto = await CrossMedia.Current.PickPhotoAsync();
+
+                    if (foto != null)
+                    {
+                        rutaFoto = foto.Path;
+
+                        byte[] array = File.ReadAllBytes(rutaFoto);
+                        Imagen = Convert.ToBase64String(array);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje("No fue posible seleccionar una foto!");
+            }
         }
 
         private void VerImagen(ProductoModel producto)
