@@ -15,6 +15,11 @@ namespace PRODUX_API.Models
         public double Cant_Solicitada { get; set; }
         public double Precio_Unitario { get; set; }
         public double Subtotal { get; set; }
+        public string Desc_Producto { get; set; }
+
+        public string Imagen { get; set; }
+
+        public bool Seleccionado { get; set; }
 
 
 
@@ -48,6 +53,9 @@ namespace PRODUX_API.Models
                     pedidoLinea.Cant_Solicitada = Convert.ToDouble(reader["Cant_Solicitada"].ToString());
                     pedidoLinea.Precio_Unitario = Convert.ToDouble(reader["Precio_Unitario"].ToString());
                     pedidoLinea.Subtotal = Convert.ToDouble(reader["Subtotal"].ToString());
+                    pedidoLinea.Desc_Producto = reader["Descripcion"].ToString();
+                    pedidoLinea.Imagen = reader["Imagen"].ToString();
+                    pedidoLinea.Seleccionado = Convert.ToBoolean(int.Parse(reader["Seleccionado"].ToString()));
                     lista.Add(pedidoLinea);
                 }
                 reader.Close();
