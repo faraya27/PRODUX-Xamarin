@@ -60,15 +60,15 @@ namespace API_PRODUX.Models
                     Producto.Precio = Convert.ToDouble(reader["Precio"].ToString());
                     Producto.CantidadInventario = Convert.ToInt32(reader["Cant_Inventario"].ToString());
                     Producto.Observaciones = reader["Observaciones"].ToString();
-                    string ruta = reader["Imagen"].ToString();
-                    string imagen = "";
-                    if (File.Exists(ruta))
-                    {
-                        byte[] bytesImagen = File.ReadAllBytes(ruta);
-                        imagen = Convert.ToBase64String(bytesImagen);
-                    }
+                    //string ruta = reader["Imagen"].ToString();
+                    //string imagen = "";
+                    //if (File.Exists(ruta))
+                    //{
+                    //    byte[] bytesImagen = File.ReadAllBytes(ruta);
+                    //    imagen = Convert.ToBase64String(bytesImagen);
+                    //}
 
-                    Producto.Imagen = imagen;
+                    Producto.Imagen = reader["Imagen"].ToString();
                     Producto.Estado = Convert.ToInt32(reader["Estado"].ToString());
                     lista.Add(Producto);
                 }
@@ -114,15 +114,15 @@ namespace API_PRODUX.Models
                     Producto.Precio = Convert.ToDouble(reader["Precio"].ToString());
                     Producto.CantidadInventario = Convert.ToInt32(reader["Cant_Inventario"].ToString());
                     Producto.Observaciones = reader["Observaciones"].ToString();
-                    string ruta = reader["Imagen"].ToString();
-                    string imagen = "";
-                    if (File.Exists(ruta))
-                    {
-                        byte[] bytesImagen = File.ReadAllBytes(ruta);
-                         imagen = Convert.ToBase64String(bytesImagen);
-                    }
+                    //string ruta = reader["Imagen"].ToString();
+                    //string imagen = "";
+                    //if (File.Exists(ruta))
+                    //{
+                    //    byte[] bytesImagen = File.ReadAllBytes(ruta);
+                    //     imagen = Convert.ToBase64String(bytesImagen);
+                    //}
 
-                    Producto.Imagen = imagen;
+                    Producto.Imagen = reader["Imagen"].ToString();
                     Producto.Estado = Convert.ToInt32(reader["Estado"].ToString());
                     lista.Add(Producto);
                 }
@@ -212,7 +212,7 @@ namespace API_PRODUX.Models
 
                 byte[] Imagen = Convert.FromBase64String(producto.Imagen);
                 
-                string ruta= @"C:\Users\Carolina\Documents\GitHub\Imagenes";
+                string ruta= @"C:\inetpub\wwwroot\Produx\Imagenes";
                 if (!Directory.Exists(ruta))
                 {
                     Directory.CreateDirectory(ruta);
@@ -238,7 +238,7 @@ namespace API_PRODUX.Models
                 command.Parameters.Add("@Observaciones", OdbcType.VarChar);
                 command.Parameters["@Observaciones"].Value = producto.Observaciones;
                 command.Parameters.Add("@Imagen", OdbcType.VarChar);
-                command.Parameters["@Imagen"].Value = ruta + @"\" + producto.Descripcion + ".png";
+                command.Parameters["@Imagen"].Value = @"\" + producto.Descripcion + ".jpg";
                 command.Parameters.Add("@Estado", OdbcType.Int);
                 command.Parameters["@Estado"].Value = producto.Estado;
                 command.Parameters.Add("@Usuario_Creacion", OdbcType.VarChar);
@@ -275,6 +275,16 @@ namespace API_PRODUX.Models
             OdbcConnection conn = Conexion.obtenerConexion();
             try
             {
+
+                byte[] Imagen = Convert.FromBase64String(producto.Imagen);
+
+                string ruta = @"C:\inetpub\wwwroot\Produx\Imagenes";
+                if (!Directory.Exists(ruta))
+                {
+                    Directory.CreateDirectory(ruta);
+                }
+                File.Delete(ruta + @"\" + producto.Descripcion + ".png");
+                File.WriteAllBytes(ruta + @"\" + producto.Descripcion + ".png", Imagen);
                 OdbcCommand command = new OdbcCommand();
                 string Sql = "{call [dbo].[sp_Actualizar_Producto](?,?,?,?,?,?,?)}";
 
