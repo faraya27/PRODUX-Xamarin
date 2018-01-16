@@ -36,7 +36,7 @@
                                         <Label Text="{Binding Desc_Producto}" HorizontalOptions="Center"/>
                                         <Entry Text="{Binding Cant_Solicitada}" Keyboard="Numeric" HorizontalOptions="EndAndExpand" WidthRequest="50" MinimumWidthRequest="35">
                                             <Entry.Behaviors>
-                                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding CantidadCambiadaCommand}" CommandParameter="{Binding .}"/>
+                                                <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding Path=BindingContext.CantidadCambiadaCommand, Source={x:Reference Pedidos}}" CommandParameter="{Binding .}"/>
                                             </Entry.Behaviors>
                                         </Entry>
                                         <Switch HorizontalOptions="End" IsToggled="{Binding Seleccionado}">

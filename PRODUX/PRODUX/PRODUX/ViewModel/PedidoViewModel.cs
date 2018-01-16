@@ -233,7 +233,7 @@ namespace PRODUX.ViewModel
             _lstOriginalPedidos = LstPedidos.ToList();
 
             LstClientes = await ClienteModel.SeleccionarActivos();
-            LstProductos = await ProductoModel.SeleccionarActivos();
+            LstPedidoLinea = await PedidoLineaModel.SeleccionarPorPedido(IdPedido);
         }
 
         private void GuardarPedido()
@@ -261,11 +261,27 @@ namespace PRODUX.ViewModel
         private void ProductoSeleccionado(PedidoLineaModel pedidoLinea)
         {
             pedidoLinea.Seleccionado = true;
+
+            CalcularTotal();
         }
 
         private void CantidadCambiada(PedidoLineaModel pedidoLinea)
         {
+            CalcularTotal();
+        }
+
+        private void CalcularTotal()
+        {
+            TotalPedido = 0;
             
+            foreach (PedidoLineaModel pedidoLinea in LstPedidoLinea)
+            {
+                if (pedidoLinea.Seleccionado && pedidoLinea.Cant_Solicitada != 0)
+                {
+                    pedidoLinea.Subtotal = pedidoLinea.Cant_Solicitada * pedidoLinea.Precio_Unitario;
+                    TotalPedido += pedidoLinea.Subtotal;
+                }
+            }
         }
 
         private void FiltrarLista(string filtro)
