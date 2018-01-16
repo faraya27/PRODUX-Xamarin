@@ -14,8 +14,15 @@ namespace PRODUX.View.Convertidores
             ImageSource retSource = null;
             if (value != null)
             {
-                byte[] imageAsBytes = System.Convert.FromBase64String((string)value);
-                retSource = ImageSource.FromStream(() => new MemoryStream(imageAsBytes));
+                if (((string)value).Contains("http"))
+                {
+                    retSource = ImageSource.FromUri(new Uri((string)value));
+                }
+                else
+                {
+                    byte[] imageAsBytes = System.Convert.FromBase64String((string)value);
+                    retSource = ImageSource.FromStream(() => new MemoryStream(imageAsBytes));
+                }
             }
             return retSource;
         }

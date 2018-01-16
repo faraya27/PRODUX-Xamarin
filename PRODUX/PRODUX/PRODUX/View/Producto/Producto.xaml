@@ -2,46 +2,55 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRODUX.View.Producto.Producto" 
+             xmlns:local="clr-namespace:PRODUX.View.Convertidores"
              Title="Nuevo">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImagenConverter x:Key="cnvImagen"></local:ImagenConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-                <Label Text="Productos"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
+        <ScrollView>
+            <StackLayout>            
+                <StackLayout>
+                    <Label Text="Código:"/>
+                    <Entry Text="{Binding Codigo}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Descripción:"/>
+                    <Entry Text="{Binding Descripcion}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Precio:"/>
+                    <Entry Keyboard="Numeric" Text="{Binding Precio}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Cant. Inventario:"/>
+                    <Entry Keyboard="Numeric" Text="{Binding CantidadInventario}"/>
+                </StackLayout>                
+                <StackLayout>
+                    <Label Text="Observaciones:"/>
+                    <Editor Text="{Binding Observaciones}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Estado:"/>
+                    <Switch IsToggled="{Binding Estado}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Imagen:"/>                    
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Tomar Foto" Command="{Binding TomarFotoCommand}"/>
+                    <Button Text="Seleccionar Foto" Command="{Binding SeleccionarFotoCommand}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="{Binding Imagen, Converter={StaticResource cnvImagen}}" WidthRequest="125" HeightRequest="100"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Guardar" Command="{Binding GuardarProductoCommand}" BackgroundColor="Black" TextColor="White"/>
+                    <Button Text="Eliminar" Command="{Binding EliminarProductoCommand}" BackgroundColor="Black" TextColor="White"/>
+                </StackLayout>
             </StackLayout>
-            <StackLayout>
-                <Label Text="Código:"/>
-                <Entry Text="{Binding Codigo}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Descripción:"/>
-                <Entry Text="{Binding Descripcion}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Precio:"/>
-                <Entry Keyboard="Numeric" Text="{Binding Precio}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Cant. Inventario:"/>
-                <Entry Keyboard="Numeric" Text="{Binding CantidadInventario}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Estado:"/>
-                <Switch IsToggled="{Binding Estado}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Observaciones:"/>
-                <Editor Text="{Binding Observaciones}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Imagen:"/>
-                <Button Text="Tomar Foto" Command="{Binding TomarFotoCommand}"/>
-            </StackLayout>
-            <StackLayout>
-                <Button Text="Guardar" Command="{Binding GuardarProductoCommand}"/>
-                <Button Text="Eliminar" Command="{Binding EliminarProductoCommand}"/>
-            </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -4,39 +4,36 @@
              x:Class="PRODUX.View.Cliente.Cliente" 
              Title="Nuevo">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
             <StackLayout>
-                <Label Text="Cliente"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
+                <StackLayout>
+                    <Label Text="Cédula:"/>
+                    <Entry Text="{Binding Cedula}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Nombre:"/>
+                    <Entry Text="{Binding Nombre}"/>
+                </StackLayout>                
+                <StackLayout>
+                    <Label Text="Email:"/>
+                    <Entry Text="{Binding Email}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Teléfono:"/>
+                    <Entry Keyboard="Numeric" Text="{Binding Telefono}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Dirección:"/>
+                    <Editor Text="{Binding Direccion}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Estado:"/>
+                    <Switch IsToggled="{Binding Estado}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Guardar" Command="{Binding GuardarClienteCommand}" BackgroundColor="Black" TextColor="White"/>
+                </StackLayout>
             </StackLayout>
-            <StackLayout>
-                <Label Text="Cédula:"/>
-                <Entry Text="{Binding Cedula}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Nombre:"/>
-                <Entry Text="{Binding Nombre}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Telefono:"/>
-                <Entry Text="{Binding Telefono}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Email:"/>
-                <Entry Text="{Binding Email}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Estado:"/>
-                <Switch IsToggled="{Binding Estado}"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Dirección:"/>
-                <Editor Text="{Binding Direccion}"/>
-            </StackLayout>
-            <StackLayout>
-                <Button Text="Guardar" Command="{Binding GuardarClienteCommand}"/>
-            </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

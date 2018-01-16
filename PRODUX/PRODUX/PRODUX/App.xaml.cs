@@ -1,5 +1,6 @@
 ﻿using PRODUX.Model;
 using PRODUX.View;
+using PRODUX.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +16,22 @@ namespace PRODUX
 		{
 			InitializeComponent();
 
+            //UsuarioModel.EliminarUsuarioRealm();
+
             //List<UsuarioModel> lstUsuarios = UsuarioModel.ObtenerUsuarioRealm();
+            //UsuarioModel usuario = new UsuarioModel();
             UsuarioModel usuario = UsuarioModel.ObtenerUsuarioRealm();
 
             //if (lstUsuarios.Count > 0)
             if (usuario != null)
-            {
-                
-                PRODUX.ViewModel.Globales.UsuarioActivo = usuario.Usuario;
+            {                
+                Globales.UsuarioActivo = usuario.Usuario;
 
                 NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
+                navigation.CurrentPage.Title = Globales.UsuarioActivo;
+                navigation.BarBackgroundColor = Color.Black;
+                navigation.BarTextColor = Color.White;
+
                 MainPage = new MasterDetailPage
                 {
                     Master = new PRODUX.View.Menu.Menu(),

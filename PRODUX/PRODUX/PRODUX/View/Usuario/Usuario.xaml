@@ -6,11 +6,6 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Label Text="Usuario"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="CenterAndExpand" />
-            </StackLayout>
-            <StackLayout>
                 <Label Text="Usuario:"/>
                 <Entry Text="{Binding Usuario}"/>
             </StackLayout>
@@ -18,12 +13,12 @@
                 <Label Text="Contraseña:"/>
                 <Entry IsPassword="True" Text="{Binding Contrasenna}"/>
             </StackLayout>
-            <StackLayout>
+            <StackLayout Orientation="Horizontal">
                 <Label Text="Estado:"/>
                 <Switch IsToggled="{Binding Estado}"/>
             </StackLayout>
-            <StackLayout>
-                <Button Text="Guardar" Command="{Binding GuardarUsuarioCommand}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Guardar" Command="{Binding GuardarUsuarioCommand}" BackgroundColor="Black" TextColor="White"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

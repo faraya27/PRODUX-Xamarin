@@ -11,6 +11,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Image Source="{Binding ProductoActual.Imagen, Converter={StaticResource cnvImagen}}"/>
+            <!--<Image Source="{Binding ProductoActual.Imagen}"/>-->
             <Label Text="{Binding ProductoActual.Observaciones}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

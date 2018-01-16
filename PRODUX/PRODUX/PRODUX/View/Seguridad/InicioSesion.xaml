@@ -18,7 +18,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Image />
-                <Entry Placeholder="Usuario" Text="{Binding Usuario}"/>
+                <Entry  Placeholder="Usuario" Text="{Binding Usuario}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Image />
@@ -28,7 +28,7 @@
                 <Label Text="Recordar Credenciales"/>
                 <Switch IsToggled="{Binding RecordarCredenciales}"/>
             </StackLayout>
-            <Button Text="Iniciar Sesión" Command="{Binding ValidarCredencialesCommand}"/>
+            <Button Text="Iniciar Sesión" Command="{Binding ValidarCredencialesCommand}" BackgroundColor="Black" TextColor="White"/>
         </StackLayout>
         
     </ContentPage.Content>

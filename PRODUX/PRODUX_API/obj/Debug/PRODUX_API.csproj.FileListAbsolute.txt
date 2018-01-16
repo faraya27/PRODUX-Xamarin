@@ -61,6 +61,8 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.Appli
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Newtonsoft.Json.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Net.Http.Formatting.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.Helpers.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.Http.dll
@@ -71,8 +73,13 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.Razo
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.WebPages.Deployment.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.WebPages.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.WebPages.Razor.dll
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Toasts.Forms.Plugin.Abstractions.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\WebGrease.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Newtonsoft.Json.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Net.Http.Formatting.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.Helpers.xml
@@ -84,6 +91,7 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.Razo
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.WebPages.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.WebPages.Deployment.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\System.Web.WebPages.Razor.xml
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Toasts.Forms.Plugin.Abstractions.pdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Antlr3.Runtime.pdb
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.ApplicationInsights.xml
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.AI.DependencyCollector.xml
@@ -93,12 +101,3 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.AI.We
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csproj.CoreCompileInputs.cache
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.pdb
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.dll
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.dll
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.pdb
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.xml
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.pdb
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Plugin.Media.Abstractions.xml
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Toasts.Forms.Plugin.Abstractions.dll
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csprojResolveAssemblyReference.cache
-C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Toasts.Forms.Plugin.Abstractions.pdb
