@@ -17,7 +17,7 @@ namespace API_PRODUX.Models
 
         public string Cliente { get; set; }
         
-        public string Estado { get; set; }
+        public int Estado { get; set; }
 
         public double TotalPedido { get; set; }
        
@@ -52,7 +52,7 @@ namespace API_PRODUX.Models
                     pedido.Fecha = Convert.ToDateTime(reader["Fecha"].ToString());
                     pedido.Cliente = reader["Cliente"].ToString();
                     pedido.TotalPedido = Convert.ToInt32(reader["Total"].ToString());
-                    pedido.Estado = reader["Estado"].ToString();
+                    pedido.Estado = Convert.ToInt32(reader["Estado"].ToString());
                     pedido.Usuario_Confirmacion = reader["Usuario_Confirmacion"].ToString();
                     pedido.Usuario_Creacion = reader["Usuario_Creacion"].ToString();
                     lista.Add(pedido);
@@ -105,7 +105,7 @@ namespace API_PRODUX.Models
                     pedido.Fecha = Convert.ToDateTime(reader["Fecha"].ToString());
                     pedido.Cliente = reader["Cliente"].ToString();
                     pedido.TotalPedido = Convert.ToInt32(reader["Total"].ToString());
-                    pedido.Estado = reader["Estado"].ToString();
+                    pedido.Estado = Convert.ToInt32(reader["Estado"].ToString());
                     pedido.Usuario_Confirmacion = reader["Usuario_Confirmacion"].ToString();
                     pedido.Usuario_Creacion = reader["Usuario_Creacion"].ToString();
                     lista.Add(pedido);
@@ -143,7 +143,7 @@ namespace API_PRODUX.Models
 
                 command.Parameters.Add("@Id_Pedido", OdbcType.VarChar);
                 command.Parameters["@Id_Pedido"].Value = pedido.Id_Pedido;
-                command.Parameters.Add("@Fecha", OdbcType.VarChar);
+                command.Parameters.Add("@Fecha", OdbcType.DateTime);
                 command.Parameters["@Fecha"].Value = pedido.Fecha;
                 command.Parameters.Add("@Cliente", OdbcType.Decimal);
                 command.Parameters["@Cliente"].Value = pedido.Cliente;
@@ -153,7 +153,7 @@ namespace API_PRODUX.Models
                 command.Parameters["@Estado"].Value = pedido.Estado;
                 command.Parameters.Add("@Usuario_Confirmacion", OdbcType.VarChar);
                 command.Parameters["@Usuario_Confirmacion"].Value = pedido.Usuario_Confirmacion;
-                command.Parameters.Add("@Usuario_Creacion", OdbcType.Int);
+                command.Parameters.Add("@Usuario_Creacion", OdbcType.VarChar);
                 command.Parameters["@Usuario_Creacion"].Value = pedido.Usuario_Creacion;
                 command.ExecuteNonQuery();
 
@@ -186,7 +186,7 @@ namespace API_PRODUX.Models
 
                 command.Parameters.Add("@Id_Pedido", OdbcType.VarChar);
                 command.Parameters["@Id_Pedido"].Value = pedido.Id_Pedido;
-                command.Parameters.Add("@Fecha", OdbcType.VarChar);
+                command.Parameters.Add("@Fecha", OdbcType.DateTime);
                 command.Parameters["@Fecha"].Value = pedido.Fecha;
                 command.Parameters.Add("@Cliente", OdbcType.Decimal);
                 command.Parameters["@Cliente"].Value = pedido.Cliente;
@@ -217,7 +217,7 @@ namespace API_PRODUX.Models
         }
         //Eliminar
 
-        public static string EliminarPedido(PedidoModel pedido)
+        public static string EliminarPedido(string pedido)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
@@ -230,7 +230,7 @@ namespace API_PRODUX.Models
                 command.Connection = conn;
 
                 command.Parameters.Add("@Id_Pedido", OdbcType.VarChar);
-                command.Parameters["@Id_Pedido"].Value = pedido.Id_Pedido;
+                command.Parameters["@Id_Pedido"].Value = pedido;
 
                 command.ExecuteNonQuery();
 

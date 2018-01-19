@@ -22,13 +22,32 @@ namespace PRODUX_API.Controllers
             //return JsonConvert.SerializeObject(PedidoModel.SeleccionarPedidosPorCodigo(codigo));
         }
         [HttpPost]
-        public HttpResponseMessage InsertarPedido([FromBody]PedidoLineaModel pedido)
+        public HttpResponseMessage InsertarPedidoLinea([FromBody]PedidoLineaModel pedido)
         {
             var response = Request.CreateResponse(HttpStatusCode.OK);
             response.Content = new StringContent(PedidoLineaModel.InsertarPedidoLinea(pedido), Encoding.UTF8, "text/plain");
             return response;
             //return PedidoModel.InsertarPedido(producto);
         }
+
+
+        [HttpGet]
+        public HttpResponseMessage EliminarPedidoLinea(string pedido)
+        {
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(PedidoLineaModel.EliminarPedidoLinea(pedido)), Encoding.UTF8, "text/plain");
+            return response;
+            //return JsonConvert.SerializeObject(PedidoModel.SeleccionarPedidosPorCodigo(codigo));
+        }
+        //[HttpPost]
+        //public HttpResponseMessage EliminarPedidoLinea([FromBody]string pedido)
+        //{
+        //    var response = Request.CreateResponse(HttpStatusCode.OK);
+        //    response.Content = new StringContent(PedidoLineaModel.EliminarPedidoLinea(pedido), Encoding.UTF8, "text/plain");
+        //    return response;
+        //    //return PedidoModel.InsertarPedido(producto);
+        //}
+
         // GET api/<controller>
         public IEnumerable<string> Get()
         {

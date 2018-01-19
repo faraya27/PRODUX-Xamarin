@@ -123,7 +123,7 @@ namespace API_PRODUX.Models
         }
         //Por codigo
 
-        public static List<ClienteModel> SeleccionarClientesPorCodigo(string Cedula)
+        public static ClienteModel SeleccionarClientesPorCodigo(string Cedula)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
 
@@ -141,12 +141,12 @@ namespace API_PRODUX.Models
 
                 OdbcDataReader reader = command.ExecuteReader();
 
-                List<ClienteModel> lista = new List<ClienteModel>();
+                ClienteModel Cliente = new ClienteModel();
 
                 while (reader.Read())
                 {
 
-                    ClienteModel Cliente = new ClienteModel();
+                    //ClienteModel Cliente = new ClienteModel();
 
                     Cliente.Cedula = reader["Cedula"].ToString();
                     Cliente.Nombre = reader["Nombre"].ToString();
@@ -154,10 +154,10 @@ namespace API_PRODUX.Models
                     Cliente.Telefono = reader["Telefono"].ToString();
                     Cliente.Email = reader["Correo"].ToString();
                     Cliente.Estado = Convert.ToInt32(reader["Estado"].ToString());
-                    lista.Add(Cliente);
+                    //lista.Add(Cliente);
                 }
                 reader.Close();
-                return lista;
+                return Cliente;
             }
             catch (OdbcException ax)
             {

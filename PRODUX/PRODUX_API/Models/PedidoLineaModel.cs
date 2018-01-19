@@ -159,22 +159,20 @@ namespace PRODUX_API.Models
         }
         //Eliminar
 
-        public static string EliminarPedidoLinea(PedidoLineaModel pedido)
+        public static string EliminarPedidoLinea(string pedido)
         {
             OdbcConnection conn = Conexion.obtenerConexion();
             try
             {
                 OdbcCommand command = new OdbcCommand();
-                string Sql = "{call [sp_Eliminar_Pedido_Linea](?,?)}";
+                string Sql = "{call [sp_Eliminar_Pedido_Linea](?)}";
 
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = Sql;
                 command.Connection = conn;
 
                 command.Parameters.Add("@Id_Pedido", OdbcType.VarChar);
-                command.Parameters["@Id_Pedido"].Value = pedido.Id_Pedido;
-                command.Parameters.Add("@Id_Producto", OdbcType.VarChar);
-                command.Parameters["@Id_Producto"].Value = pedido.Id_Producto;
+                command.Parameters["@Id_Pedido"].Value = pedido;
 
                 command.ExecuteNonQuery();
 

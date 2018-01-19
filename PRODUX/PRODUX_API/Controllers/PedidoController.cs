@@ -47,8 +47,8 @@ namespace API_PRODUX.Controllers
             return response;
             //return PedidoModel.ActualizarPedido(producto);
         }
-        [HttpPost]
-        public HttpResponseMessage EliminarPedido([FromBody]PedidoModel pedido)
+        [HttpGet]
+        public HttpResponseMessage EliminarPedido(string pedido)
         {
             var response = Request.CreateResponse(HttpStatusCode.OK);
             response.Content = new StringContent(PedidoModel.EliminarPedido(pedido), Encoding.UTF8, "text/plain");
@@ -91,7 +91,7 @@ namespace API_PRODUX.Controllers
             //return PedidoModel.ActualizarPedido(producto);
         }
         [HttpPost]
-        public HttpResponseMessage EliminarPedidoLinea([FromBody]PedidoLineaModel pedido)
+        public HttpResponseMessage EliminarPedidoLinea([FromBody]string pedido)
         {
             var response = Request.CreateResponse(HttpStatusCode.OK);
             response.Content = new StringContent(PedidoLineaModel.EliminarPedidoLinea(pedido), Encoding.UTF8, "text/plain");
