@@ -19,7 +19,11 @@
                                         <TapGestureRecognizer Command="{Binding Path=BindingContext.EditarProductoCommand, Source={x:Reference ConsultaProducto}}" CommandParameter="{Binding .}"/>
                                     </StackLayout.GestureRecognizers>
                                     <Label Text="{Binding Descripcion}" HorizontalOptions="StartAndExpand"/>
-                                    <Button Text="Ver Imagen" Command="{Binding Path=BindingContext.VerImagenCommand, Source={x:Reference ConsultaProducto}}" CommandParameter="{Binding .}" HorizontalOptions="End"/>
+                                    <Image Source="verimagen.jpg" HorizontalOptions="End">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.VerImagenCommand, Source={x:Reference ConsultaProducto}}" CommandParameter="{Binding .}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

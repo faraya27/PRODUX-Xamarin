@@ -176,6 +176,48 @@
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\unchecked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\captura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Consulta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Contrasenna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\imagen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pedido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Productos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\verimagen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Inicio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Logo.png" />
+  </ItemGroup>
   <Import Project="..\PRODUX\PRODUX.projitems" Label="Shared" Condition="Exists('..\PRODUX\PRODUX.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

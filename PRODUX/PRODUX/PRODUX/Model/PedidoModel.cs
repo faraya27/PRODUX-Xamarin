@@ -22,7 +22,7 @@ namespace PRODUX.Model
 
         public string Cliente { get; set; }
 
-        public string Estado { get; set; }
+        public int Estado { get; set; }
 
         public double TotalPedido { get; set; }
 
@@ -98,8 +98,9 @@ namespace PRODUX.Model
                                                                 Id_Pedido = pedido.Id_Pedido,
                                                                 Fecha = pedido.Fecha,
                                                                 Cliente = pedido.Cliente,
-                                                                ToTalPedido = pedido.TotalPedido,
+                                                                TotalPedido = pedido.TotalPedido,
                                                                 Estado = pedido.Estado,
+                                                                Usuario_Confirmacion = pedido.Usuario_Confirmacion,
                                                                 Usuario_Creacion = pedido.Usuario_Creacion
                                                             }
                                                             );
@@ -137,9 +138,10 @@ namespace PRODUX.Model
                                                                 Id_Pedido = pedido.Id_Pedido,
                                                                 Fecha = pedido.Fecha,
                                                                 Cliente = pedido.Cliente,
-                                                                ToTalPedido = pedido.TotalPedido,
+                                                                TotalPedido = pedido.TotalPedido,
                                                                 Estado = pedido.Estado,
-                                                                Usuario_Confirmacion = pedido.Usuario_Confirmacion
+                                                                Usuario_Confirmacion = pedido.Usuario_Confirmacion,
+                                                                Usuario_Creacion = pedido.Usuario_Creacion
                                                             }
                                                             );
 
@@ -162,13 +164,13 @@ namespace PRODUX.Model
 
         }
 
-        public static async Task<string> Eliminar(PedidoModel pedido)
+        public static async Task<string> Confirmar(PedidoModel pedido)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Pedido() + "EliminarPedido");
+                    var uri = new Uri(URLAPI.Pedido() + "ConfirmarPedido");
 
                     var json = JsonConvert.SerializeObject(
                                                             new
@@ -176,15 +178,41 @@ namespace PRODUX.Model
                                                                 Id_Pedido = pedido.Id_Pedido,
                                                                 Fecha = pedido.Fecha,
                                                                 Cliente = pedido.Cliente,
-                                                                ToTalPedido = pedido.TotalPedido,
+                                                                TotalPedido = pedido.TotalPedido,
                                                                 Estado = pedido.Estado,
-                                                                Usuario_Confirmacion = pedido.Usuario_Confirmacion
+                                                                Usuario_Confirmacion = pedido.Usuario_Confirmacion,
+                                                                Usuario_Creacion = pedido.Usuario_Creacion
                                                             }
                                                             );
 
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                     HttpResponseMessage response = client.PostAsync(uri, content).Result;
+                    string resultado = await response.Content.ReadAsStringAsync();
+
+                    return resultado;
+                }
+            }
+            catch (WebException wex)
+            {
+                throw wex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public static async Task<string> Eliminar(string pedido)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var uri = new Uri(URLAPI.Pedido() + "EliminarPedido?pedido=" + pedido);
+
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
 
                     return resultado;

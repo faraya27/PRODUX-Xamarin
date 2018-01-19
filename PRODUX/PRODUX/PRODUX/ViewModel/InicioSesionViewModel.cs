@@ -62,6 +62,8 @@ namespace PRODUX.ViewModel
 
         public ICommand TextoCambiadoCommand { get; set; }
 
+        public ICommand CheckCambiadoCommand { get; set; }
+
         public string Usuario
         {
             get
@@ -108,6 +110,7 @@ namespace PRODUX.ViewModel
         private void InicializarComandos()
         {
             ValidarCredencialesCommand = new Command(validarCredenciales);
+            CheckCambiadoCommand = new Command(CheckCambiado);
         }
 
         private void InicializarClase()
@@ -181,9 +184,12 @@ namespace PRODUX.ViewModel
             {
                 MostrarMensaje("No fue posible verificar las credenciales!");
             }
-            
+        }
 
-            
+        private void CheckCambiado()
+        {
+            if (RecordarCredenciales) RecordarCredenciales = false;
+            else RecordarCredenciales = true;
         }
 
         #endregion

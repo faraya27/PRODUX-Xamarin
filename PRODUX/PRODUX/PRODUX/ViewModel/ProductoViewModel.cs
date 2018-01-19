@@ -20,7 +20,6 @@ namespace PRODUX.ViewModel
 
         private ProductoViewModel()
         {
-            InicializarClase();
             InicializarComandos();
         }
 
@@ -30,6 +29,8 @@ namespace PRODUX.ViewModel
             {
                 instance = new ProductoViewModel();
             }
+
+            instance.InicializarClase();
 
             return instance;
         }
@@ -83,6 +84,8 @@ namespace PRODUX.ViewModel
         public ICommand SeleccionarFotoCommand { get; set; }
 
         public ICommand VerImagenCommand { get; set; }
+
+        public ICommand CheckCambiadoCommand { get; set; }
 
         public string Filtro
         {
@@ -227,11 +230,13 @@ namespace PRODUX.ViewModel
             TomarFotoCommand = new Command(TomarFoto);
             SeleccionarFotoCommand = new Command(SeleccionarFoto);
             VerImagenCommand = new Command<ProductoModel>(VerImagen);
+            CheckCambiadoCommand = new Command(CheckCambiado);
         }
 
         private void InicializarClase()
         {            
             RefrescarLista();
+            Limpiar();
         }
 
         private async void RefrescarLista()
@@ -250,7 +255,7 @@ namespace PRODUX.ViewModel
             Observaciones = string.Empty;
             Imagen = string.Empty;
 
-            ProductoActual = null;
+            //ProductoActual = null;
         }
 
         public void MostrarMensaje(string mensaje)
@@ -291,7 +296,7 @@ namespace PRODUX.ViewModel
                 objProducto.Estado = Convert.ToInt32(Estado);
                 objProducto.Observaciones = Observaciones;
                 objProducto.Imagen = Imagen;
-                objProducto.Usuario_Creacion = "admin"; //FALTA ASIGNAR
+                objProducto.Usuario_Creacion = Globales.UsuarioActivo;
                 objProducto.Fecha_Creacion = DateTime.Now;
 
                 if(_ProductoActual == null) resultado = await ProductoModel.Insertar(objProducto);
@@ -421,6 +426,12 @@ namespace PRODUX.ViewModel
         {
             ProductoActual = producto;
             ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Producto.ImagenProducto());
+        }
+
+        private void CheckCambiado()
+        {
+            if (Estado) Estado = false;
+            else Estado = true;
         }
 
         #endregion

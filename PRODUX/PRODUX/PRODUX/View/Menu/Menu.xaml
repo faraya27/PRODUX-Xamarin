@@ -11,6 +11,8 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirProductoCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
+
+                <Image Source="Productos.png"  WidthRequest="20" HeightRequest="20"/>
                 <Label Text="Productos" FontSize="Medium" TextColor="White"/>
             </StackLayout>
             <StackLayout BackgroundColor="White" HeightRequest="1"/>
@@ -18,6 +20,8 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirPedidoCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
+
+                <Image Source="Pedido.png"  WidthRequest="20" HeightRequest="20"/>
                 <Label Text="Pedidos" FontSize="Medium" TextColor="White"/>
             </StackLayout>
             <StackLayout BackgroundColor="White" HeightRequest="1"/>
@@ -25,6 +29,8 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirConsultaPedidosCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
+
+                <Image Source="Consulta.png"  WidthRequest="20" HeightRequest="20"/>
                 <Label Text="Consulta de Pedidos" FontSize="Medium" TextColor="White"/>
             </StackLayout>
             <StackLayout BackgroundColor="White" HeightRequest="1"/>
@@ -32,6 +38,7 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirClienteCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
+                <Image Source="Cliente.png"  WidthRequest="20" HeightRequest="20"/>
                 <Label Text="Clientes" FontSize="Medium" TextColor="White"/>
             </StackLayout>
             <StackLayout BackgroundColor="White" HeightRequest="1"/>
@@ -39,6 +46,7 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirUsuarioCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
+                <Image Source="Usuarios.png"  WidthRequest="20" HeightRequest="20"/>
                 <Label Text="Usuarios" FontSize="Medium" TextColor="White"/>
             </StackLayout>
             <StackLayout BackgroundColor="White" HeightRequest="1"/>
@@ -46,6 +54,8 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=BindingContext.CerrarSesionCommand, Source={x:Reference Menu}}"/>
                 </StackLayout.GestureRecognizers>
+
+                <Image Source="Contrasenna.png"  WidthRequest="20" HeightRequest="20"/>
                 <Label Text="Cerrar Sesión" FontSize="Medium" TextColor="White"/>
             </StackLayout>
             <StackLayout BackgroundColor="White" HeightRequest="1"/>

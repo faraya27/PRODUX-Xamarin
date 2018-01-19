@@ -17,6 +17,7 @@
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Path=BindingContext.EditarPedidoCommand, Source={x:Reference ConsultaPedido}}" CommandParameter="{Binding .}"/>
                                     </StackLayout.GestureRecognizers>
+                                    <Label Text="Pedido #"/>
                                     <Label Text="{Binding Id_Pedido}" HorizontalOptions="Center"/>
                                 </StackLayout>
                             </ViewCell>

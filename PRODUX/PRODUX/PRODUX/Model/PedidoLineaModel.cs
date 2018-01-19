@@ -104,7 +104,10 @@ namespace PRODUX.Model
                                                             {
                                                                 Id_Pedido = pedidoLinea.Id_Pedido,
                                                                 Id_Producto = pedidoLinea.Id_Producto,
-                                                                Cantidad_Solicitada = pedidoLinea.Cant_Solicitada,
+                                                                Desc_Producto = pedidoLinea.Desc_Producto,
+                                                                Imagen = pedidoLinea.Imagen,
+                                                                Seleccionado = pedidoLinea.Seleccionado,
+                                                                Cant_Solicitada = pedidoLinea.Cant_Solicitada,
                                                                 Precio_Unitario = pedidoLinea.Precio_Unitario,
                                                                 Subtotal = pedidoLinea.Subtotal
                                                             }
@@ -126,69 +129,17 @@ namespace PRODUX.Model
             {
                 throw ex;
             }
-
         }
 
-        public static async Task<string> Actualizar(PedidoLineaModel pedidoLinea)
+        public static async Task<string> Eliminar(string IdPedido)
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.PedidoLinea() + "ActualizarPedidoLinea");
+                    var uri = new Uri(URLAPI.PedidoLinea() + "EliminarPedidoLinea?pedido=" + IdPedido);
 
-                    var json = JsonConvert.SerializeObject(
-                                                            new
-                                                            {
-                                                                Id_Pedido = pedidoLinea.Id_Pedido,
-                                                                Id_Producto = pedidoLinea.Id_Producto,
-                                                                Cantidad_Solicitada = pedidoLinea.Cant_Solicitada,
-                                                                Precio_Unitario = pedidoLinea.Precio_Unitario,
-                                                                Subtotal = pedidoLinea.Subtotal
-                                                            }
-                                                            );
-
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = client.PostAsync(uri, content).Result;
-                    string resultado = await response.Content.ReadAsStringAsync();
-
-                    return resultado;
-                }
-            }
-            catch (WebException wex)
-            {
-                throw wex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        public static async Task<string> Eliminar(PedidoLineaModel pedidoLinea)
-        {
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    var uri = new Uri(URLAPI.PedidoLinea() + "EliminarPedidoLinea");
-
-                    var json = JsonConvert.SerializeObject(
-                                                            new
-                                                            {
-                                                                Id_Pedido = pedidoLinea.Id_Pedido,
-                                                                Id_Producto = pedidoLinea.Id_Producto,
-                                                                Cantidad_Solicitada = pedidoLinea.Cant_Solicitada,
-                                                                Precio_Unitario = pedidoLinea.Precio_Unitario,
-                                                                Subtotal = pedidoLinea.Subtotal
-                                                            }
-                                                            );
-
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    HttpResponseMessage response = client.PostAsync(uri, content).Result;
+                    HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();
 
                     return resultado;
