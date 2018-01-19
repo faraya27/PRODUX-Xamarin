@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRODUX.View.Producto.Producto" 
              xmlns:local="clr-namespace:PRODUX.View.Convertidores"
+             x:Name="Producto"
              Title="Nuevo">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImagenConverter x:Key="cnvImagen"></local:ImagenConverter>
+            <local:CheckConverter x:Key="cnvCheck"></local:CheckConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -32,16 +34,33 @@
                     <Label Text="Observaciones:"/>
                     <Editor Text="{Binding Observaciones}"/>
                 </StackLayout>
-                <StackLayout>
+                <StackLayout Orientation="Horizontal">
                     <Label Text="Estado:"/>
-                    <Switch IsToggled="{Binding Estado}"/>
+                    <Image Source="checked.png" IsVisible="{Binding Estado}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Producto}}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="unchecked.png" IsVisible="{Binding Estado, Converter={StaticResource cnvCheck}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Producto}}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Imagen:"/>                    
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button Text="Tomar Foto" Command="{Binding TomarFotoCommand}"/>
-                    <Button Text="Seleccionar Foto" Command="{Binding SeleccionarFotoCommand}"/>
+                    <Image Source="Captura.png" WidthRequest="40" HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TomarFotoCommand, Source={x:Reference Producto}}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="imagen.jpg" WidthRequest="40" HeightRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SeleccionarFotoCommand, Source={x:Reference Producto}}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <Image Source="{Binding Imagen, Converter={StaticResource cnvImagen}}" WidthRequest="125" HeightRequest="100"/>

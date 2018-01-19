@@ -92,7 +92,7 @@ namespace PRODUX.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var uri = new Uri(URLAPI.Cliente() + "SeleccionarClientesPorCodigo");
+                    var uri = new Uri(URLAPI.Cliente() + "SeleccionarClientesPorCodigo?codigo=" + codigo);
 
                     HttpResponseMessage response = client.GetAsync(uri).Result;
                     string resultado = await response.Content.ReadAsStringAsync();

@@ -18,7 +18,6 @@ namespace PRODUX.ViewModel
 
         private ClienteViewModel()
         {
-            InicializarClase();
             InicializarComandos();
         }
 
@@ -28,6 +27,8 @@ namespace PRODUX.ViewModel
             {
                 instance = new ClienteViewModel();
             }
+
+            instance.InicializarClase();
 
             return instance;
         }
@@ -71,6 +72,8 @@ namespace PRODUX.ViewModel
         public ICommand GuardarClienteCommand { get; set; }
 
         public ICommand EditarClienteCommand { get; set; }
+
+        public ICommand CheckCambiadoCommand { get; set; }
 
         public string Filtro
         {
@@ -185,11 +188,13 @@ namespace PRODUX.ViewModel
         {
             GuardarClienteCommand = new Command(GuardarCliente);
             EditarClienteCommand = new Command<ClienteModel>(EditarCliente);
+            CheckCambiadoCommand = new Command(CheckCambiado);
         }
 
         private void InicializarClase()
         {
-            RefrescarLista();            
+            RefrescarLista();
+            Limpiar();
         }
 
         private async void RefrescarLista()
@@ -257,7 +262,7 @@ namespace PRODUX.ViewModel
                 objCliente.Email = Email;
                 objCliente.Estado = Convert.ToInt32(Estado);
                 objCliente.Direccion = Direccion;
-                objCliente.Usuario_Creacion = "admin"; //FALTA ASIGNAR
+                objCliente.Usuario_Creacion = Globales.UsuarioActivo;
                 objCliente.Fecha_Creacion = DateTime.Now;
 
                 if(_ClienteActual == null) resultado = await ClienteModel.Insertar(objCliente);
@@ -298,6 +303,12 @@ namespace PRODUX.ViewModel
         {
             LstClientes.Clear();
             _lstOriginalClientes.Where(x => x.Nombre.ToLower().Contains(filtro.ToLower())).ToList().ForEach(x => LstClientes.Add(x));
+        }
+
+        private void CheckCambiado()
+        {
+            if (Estado) Estado = false;
+            else Estado = true;
         }
 
         #endregion

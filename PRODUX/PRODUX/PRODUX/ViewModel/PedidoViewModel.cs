@@ -18,7 +18,6 @@ namespace PRODUX.ViewModel
 
         private PedidoViewModel()
         {
-            InicializarClase();
             InicializarComandos();
         }
 
@@ -28,6 +27,8 @@ namespace PRODUX.ViewModel
             {
                 instance = new PedidoViewModel();
             }
+
+            instance.InicializarClase();
 
             return instance;
         }
@@ -66,6 +67,8 @@ namespace PRODUX.ViewModel
 
         private ObservableCollection<ProductoModel> _lstProductos = new ObservableCollection<ProductoModel>();
 
+        private PedidoModel _PedidoActual = null;
+
         #endregion
 
         #region Propiedades
@@ -78,9 +81,9 @@ namespace PRODUX.ViewModel
 
         public ICommand EditarPedidoCommand { get; set; }
 
-        public ICommand ProductoSeleccionadoCommand { get; set; }
-
         public ICommand CantidadCambiadaCommand { get; set; }
+
+        public ICommand CheckCambiadoCommand { get; set; }
 
         public string Filtro
         {
@@ -223,11 +226,109 @@ namespace PRODUX.ViewModel
             EliminarPedidoCommand = new Command(EliminarPedido);
             ConfirmarPedidoCommand = new Command(ConfirmarPedido);
             EditarPedidoCommand = new Command<PedidoModel>(EditarPedido);
-            ProductoSeleccionadoCommand = new Command<PedidoLineaModel>(ProductoSeleccionado);
+            CheckCambiadoCommand = new Command<PedidoLineaModel>(CheckCambiado);
             CantidadCambiadaCommand = new Command<PedidoLineaModel>(CantidadCambiada);
         }
 
-        private async void InicializarClase()
+        private void InicializarClase()
+        {
+            RefrescarLista();
+            Limpiar();
+        }
+
+        public void MostrarMensaje(string mensaje)
+        {
+            App.Current.MainPage.DisplayAlert("Pedidos", mensaje, "OK");
+            //Toasts.MakeText(Forms.Context, mensaje, ToastLength.Short).Show();
+        }
+
+        private async void GuardarPedido()
+        {
+            string resultado = string.Empty;
+
+            try
+            {
+                if (IdPedido.Equals(""))
+                {
+                    MostrarMensaje("Debe ingresar la Numero del Pedido!");
+                    return;
+                }
+                if (Fecha.Equals(""))
+                {
+                    MostrarMensaje("Debe ingresar La Fecha!");
+                    return;
+                }
+                if (Cliente == null)
+                {
+                    MostrarMensaje("Debe ingresar el Cliente!");
+                    return;
+                }
+
+                int cantidadDetalles = LstPedidoLinea.Where(x => x.Seleccionado == true).Count();
+
+                if (cantidadDetalles == 0)
+                {
+                    MostrarMensaje("Debe seleccionar productos para poder guardar el pedido!");
+                    return;
+                }
+                
+                PedidoModel pedido = new PedidoModel();
+                pedido.Id_Pedido = IdPedido;
+                pedido.Fecha = Fecha;
+                pedido.Cliente = Cliente.Cedula;
+                pedido.Estado = 1;
+                pedido.TotalPedido = TotalPedido;
+                pedido.Usuario_Creacion = Globales.UsuarioActivo;
+                pedido.Usuario_Confirmacion = string.Empty;
+
+                if (_PedidoActual == null)
+                {
+                    resultado = await PedidoModel.Insertar(pedido);
+                }
+                else
+                {
+                    resultado = await PedidoModel.Actualizar(pedido);
+
+                    resultado = await PedidoLineaModel.Eliminar(IdPedido);
+                }
+                
+                foreach (PedidoLineaModel pedidoLinea in LstPedidoLinea)
+                {
+                    if (pedidoLinea.Seleccionado)
+                    {
+                        pedidoLinea.Id_Pedido = IdPedido;
+                        resultado = await PedidoLineaModel.Insertar(pedidoLinea);
+                    }
+                }
+
+                if (resultado.Equals("true"))
+                {                    
+                    MostrarMensaje("Pedido guardado");
+                    Limpiar();
+                    RefrescarLista();
+                    return;
+                }
+                else
+                {
+                    MostrarMensaje("No fue posible guardar el pedido, por favor verificar los datos ingresados");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje("No fue posible guardar el pedido, por favor verificar los datos ingresados");
+            }
+        }
+
+        private void Limpiar()
+        {
+            IdPedido = string.Empty;
+            Fecha = DateTime.Now;
+            Cliente = null;
+            TotalPedido = 0;            
+        }
+
+        private async void RefrescarLista()
         {
             LstPedidos = await PedidoModel.SeleccionarTodos();
             _lstOriginalPedidos = LstPedidos.ToList();
@@ -236,31 +337,75 @@ namespace PRODUX.ViewModel
             LstPedidoLinea = await PedidoLineaModel.SeleccionarPorPedido(IdPedido);
         }
 
-        private void GuardarPedido()
+        private async void EliminarPedido()
         {
-            
+            string resultado = string.Empty;
+
+            try
+            {
+                resultado = await PedidoLineaModel.Eliminar(_PedidoActual.Id_Pedido);
+                resultado = await PedidoModel.Eliminar(_PedidoActual.Id_Pedido);
+
+                MostrarMensaje("Pedido eliminado");
+                Limpiar();
+                RefrescarLista();
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje("No fue posible eliminar el pedido");
+            }            
         }
 
-        private void EliminarPedido()
+        private async void ConfirmarPedido()
         {
+            string resultado = string.Empty;
 
+            try
+            {
+                _PedidoActual.Usuario_Confirmacion = Globales.UsuarioActivo;
+
+                resultado = await PedidoModel.Confirmar(_PedidoActual);
+
+                MostrarMensaje("Pedido confirmado");
+                Limpiar();
+                RefrescarLista();
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje("No fue posible confirmar el pedido");
+            }            
         }
 
-        private void ConfirmarPedido()
+        private async void EditarPedido(PedidoModel pedido)
         {
+            _PedidoActual = pedido;
 
-        }
-
-        private void EditarPedido(PedidoModel pedido)
-        {
             IdPedido = pedido.Id_Pedido;
             Fecha = pedido.Fecha;
-            //Cliente = pedido.Cliente;
+            ClienteModel cliente = await ClienteModel.SeleccionarPorCodigo(pedido.Cliente);
+            Cliente = cliente;
+            TotalPedido = pedido.TotalPedido;
+
+            LstPedidoLinea = await PedidoLineaModel.SeleccionarPorPedido(pedido.Id_Pedido);
+
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.Pedido());
         }
 
-        private void ProductoSeleccionado(PedidoLineaModel pedidoLinea)
+        private void CheckCambiado(PedidoLineaModel pedidoLinea)
         {
-            pedidoLinea.Seleccionado = true;
+            if (!pedidoLinea.Seleccionado)
+            {
+                if (pedidoLinea.Cant_Solicitada > 0)
+                {
+                    pedidoLinea.Seleccionado = true;
+                }
+                else
+                {
+                    MostrarMensaje("La cantidad debe de ser mayor a cero");
+                }
+                
+            }                
+            else pedidoLinea.Seleccionado = false;
 
             CalcularTotal();
         }
@@ -272,16 +417,23 @@ namespace PRODUX.ViewModel
 
         private void CalcularTotal()
         {
-            TotalPedido = 0;
-            
-            foreach (PedidoLineaModel pedidoLinea in LstPedidoLinea)
+            try
             {
-                if (pedidoLinea.Seleccionado && pedidoLinea.Cant_Solicitada != 0)
+                TotalPedido = 0;
+
+                foreach (PedidoLineaModel pedidoLinea in LstPedidoLinea)
                 {
-                    pedidoLinea.Subtotal = pedidoLinea.Cant_Solicitada * pedidoLinea.Precio_Unitario;
-                    TotalPedido += pedidoLinea.Subtotal;
+                    if (pedidoLinea.Seleccionado && pedidoLinea.Cant_Solicitada != 0)
+                    {
+                        pedidoLinea.Subtotal = pedidoLinea.Cant_Solicitada * pedidoLinea.Precio_Unitario;
+                        TotalPedido += pedidoLinea.Subtotal;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MostrarMensaje("No fue posible calcular los totales");
+            }            
         }
 
         private void FiltrarLista(string filtro)

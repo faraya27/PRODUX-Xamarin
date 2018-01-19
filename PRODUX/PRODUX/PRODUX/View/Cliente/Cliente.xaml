@@ -2,7 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PRODUX.View.Cliente.Cliente" 
-             Title="Nuevo">
+             x:Name="Cliente"
+             Title="Nuevo"
+             xmlns:local="clr-namespace:PRODUX.View.Convertidores">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CheckConverter x:Key="cnvCheck"></local:CheckConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
@@ -28,7 +35,16 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Estado:"/>
-                    <Switch IsToggled="{Binding Estado}"/>
+                    <Image Source="checked.png" IsVisible="{Binding Estado}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Cliente}}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="unchecked.png" IsVisible="{Binding Estado, Converter={StaticResource cnvCheck}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Cliente}}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <Button Text="Guardar" Command="{Binding GuardarClienteCommand}" BackgroundColor="Black" TextColor="White"/>

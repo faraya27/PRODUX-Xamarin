@@ -18,7 +18,6 @@ namespace PRODUX.ViewModel
 
         private UsuarioViewModel()
         {
-            InicializarClase();
             InicializarComandos();
         }
 
@@ -28,6 +27,8 @@ namespace PRODUX.ViewModel
             {
                 instance = new UsuarioViewModel();
             }
+
+            instance.InicializarClase();
 
             return instance;
         }
@@ -65,6 +66,8 @@ namespace PRODUX.ViewModel
         public ICommand GuardarUsuarioCommand { get; set; }
 
         public ICommand EditarUsuarioCommand { get; set; }
+
+        public ICommand CheckCambiadoCommand { get; set; }
 
         public string Filtro
         {
@@ -140,11 +143,13 @@ namespace PRODUX.ViewModel
         {
             GuardarUsuarioCommand = new Command(GuardarUsuario);
             EditarUsuarioCommand = new Command<UsuarioModel>(EditarUsuario);
+            CheckCambiadoCommand = new Command(CheckCambiado);
         }
 
         private void InicializarClase()
         {
             RefrescarLista();
+            Limpiar();
         }
         
         private async void RefrescarLista()
@@ -188,7 +193,7 @@ namespace PRODUX.ViewModel
                 objUsuario.Usuario = Usuario;
                 objUsuario.Contrasenna = Contrasenna;
                 objUsuario.Estado = Convert.ToInt32(Estado);
-                objUsuario.Usuario_Creacion = "admin"; //FALTA ASIGNAR
+                objUsuario.Usuario_Creacion = Globales.UsuarioActivo;
                 objUsuario.Fecha_Creacion = DateTime.Now;
                 
                 if (_UsuarioActual == null) resultado = await UsuarioModel.Insertar(objUsuario);
@@ -229,6 +234,12 @@ namespace PRODUX.ViewModel
         {
             LstUsuarios.Clear();
             _lstOriginalUsuarios.Where(x => x.Usuario.ToLower().Contains(filtro.ToLower())).ToList().ForEach(x => LstUsuarios.Add(x));
+        }
+
+        private void CheckCambiado()
+        {
+            if (Estado) Estado = false;
+            else Estado = true;
         }
 
         #endregion

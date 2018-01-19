@@ -8,6 +8,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImagenConverter x:Key="cnvImagen"></local:ImagenConverter>
+            <local:CheckConverter x:Key="cnvCheck"></local:CheckConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -15,7 +16,7 @@
             <StackLayout>
                 <StackLayout>
                     <Label Text="Número:"/>
-                    <Entry Text="{Binding Numero}"/>
+                    <Entry Text="{Binding IdPedido}"/>
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Fecha:"/>
@@ -23,7 +24,7 @@
                 </StackLayout>
                 <StackLayout>
                     <Label Text="Cliente:"/>
-                    <Picker Title="Seleccione un cliente" SelectedItem="{Binding Cliente}" ItemsSource="{Binding LstClientes}" ItemDisplayBinding="{Binding Nombre}" />
+                    <Picker Title="Seleccione un cliente" ItemsSource="{Binding LstClientes}" SelectedItem="{Binding Cliente, Mode=TwoWay}" ItemDisplayBinding="{Binding Nombre}"/>
                 </StackLayout>            
                 <StackLayout>
                     <Label Text="Listado de Productos:"/>
@@ -32,18 +33,23 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Image Source="{Binding Imagen, Converter={StaticResource cnvImagen}}" />
+                                        <Image Source="{Binding Imagen, Converter={StaticResource cnvImagen}}" WidthRequest="60" HeightRequest="60" />
                                         <Label Text="{Binding Desc_Producto}" HorizontalOptions="Center"/>
                                         <Entry Text="{Binding Cant_Solicitada}" Keyboard="Numeric" HorizontalOptions="EndAndExpand" WidthRequest="50" MinimumWidthRequest="35">
                                             <Entry.Behaviors>
                                                 <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding Path=BindingContext.CantidadCambiadaCommand, Source={x:Reference Pedidos}}" CommandParameter="{Binding .}"/>
                                             </Entry.Behaviors>
                                         </Entry>
-                                        <Switch HorizontalOptions="End" IsToggled="{Binding Seleccionado}">
-                                            <Switch.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.ProductoSeleccionadoCommand, Source={x:Reference Pedidos}}" CommandParameter="{Binding .}"/>
-                                            </Switch.GestureRecognizers>
-                                        </Switch>
+                                        <Image Source="checked.png" IsVisible="{Binding Seleccionado}">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Pedidos}}" CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Source="unchecked.png" IsVisible="{Binding Seleccionado, Converter={StaticResource cnvCheck}">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Pedidos}}" CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
                                     </StackLayout>                                
                                 </ViewCell>
                             </DataTemplate>

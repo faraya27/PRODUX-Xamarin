@@ -101,3 +101,4 @@ C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\bin\Microsoft.AI.We
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csproj.CoreCompileInputs.cache
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.dll
 C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.pdb
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csprojResolveAssemblyReference.cache

@@ -39,6 +39,7 @@
       <DependentUpon>ConsultaCliente.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\Convertidores\CheckConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Convertidores\ImagenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\Menu\Inicio.xaml.cs">
       <DependentUpon>Inicio.xaml</DependentUpon>
