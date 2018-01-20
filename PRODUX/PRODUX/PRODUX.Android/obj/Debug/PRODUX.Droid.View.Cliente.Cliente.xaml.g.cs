@@ -11,8 +11,8 @@
 namespace PRODUX.View.Cliente {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\f_ara\\source\\repos\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Cliente\\Clie" +
-        "nte.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Carolina\\Documents\\GitHub\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Clien" +
+        "te\\Cliente.xaml")]
     public partial class Cliente : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

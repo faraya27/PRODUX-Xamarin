@@ -217,7 +217,7 @@ namespace API_PRODUX.Models
                 {
                     Directory.CreateDirectory(ruta);
                 }
-                File.WriteAllBytes(ruta+ @"\"+ producto.Descripcion+".png", Imagen);
+                File.WriteAllBytes(ruta+ @"\"+ producto.Descripcion+".jpg", Imagen);
 
 
                 OdbcCommand command = new OdbcCommand();
@@ -238,7 +238,7 @@ namespace API_PRODUX.Models
                 command.Parameters.Add("@Observaciones", OdbcType.VarChar);
                 command.Parameters["@Observaciones"].Value = producto.Observaciones;
                 command.Parameters.Add("@Imagen", OdbcType.VarChar);
-                command.Parameters["@Imagen"].Value = @"\" + producto.Descripcion + ".jpg";
+                command.Parameters["@Imagen"].Value = @"/" + producto.Descripcion + ".jpg";
                 command.Parameters.Add("@Estado", OdbcType.Int);
                 command.Parameters["@Estado"].Value = producto.Estado;
                 command.Parameters.Add("@Usuario_Creacion", OdbcType.VarChar);
@@ -283,8 +283,8 @@ namespace API_PRODUX.Models
                 {
                     Directory.CreateDirectory(ruta);
                 }
-                File.Delete(ruta + @"\" + producto.Descripcion + ".png");
-                File.WriteAllBytes(ruta + @"\" + producto.Descripcion + ".png", Imagen);
+                File.Delete(ruta + @"\" + producto.Descripcion + ".jpg");
+                File.WriteAllBytes(ruta + @"\" + producto.Descripcion + ".jpg", Imagen);
                 OdbcCommand command = new OdbcCommand();
                 string Sql = "{call [dbo].[sp_Actualizar_Producto](?,?,?,?,?,?,?)}";
 
@@ -303,7 +303,7 @@ namespace API_PRODUX.Models
                 command.Parameters.Add("@Observaciones", OdbcType.VarChar);
                 command.Parameters["@Observaciones"].Value = producto.Observaciones;
                 command.Parameters.Add("@Imagen", OdbcType.VarChar);
-                command.Parameters["@Imagen"].Value = producto.Imagen;
+                command.Parameters["@Imagen"].Value = @"/" + producto.Descripcion + ".jpg";
                 command.Parameters.Add("@Estado", OdbcType.Int);
                 command.Parameters["@Estado"].Value = producto.Estado;
                 command.ExecuteNonQuery();
