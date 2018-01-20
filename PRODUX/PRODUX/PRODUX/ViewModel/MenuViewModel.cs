@@ -126,6 +126,10 @@ namespace PRODUX.ViewModel
         private void CerrarSesion()
         {
             PRODUX.Model.UsuarioModel.EliminarUsuarioRealm();
+            ProductoViewModel.DeleteInstance();
+            ClienteViewModel.DeleteInstance();
+            UsuarioViewModel.DeleteInstance();
+            PedidoViewModel.DeleteInstance();
 
             Application.Current.MainPage = new PRODUX.View.InicioSesion();
         }
