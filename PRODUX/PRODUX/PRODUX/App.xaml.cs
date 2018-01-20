@@ -28,7 +28,7 @@ namespace PRODUX
                 Globales.UsuarioActivo = usuario.Usuario;
 
                 NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
-                navigation.CurrentPage.Title = Globales.UsuarioActivo;
+                navigation.CurrentPage.Title = "Usuario: " + Globales.UsuarioActivo;
                 navigation.BarBackgroundColor = Color.Black;
                 navigation.BarTextColor = Color.White;
 

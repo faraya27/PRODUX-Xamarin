@@ -160,8 +160,7 @@ namespace PRODUX.ViewModel
 
                     PRODUX.ViewModel.Globales.UsuarioActivo = Usuario;
 
-                    NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio());
-                    navigation.CurrentPage.Title = Usuario;
+                    NavigationPage navigation = new NavigationPage(new PRODUX.View.Menu.Inicio { Title = "Usuario: " + Usuario });
                     navigation.BarBackgroundColor = Color.Black;
                     navigation.BarTextColor = Color.White;
 

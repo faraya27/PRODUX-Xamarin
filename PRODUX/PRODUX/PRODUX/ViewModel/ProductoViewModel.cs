@@ -259,7 +259,7 @@ namespace PRODUX.ViewModel
             Observaciones = string.Empty;
             Imagen = string.Empty;
 
-            //ProductoActual = null;
+            ProductoActual = null;
         }
 
         public void MostrarMensaje(string mensaje)

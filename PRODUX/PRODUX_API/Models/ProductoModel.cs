@@ -275,16 +275,20 @@ namespace API_PRODUX.Models
             OdbcConnection conn = Conexion.obtenerConexion();
             try
             {
-
-                byte[] Imagen = Convert.FromBase64String(producto.Imagen);
-
-                string ruta = @"C:\inetpub\wwwroot\Produx\Imagenes";
-                if (!Directory.Exists(ruta))
+                if (!producto.Imagen.Contains("http"))
                 {
-                    Directory.CreateDirectory(ruta);
+                    byte[] Imagen = Convert.FromBase64String(producto.Imagen);
+
+                    string ruta = @"C:\inetpub\wwwroot\Produx\Imagenes";
+                    if (!Directory.Exists(ruta))
+                    {
+                        Directory.CreateDirectory(ruta);
+                    }
+                    File.Delete(ruta + @"\" + producto.Descripcion + ".jpg");
+                    File.WriteAllBytes(ruta + @"\" + producto.Descripcion + ".jpg", Imagen);
                 }
-                File.Delete(ruta + @"\" + producto.Descripcion + ".jpg");
-                File.WriteAllBytes(ruta + @"\" + producto.Descripcion + ".jpg", Imagen);
+
+                
                 OdbcCommand command = new OdbcCommand();
                 string Sql = "{call [dbo].[sp_Actualizar_Producto](?,?,?,?,?,?,?)}";
 
