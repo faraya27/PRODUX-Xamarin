@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRODUX.View.Usuario.Usuario" 
+             x:Name="Usuario"
+             Title="Nuevo"
+             xmlns:local="clr-namespace:PRODUX.View.Convertidores">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CheckConverter x:Key="cnvCheck"></local:CheckConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="Usuario:"/>
+                <Entry Text="{Binding Usuario}"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Contraseña:"/>
+                <Entry IsPassword="True" Text="{Binding Contrasenna}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Estado:"/>
+                <Image Source="checked.png" IsVisible="{Binding Estado}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Usuario}}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="unchecked.png" IsVisible="{Binding Estado, Converter={StaticResource cnvCheck}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Usuario}}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Guardar" Command="{Binding GuardarUsuarioCommand}" BackgroundColor="Black" TextColor="White"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

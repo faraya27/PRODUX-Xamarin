@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRODUX.View.Cliente.Cliente" 
+             x:Name="Cliente"
+             Title="Nuevo"
+             xmlns:local="clr-namespace:PRODUX.View.Convertidores">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CheckConverter x:Key="cnvCheck"></local:CheckConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="Cédula:"/>
+                    <Entry Text="{Binding Cedula}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Nombre:"/>
+                    <Entry Text="{Binding Nombre}"/>
+                </StackLayout>                
+                <StackLayout>
+                    <Label Text="Email:"/>
+                    <Entry Text="{Binding Email}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Teléfono:"/>
+                    <Entry Keyboard="Numeric" Text="{Binding Telefono}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Dirección:"/>
+                    <Editor Text="{Binding Direccion}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Estado:"/>
+                    <Image Source="checked.png" IsVisible="{Binding Estado}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Cliente}}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="unchecked.png" IsVisible="{Binding Estado, Converter={StaticResource cnvCheck}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Cliente}}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Guardar" Command="{Binding GuardarClienteCommand}" BackgroundColor="Black" TextColor="White"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

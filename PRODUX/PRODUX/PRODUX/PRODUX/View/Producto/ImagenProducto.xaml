@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRODUX.View.Producto.ImagenProducto"
+             xmlns:local="clr-namespace:PRODUX.View.Convertidores">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImagenConverter x:Key="cnvImagen"></local:ImagenConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image Source="{Binding ProductoActual.Imagen, Converter={StaticResource cnvImagen}}" AbsoluteLayout.LayoutBounds="0,0,1,400" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" />
+            <Label Text="{Binding ProductoActual.Observaciones}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   AbsoluteLayout.LayoutBounds="0,0,1,800" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

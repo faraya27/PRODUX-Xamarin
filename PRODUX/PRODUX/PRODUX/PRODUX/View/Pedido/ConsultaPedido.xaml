@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="ConsultaPedido"
+             x:Class="PRODUX.View.Pedido.ConsultaPedido">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Búsqueda" Text="{Binding Filtro}"/>            
+            </StackLayout>
+            <StackLayout>
+                <ListView ItemsSource="{Binding LstPedidos}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.EditarPedidoCommand, Source={x:Reference ConsultaPedido}}" CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Text="Pedido #"/>
+                                    <Label Text="{Binding Id_Pedido}" HorizontalOptions="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="ConsultaUsuario"
+             x:Class="PRODUX.View.Usuario.ConsultaUsuario" 
+             Title="Consulta">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Búsqueda" Text="{Binding Filtro}"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding LstUsuarios}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.EditarUsuarioCommand, Source={x:Reference ConsultaUsuario}}" CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Text="{Binding Usuario}" HorizontalOptions="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

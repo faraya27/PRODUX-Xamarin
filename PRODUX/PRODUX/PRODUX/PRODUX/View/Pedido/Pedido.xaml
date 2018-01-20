@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PRODUX.View.Pedido.Pedido"
+             x:Name="Pedidos"
+             xmlns:behaviors="clr-namespace:PRODUX.View.Behaviors;"
+             xmlns:local="clr-namespace:PRODUX.View.Convertidores">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImagenConverter x:Key="cnvImagen"></local:ImagenConverter>
+            <local:CheckConverter x:Key="cnvCheck"></local:CheckConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="Número:"/>
+                    <Entry Text="{Binding IdPedido}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Fecha:"/>
+                    <DatePicker Date="{Binding Fecha}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Cliente:"/>
+                    <Picker Title="Seleccione un cliente" ItemsSource="{Binding LstClientes}" SelectedItem="{Binding Cliente, Mode=TwoWay}" ItemDisplayBinding="{Binding Nombre}"/>
+                </StackLayout>            
+                <StackLayout>
+                    <Label Text="Listado de Productos:"/>
+                    <ListView ItemsSource="{Binding LstPedidoLinea}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Image Source="{Binding Imagen, Converter={StaticResource cnvImagen}}" WidthRequest="60" HeightRequest="60" />
+                                        <Label Text="{Binding Desc_Producto}" HorizontalOptions="Center"/>
+                                        <Entry Text="{Binding Cant_Solicitada}" Keyboard="Numeric" HorizontalOptions="EndAndExpand" WidthRequest="50" MinimumWidthRequest="35">
+                                            <Entry.Behaviors>
+                                                <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding Path=BindingContext.CantidadCambiadaCommand, Source={x:Reference Pedidos}}" CommandParameter="{Binding .}"/>
+                                            </Entry.Behaviors>
+                                        </Entry>
+                                        <Image Source="checked.png" IsVisible="{Binding Seleccionado}">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Pedidos}}" CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Source="unchecked.png" IsVisible="{Binding Seleccionado, Converter={StaticResource cnvCheck}">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Pedidos}}" CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>                                
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Total:"/>
+                    <Entry Text="{Binding TotalPedido}" IsEnabled="False"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Guardar" Command="{Binding GuardarPedidoCommand}" BackgroundColor="Black" TextColor="White"/>
+                    <Button Text="Eliminar" Command="{Binding EliminarPedidoCommand}" BackgroundColor="Black" TextColor="White"/>
+                    <Button Text="Confirmar" Command="{Binding ConfirmarPedidoCommand}" BackgroundColor="Black" TextColor="White"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

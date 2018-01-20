@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="Inicio"
+             x:Class="PRODUX.View.InicioSesion"
+             xmlns:local="clr-namespace:PRODUX.View.Convertidores">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CheckConverter x:Key="cnvCheck"></local:CheckConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image Source="Logo.png" WidthRequest="100" HeightRequest="100"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="PRODUX" FontSize="Large" FontFamily="" FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image Source="Usuario.png" WidthRequest="20" HeightRequest="20"/>
+                <Entry  Placeholder="Usuario" Text="{Binding Usuario}" WidthRequest="100"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image Source="Contrasenna.png"  WidthRequest="27" HeightRequest="27"/>
+                <Entry Placeholder="Contraseña" Text="{Binding Contrasenna}" IsPassword="True" WidthRequest="100"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Recordar Credenciales"/>
+                <Image Source="checked.png" IsVisible="{Binding RecordarCredenciales}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Inicio}}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="unchecked.png" IsVisible="{Binding RecordarCredenciales, Converter={StaticResource cnvCheck}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=BindingContext.CheckCambiadoCommand, Source={x:Reference Inicio}}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <Button Text="Iniciar Sesión" Command="{Binding ValidarCredencialesCommand}" BackgroundColor="Black" TextColor="White"/>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
