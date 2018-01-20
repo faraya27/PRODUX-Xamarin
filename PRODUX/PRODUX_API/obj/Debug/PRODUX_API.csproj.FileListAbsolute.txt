@@ -109,3 +109,4 @@ C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PR
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.dll
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.pdb
 C:\Users\Carolina\Documents\GitHub\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csprojResolveAssemblyReference.cache
+C:\Users\f_ara\source\repos\PRODUX-Xamarin\PRODUX\PRODUX_API\obj\Debug\PRODUX_API.csprojResolveAssemblyReference.cache

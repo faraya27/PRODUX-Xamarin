@@ -11,8 +11,8 @@
 namespace PRODUX.View.Producto {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Carolina\\Documents\\GitHub\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Produ" +
-        "cto\\Producto.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\f_ara\\source\\repos\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Producto\\Pro" +
+        "ducto.xaml")]
     public partial class Producto : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

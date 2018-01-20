@@ -11,8 +11,8 @@
 namespace PRODUX.View.Pedido {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Carolina\\Documents\\GitHub\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Pedid" +
-        "o\\ConsultaPedido.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\f_ara\\source\\repos\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Pedido\\Consu" +
+        "ltaPedido.xaml")]
     public partial class ConsultaPedido : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

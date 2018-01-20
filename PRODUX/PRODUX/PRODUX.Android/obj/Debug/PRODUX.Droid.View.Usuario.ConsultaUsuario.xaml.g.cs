@@ -11,8 +11,8 @@
 namespace PRODUX.View.Usuario {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Carolina\\Documents\\GitHub\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Usuar" +
-        "io\\ConsultaUsuario.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\f_ara\\source\\repos\\PRODUX-Xamarin\\PRODUX\\PRODUX\\PRODUX\\View\\Usuario\\Cons" +
+        "ultaUsuario.xaml")]
     public partial class ConsultaUsuario : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

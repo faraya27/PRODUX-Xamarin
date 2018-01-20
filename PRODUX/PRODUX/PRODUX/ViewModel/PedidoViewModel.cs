@@ -233,7 +233,10 @@ namespace PRODUX.ViewModel
         private void InicializarClase()
         {
             RefrescarLista();
-            Limpiar();
+            if (_PedidoActual == null)
+            {
+                Limpiar();
+            }            
         }
 
         public void MostrarMensaje(string mensaje)
@@ -388,7 +391,7 @@ namespace PRODUX.ViewModel
 
             LstPedidoLinea = await PedidoLineaModel.SeleccionarPorPedido(pedido.Id_Pedido);
 
-            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.Pedido());
+            ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(new PRODUX.View.Pedido.Pedido { Title = "Pedidos" });
         }
 
         private void CheckCambiado(PedidoLineaModel pedidoLinea)

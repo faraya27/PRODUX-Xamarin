@@ -236,7 +236,11 @@ namespace PRODUX.ViewModel
         private void InicializarClase()
         {            
             RefrescarLista();
-            Limpiar();
+
+            if (_ProductoActual == null)
+            {
+                Limpiar();
+            }            
         }
 
         private async void RefrescarLista()
