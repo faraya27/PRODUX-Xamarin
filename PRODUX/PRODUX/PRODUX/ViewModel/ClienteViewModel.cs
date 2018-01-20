@@ -194,7 +194,10 @@ namespace PRODUX.ViewModel
         private void InicializarClase()
         {
             RefrescarLista();
-            Limpiar();
+            if (_ClienteActual == null)
+            {
+                Limpiar();
+            }            
         }
 
         private async void RefrescarLista()
@@ -211,6 +214,8 @@ namespace PRODUX.ViewModel
             Email = string.Empty;
             Estado = false;
             Direccion = string.Empty;
+
+            _ClienteActual = null;
         }
 
         public void MostrarMensaje(string mensaje)
