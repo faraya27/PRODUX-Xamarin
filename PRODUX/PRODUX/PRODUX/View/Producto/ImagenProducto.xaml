@@ -9,12 +9,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="{Binding ProductoActual.Imagen, Converter={StaticResource cnvImagen}}"/>
+        <AbsoluteLayout>
+            <Image Source="{Binding ProductoActual.Imagen, Converter={StaticResource cnvImagen}}" AbsoluteLayout.LayoutBounds="0,0,1,400" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" />
             <!--<Image Source="{Binding ProductoActual.Imagen}"/>-->
             <Label Text="{Binding ProductoActual.Observaciones}"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+                HorizontalOptions="CenterAndExpand" 
+                   AbsoluteLayout.LayoutBounds="0,0,1,800" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional" />
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

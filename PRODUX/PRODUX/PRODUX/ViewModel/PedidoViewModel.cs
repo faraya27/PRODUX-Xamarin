@@ -328,7 +328,9 @@ namespace PRODUX.ViewModel
             IdPedido = string.Empty;
             Fecha = DateTime.Now;
             Cliente = null;
-            TotalPedido = 0;            
+            TotalPedido = 0;
+
+            _PedidoActual = null;
         }
 
         private async void RefrescarLista()

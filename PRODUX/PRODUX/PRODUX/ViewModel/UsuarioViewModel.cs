@@ -163,6 +163,8 @@ namespace PRODUX.ViewModel
             Usuario = string.Empty;
             Contrasenna = string.Empty;
             Estado = false;
+
+            _UsuarioActual = null;
         }
 
         public void MostrarMensaje(string mensaje)
